@@ -200,15 +200,15 @@
 <h1 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h1><ol>
 <li><strong>在本地找个目录放博客</strong></li>
 <li><strong>在选定的目录下，右键Git Bash Here</strong></li>
-<li><strong>使用nmp命令安装hexo，输入：</strong><blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;npm install -g hexo-cli</span><br><span class="line">&gt;hexo init blog</span><br><span class="line">&gt;cd blog</span><br><span class="line">&gt;hexo g </span><br></pre></td></tr></table></figure>
-<p><strong>构建好的效果图</strong><br><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312031342277.png" alt="image-20230323205148127"></p>
+<li><strong>使用nmp命令安装hexo，输入：</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">hexo g </span><br></pre></td></tr></table></figure>
+<strong>构建好的效果图</strong><blockquote>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312031342277.png" alt="image-20230323205148127"></p>
 </blockquote>
 </li>
 <li><strong>cd 进入这个目录</strong><blockquote>
 <p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312031345367.png" alt="image-20231203134518917"><br>为了检测我们的网站雏形，分别按顺序输入以下三条命令：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">#之后就可以访问127.0.0.1:4000访问blog了</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">#之后就可以访问127.0.0.1:4000访问blog了</span><br></pre></td></tr></table></figure></blockquote>
+</li>
 <li><strong>配置ssh</strong><blockquote>
 <p>(1) <code>cd~/.ssh</code>检查本机已存在的ssh密钥<br>如果提示：No such file or directory 说明你是第一次使用git。<br>(2) <code>ssh-keygen -t rsa -C “邮件地址”</code><br>然后连续3次回车，最终会生成一个文件在用户目录下<br><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312031354866.png" alt="image-20231203135408456"><br>(3) 打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：<br><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312031357609.png" alt="image-20231203135729841"><br>(4) key填写C:\Users\Administrator.ssh\id_rsa.pub中的内容<br>(5) 尝试ssh连接,测试是否成功<br><code>ssh -T [git@github.com](mailto:git@github.com) # 注意邮箱地址不用改</code><br>(6) 如果提示Are you sure you want to continue connecting (yes&#x2F;no)?，输入yes，然后会看到下面这个，就算成功：</p>
 <p>(7) 在选中的位置(blog目录下)打开cmd(以管理员身份)</p>
@@ -290,6 +290,12 @@
             <i class="fa fa-chevron-circle-up panel-toggle"></i>
         </div>
         <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/03/tuchuang/">图床搭建</a>
+                </span>
+            </li>
             
             <li class="list-group-item">
                 <span class="post-title">
@@ -376,6 +382,12 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2023/12/03/%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0/">#新建文章</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/03/tuchuang/">图床搭建</a>
                 </span>
             </li>
             
