@@ -10,7 +10,7 @@
     
     
     
-    <title>kali的钓鱼网站制作及大灰狼使用 | hexo</title>
+    <title>网络安全知识基础 | hexo</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -156,19 +156,19 @@
         <i class="fa fa-home"></i>
         <a href="http://example.com">hexo</a>
         >
-        <span>kali的钓鱼网站制作及大灰狼使用</span>
+        <span>网络安全知识基础</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2023/12/02/11.28/">kali的钓鱼网站制作及大灰狼使用</a>
+                <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础</a>
             </h1>
         </div>
         <div class="tag-article">
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2023-12-02
+                <i class="fa fa-calendar"></i> 2023-12-04
             </span>
             
         </div>
@@ -178,11 +178,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2023/12/02/11.28/">kali的钓鱼网站制作及大灰狼使用</a>
+                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2023-12-02
+                <i class="fa fa-calendar"></i> 2023-12-04
             </p>
             <p>
                 
@@ -191,21 +191,82 @@
         </center>
     </div>
     <div class="content-article">
-        <p><strong>钓鱼网站的制作</strong></p>
-<ul>
-<li><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312031135095.jpeg" alt="-1346097387.jpg"></li>
-</ul>
-<ol>
-<li>下载kali（预留30g)</li>
-<li>打开虚拟机kali</li>
-<li>代码操作<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">输入 vim /etc/[proxychains4.conf](http://proxychains4.conf)</span><br><span class="line">一直按下↓</span><br><span class="line">最后一行  socks…… </span><br><span class="line">（打开猫→允许局域网打开→找到ipv4）</span><br><span class="line">改成  socks5 ip地址  port（端口）</span><br><span class="line">按Esc进入命令模式 按i进入插入模式 切忌使用Ctrl z，不用鼠标，在插入模式可用鼠标粘贴复制</span><br><span class="line">输入：wq！（保存）</span><br><span class="line">输入：q！（不保存退出）</span><br><span class="line">输入 proxychains4 git clone https://github.com/makdosx/mip22</span><br><span class="line">输入 ls（确认有mip22）</span><br><span class="line">输入 cd mip22</span><br><span class="line">输入 chmod +x ./*</span><br><span class="line">输入 proxychains4 -q bash ./[mip22.sh](http://mip22.sh)</span><br><span class="line">输入 1</span><br><span class="line">（出现有69种样板选一个）</span><br><span class="line">输入（所选择数字）</span><br><span class="line">输入 3</span><br></pre></td></tr></table></figure></li>
-<li>选择https网址复制，可看到访客记录<br>（Ctrl c 终止程序）</li>
-<li>返回桌面下mip22文件下data是密码，finger是访问地址</li>
+        <h1 id="一、Windows-IP-配置"><a href="#一、Windows-IP-配置" class="headerlink" title="一、Windows IP 配置"></a>一、Windows IP 配置</h1><ol>
+<li>以太网适配器：计算机与外界连接网络是通过主机箱插入一块网络接口板。网络接口板又称通信适配器或网络适配器或网络接口卡NIC，简单的名称为‘网卡’。</li>
+<li>以太网：有线网络</li>
 </ol>
-<p><strong>远程遥控</strong></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312041939817.png" alt="image-20231204193914487"></p>
+<ol start="3">
+<li>以太网适配器VMware Network Adapter VMnet1、 VMware Network Adapter VMnet8是虚拟网卡</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312041948506.png" alt="image-20231204194815021"></p>
+<ol start="4">
+<li>无线局域网适配器 WLAN（即是wifi）</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312041950295.png" alt="image.png"></p>
+<p>  （1） <strong>ipv6</strong></p>
+<p>​    也被称为IPng（IP Next Generation），也就是下一代IP协议。</p>
 <ul>
-<li>访问192.168.2:2544搜索下载大灰狼</li>
-<li>查看物理机ipv4，在大灰狼中生成服务，将生成程序放入虚拟机中，即可通过大灰狼实现远程遥控等操作。</li>
+<li>ipv6地址总长度为128比特，分为8组，每组为4个十六进制数的形式，每组十六进制数间隔。</li>
+</ul>
+<p> 例如：FC00:0000:130F:0000:0000:09C0:876A:130B</p>
+<ul>
+<li>ipv6地址缩写规则：</li>
+</ul>
+<p> 每组中的前导“0”都可以省略，即一组中全为0，则可以只写一个0，所以上述地址可写为：FC00:0:130F:0:0:9C0:876A:130B。</p>
+<ul>
+<li>地址中包含的连续两个或多个均为0的组，可以用双冒号“::”来代替</li>
+</ul>
+<p> 所以上述地址又可以进一步简写为：FC00:0:130F::9C0:876A:130B。</p>
+<p>需要注意的是，在一个IPv6地址中只能使用一次双冒号“::”（一般用于0最多的一段）</p>
+<p>  （2） <strong>ipv4</strong></p>
+<ul>
+<li>本地ip地址，IPv4 全称为 Internet Protocol version 4，它为互联网上的每一个网络和每一台主机分配一个逻辑地址，IP 地址是一个 32 位的二进制数，算下来其实也只有 2^32 个地址，这些地址中有分为 A、B、C、D、E 5 类</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312042006498.png" alt="image-20231204200655878"></p>
+<ul>
+<li><p>ip地址的表示</p>
+<p> IP地址由32位二进制数组成，为了方便记忆，将IP地址32位进制数进行分段，每段8位，共4段，然后将没段8位二进制转换为十进制数，中间点号分割。</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312042005674.png" alt="image-20231204200528333"></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312042043064.png" alt="image-20231204201256710"></p>
+<ul>
+<li><p>特殊ip地址</p>
+<p> （a） 广播地址</p>
+<ul>
+<li><p>一个子网内的所有网络接口都能收到此广播消息</p>
+</li>
+<li><p>直接广播：带目标网络号，主机地址二进制全为1的地址</p>
+</li>
+<li><p>有限广播：网络号和主机地址二进制全为1的地址（即255.255.255.255）</p>
+</li>
+</ul>
+<p> （b）网络地址</p>
+<ul>
+<li><p>主机地址二进制全为0的地址 </p>
+<p> 如实际中常用的127.0.0.1，别名localhost</p>
+</li>
+<li><p>主要用于对本地回路测试及实现本地机器进程间的通信。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>  (3) <strong>子网技术</strong></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312042031010.png" alt="image-20231204203132917"></p>
+<ul>
+<li>子网掩码</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312042043693.png" alt="image-20231204204337618"></p>
+<ul>
+<li><p>子网掩码与 IP 地址相同，32位二进制数。对于子网掩码的取值，对应于 IP 地址，网络号和子网号的所有二进制位设置为1，主机号的所有二进制位设置为0。</p>
+</li>
+<li><p>子网掩码的表示方法</p>
+</li>
+<li><p>点分十进制：表示法与ip地址中相同</p>
+</li>
+<li><p>网络前缀标记法（网络地址位数）：从左到右连续的取网络号和子网号的位数来表示子网掩码。列如，一个子网掩码为255.255.0.0 的 B类网络地址 156.81.0.0，用网络前缀标记法表示为 156.81.0.0&#x2F;16。</p>
+</li>
 </ul>
 
     </div>
@@ -401,17 +462,17 @@
 
                 
                 <li>
-                    <a href="/2023/12/02/11.28/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2023/12/04/WangLuoAnQuanJiChu/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2023/12/02/11.28/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2023/12/04/WangLuoAnQuanJiChu/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2023/12/02/11.28/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2023/12/04/WangLuoAnQuanJiChu/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
