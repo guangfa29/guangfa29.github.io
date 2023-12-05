@@ -191,19 +191,12 @@
         </center>
     </div>
     <div class="content-article">
-        <h1 id="一、Windows-IP-配置"><a href="#一、Windows-IP-配置" class="headerlink" title="一、Windows IP 配置"></a>一、Windows IP 配置</h1><ol>
-<li>以太网适配器：计算机与外界连接网络是通过主机箱插入一块网络接口板。网络接口板又称通信适配器或网络适配器或网络接口卡NIC，简单的名称为‘网卡’。</li>
-<li>以太网：有线网络</li>
-</ol>
+        <h1 id="一、Windows-IP-配置"><a href="#一、Windows-IP-配置" class="headerlink" title="一、Windows IP 配置"></a>一、Windows IP 配置</h1><h2 id="1-以太网适配器"><a href="#1-以太网适配器" class="headerlink" title="1. 以太网适配器"></a>1. 以太网适配器</h2><p>计算机与外界连接网络是通过主机箱插入一块网络接口板。网络接口板又称通信适配器或网络适配器或网络接口卡NIC，简单的名称为‘网卡’。</p>
+<h2 id="2-以太网"><a href="#2-以太网" class="headerlink" title="2. 以太网"></a>2. 以太网</h2><p>有线网络</p>
 <p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312041939817.png" alt="image-20231204193914487"></p>
-<ol start="3">
-<li>以太网适配器VMware Network Adapter VMnet1、 VMware Network Adapter VMnet8是虚拟网卡</li>
-</ol>
+<h2 id="3-虚拟网卡"><a href="#3-虚拟网卡" class="headerlink" title="3. 虚拟网卡"></a>3. 虚拟网卡</h2><p>以太网适配器VMware Network Adapter VMnet1、 VMware Network Adapter VMnet8</p>
 <p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312041948506.png" alt="image-20231204194815021"></p>
-<ol start="4">
-<li>无线局域网适配器 WLAN（即是wifi）</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312041950295.png" alt="image.png"></p>
+<h2 id="4-无线局域网适配器-WLAN（即是wifi）"><a href="#4-无线局域网适配器-WLAN（即是wifi）" class="headerlink" title="4. 无线局域网适配器 WLAN（即是wifi）"></a>4. 无线局域网适配器 WLAN（即是wifi）</h2><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312041950295.png" alt="image.png"></p>
 <p>  （1） <strong>ipv6</strong></p>
 <p>​    也被称为IPng（IP Next Generation），也就是下一代IP协议。</p>
 <ul>
@@ -259,15 +252,114 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312042043693.png" alt="image-20231204204337618"></p>
 <ul>
-<li><p>子网掩码与 IP 地址相同，32位二进制数。对于子网掩码的取值，对应于 IP 地址，网络号和子网号的所有二进制位设置为1，主机号的所有二进制位设置为0。</p>
+<li>子网掩码与 IP 地址相同，32位二进制数。对于子网掩码的取值，对应于 IP 地址，网络号和子网号的所有二进制位设置为1，主机号的所有二进制位设置为0。</li>
+<li>子网掩码的表示方法</li>
+<li>点分十进制：表示法与ip地址中相同</li>
+<li>网络前缀标记法（网络地址位数）：从左到右连续的取网络号和子网号的位数来表示子网掩码。列如，一个子网掩码为255.255.0.0 的 B类网络地址 156.81.0.0，用网络前缀标记法表示为 156.81.0.0&#x2F;16。</li>
+</ul>
+<p>  (4)公网和私网</p>
+<ul>
+<li><p>公网（外网) ip</p>
+<ol>
+<li><strong>公网地址也称为全球唯一IP地址，是指可以直接在Internet上访问的IP地址。这些地址由互联网注册机构分配，具有全球唯一性和全球可达性。</strong></li>
+<li><strong>公网地址通常用于互联网上的服务器、路由器和其他网络设备。</strong>它们可以直接访问Internet上的其他设备，<strong>可以通过Internet进行通信和数据传输。</strong></li>
+</ol>
 </li>
-<li><p>子网掩码的表示方法</p>
+<li><p>私网（内网) ip：</p>
+<ol>
+<li><p><strong>私网地址也称为局域网IP地址，是指在局域网内部使用的IP地址。</strong>它们不具有全球唯一性和全球可达性，<strong>只能在局域网内部使用。</strong></p>
 </li>
-<li><p>点分十进制：表示法与ip地址中相同</p>
+<li><p><strong>私网地址通常用于组建局域网，例如家庭网络、企业内部网络、校园网络等。</strong>在局域网内部，可以通过私网地址进行设备间的通信和数据传输。但是，<strong>如果要访问Internet上的其他设备，必须通过路由器进行转发。</strong></p>
 </li>
-<li><p>网络前缀标记法（网络地址位数）：从左到右连续的取网络号和子网号的位数来表示子网掩码。列如，一个子网掩码为255.255.0.0 的 B类网络地址 156.81.0.0，用网络前缀标记法表示为 156.81.0.0&#x2F;16。</p>
+<li><p>私网的3类ip地址范围</p>
+<p>A类地址:10.0.0.0~10.255.255.255</p>
+<p>B类地址:172.16.0.0~172.31.255.255</p>
+<p>C类地址:192.168.0.0~192.168.255.255</p>
+</li>
+</ol>
 </li>
 </ul>
+<h1 id="二、IP访问过程"><a href="#二、IP访问过程" class="headerlink" title="二、IP访问过程"></a>二、IP访问过程</h1><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312051932108.png" alt="image-20231205193246901"></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052106382.png" alt="image-20231205210618401"></p>
+<h2 id="1-云"><a href="#1-云" class="headerlink" title="1. 云"></a>1. 云</h2><p>一层一层上传，包括多个路由器、基站，发送至想访问的公网ip</p>
+<h2 id="2-静态ip"><a href="#2-静态ip" class="headerlink" title="2. 静态ip"></a>2. 静态ip</h2><p>由路由器分配ip</p>
+<h2 id="3-动态ip"><a href="#3-动态ip" class="headerlink" title="3. 动态ip"></a>3. 动态ip</h2><p>   <strong>动态IP的原理：</strong></p>
+<p>   动态IP（Dynamic IP Address）是由网络服务提供商（ISP）自动分配的一种IP地址，该IP地址一般具有较短的租用期限，因此每次重新连接网络时，其IP地址会发生变化。其原理是将一定数量的IP地址作为可用地址池，在进行动态IP地址分配的过程中，一般采用动态主机配置协议<strong>（DHCP）</strong>从地址池中选取一个可用地址与设备建立通信，并将该地址分配给设备，以使设备可以连接到互联网。</p>
+<h2 id="4-当动态ip设置为静态ip时"><a href="#4-当动态ip设置为静态ip时" class="headerlink" title="4. 当动态ip设置为静态ip时"></a>4. 当动态ip设置为静态ip时</h2><p>大概率是动态ip上不了网。（实际上什么情况都有可能发生，主要因路由器不同设置导致）</p>
+<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052010946.png" alt="image-20231205201011936"></p>
+<h2 id="5-socks5协议"><a href="#5-socks5协议" class="headerlink" title="5. socks5协议"></a>5. socks5协议</h2><p>是一种代理协议。Socks 5 协议工作在传输层 (Transport Layer) 与应用层 (Application Layer) 的中间, 提供了一种对应用层协议透明的代理服务。<strong>对于传输层协议仅支持 TCP 协议</strong></p>
+<h2 id="6-OSI七层模型"><a href="#6-OSI七层模型" class="headerlink" title="6. OSI七层模型"></a>6. OSI七层模型</h2><p>   OSI七层模型是一种网络协议参考模型，用于描述和规范计算机网络中不同层次的功能和交互关系。它包括以下七层：</p>
+<ul>
+<li><p>1.物理层(Physical Layer):负责传输比特流，包括电器、光学和机械接口等物理特性。</p>
+<p><strong>常见协议:Ethernet,RS-232,USB,光纤等</strong></p>
+</li>
+<li><p>2.数据链路层(Date Link Layer):负责在直接相连的节点之间传输帧，处理物理地址(MAC地址)和错误检测等。</p>
+<p><strong>常见协议:Ethernet(IEEE 802.3),PPP(点对点协议),HDLC(高级数据链路控制),ARP(地址解析协议)等</strong></p>
+</li>
+<li><p>3.网络层(Network Layer):负责在不同网络之间传输数据包，处理逻辑地址（ip地址）和路由选择等。</p>
+<p><strong>常见协议:IP(Internet协议)，ICMP(Internet控制消息协议),IPsec(IP安全性协议),OSPF(开放最短路径优先协议)等</strong></p>
+</li>
+<li><p>4.传输层(Transport Layer):负责端到端的可靠传输和流量控制，提供传输协议(如TCP、UDP)</p>
+<p><strong>常见协议:TCP(传输控制协议)，UDP(用户数据报协议),SCIP(流控制传输协议)等</strong></p>
+</li>
+<li><p>5.会话层(Session Layer):负责建立、管理和终止会话，确保数据在通信系统中的同步。</p>
+<p><strong>常见协议:NetBIOS(网络基本输入输出系统),RPC(远程过程调用协议),SSH(安全外壳协议)等</strong></p>
+</li>
+<li><p>6.表示层(Presentation Layer):负责数据的格式转换、数据加密和解密、数据压缩和解压缩等。</p>
+<p><strong>常见协议:ACSII码,JPEG(联合图像专家组),MPEG(动态图像压缩标准)等</strong></p>
+</li>
+<li><p>7.应用层(Application Layer):负责应用程序之间的通信和数据交互，提供各种应用服务。</p>
+<p><strong>常见协议:HTTP(超文本传输协议),FTP(文件传输协议),SMTP(简单邮件传输协议),DNS(域名系统)等</strong></p>
+</li>
+</ul>
+<p>   每一层都有自己的功能和协议，通过不同层次之间的协同工作，实现了网路通信的可靠性和灵活性。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052049339.png" alt="image-20231205204931020"></p>
+<h2 id="7-路由器"><a href="#7-路由器" class="headerlink" title="7. 路由器"></a>7. 路由器</h2><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052055136.png" alt="image-20231205205554527"></p>
+<ul>
+<li><p>路由器可作为一个网络的划分，同一个路由器下的设备是互通的</p>
+</li>
+<li><p>路由器表会记录要访问的ip</p>
+</li>
+<li><p>源ip，源MAC，目的ip,目的MAC称为四象限</p>
+</li>
+<li><p>交换机：集线器的作用，把多个设备的信号集中输出到路由器上（类似快递员的作用）</p>
+</li>
+</ul>
+<h2 id="8-win操作系统和驱动"><a href="#8-win操作系统和驱动" class="headerlink" title="8. win操作系统和驱动"></a>8. win操作系统和驱动</h2><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052101968.png" alt="image-20231205210115897"></p>
+<ul>
+<li>操作系统是指控制和管理整个计算机系统的硬件和软件资源，并合理的组织和调度计算机的工作和资源的分配，以提供给用户和其它软件方便的接口和环境。</li>
+<li>驱动是指驱动计算机里软件的程序，初始化和配置硬件，实现硬件的数据的接受和发送</li>
+</ul>
+<h2 id="9-NAT"><a href="#9-NAT" class="headerlink" title="9. NAT"></a>9. NAT</h2><p>进行地址转换,等同于路由器，输出是由物理机ip输出，nat外的ip是访问不了nat内的服务器。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052104318.png" alt="image.png"></p>
+<h1 id="三、proxifier软件的使用"><a href="#三、proxifier软件的使用" class="headerlink" title="三、proxifier软件的使用"></a>三、proxifier软件的使用</h1><h2 id="一-使用"><a href="#一-使用" class="headerlink" title="(一)使用"></a>(一)使用</h2><ol>
+<li><p>在192.168.2.6:5244下载proxifier压缩文件，打开猫的局域网连接，打开proxifier,点击配置文件<br><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052109268.png" alt="image-20231205210958061"></p>
+</li>
+<li><p>点击编辑，如图设置，点击确定（ssh*;表示打开所有ssh开头的文件）<br> <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052120012.png" alt="image.png"></p>
+</li>
+<li><p>移除第一行，将default改为direct放行</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052112828.png" alt="image.png"></p>
+</li>
+<li><p>重启proxifier，win+r，输入cmd，在命令行中输入ssh <a href="mailto:&#114;&#x6f;&#x6f;&#x74;&#x40;&#x31;&#x2e;&#49;&#x2e;&#x31;&#x2e;&#49;">&#114;&#x6f;&#x6f;&#x74;&#x40;&#x31;&#x2e;&#49;&#x2e;&#x31;&#x2e;&#49;</a>，会在proxifier出现记录（大概率访问失败）</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052113584.png" alt="@H0(UPD@4OJFXHJIIMGKB~U.png"></p>
+</li>
+</ol>
+<h2 id="（二）说明"><a href="#（二）说明" class="headerlink" title="（二）说明"></a>（二）说明</h2><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052117922.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052117164.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052117343.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052120003.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052117537.png" alt="img"></p>
+<ul>
+<li><p>源ip过滤： ip.src &#x3D;&#x3D; 源ip地址</p>
+</li>
+<li><p>目的ip过滤 ： ip.dst &#x3D;&#x3D; 目的ip地址</p>
+</li>
+<li><p>DNS一般在78左右，50-130</p>
+</li>
+<li><p>下图红框所表示的意思：排序   时间戳  源Ip 目的ip   协议  DNS大小  数据包的简要信息</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312052117390.png" alt="img"></p>
 
     </div>
 </article>
@@ -329,6 +421,18 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/04/Linux_study/"></a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础</a>
                 </span>
             </li>
@@ -341,7 +445,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/python_study/">python_study</a>
+                    <a href="/2023/12/03/Python_study/">python_study</a>
                 </span>
             </li>
             
@@ -372,12 +476,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2023/12/02/11.28/">kali的钓鱼网站制作及大灰狼使用</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/02/11.27/">永恒之黑</a>
                 </span>
             </li>
             
@@ -423,19 +521,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/python/">python安装</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/03/tuchuang/">图床搭建</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/03/python_study/">python_study</a>
                 </span>
             </li>
             
@@ -448,6 +534,24 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/04/Linux_study/"></a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/03/Python_study/">python_study</a>
                 </span>
             </li>
             
