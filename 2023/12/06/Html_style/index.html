@@ -162,13 +162,13 @@
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2023/12/04/Linux_study/"></a>
+                <a href="/2023/12/06/Html_style/"></a>
             </h1>
         </div>
         <div class="tag-article">
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2023-12-04
+                <i class="fa fa-calendar"></i> 2023-12-06
             </span>
             
         </div>
@@ -178,11 +178,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2023/12/04/Linux_study/"></a>
+                    <a href="/2023/12/06/Html_style/"></a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2023-12-04
+                <i class="fa fa-calendar"></i> 2023-12-06
             </p>
             <p>
                 
@@ -191,7 +191,31 @@
         </center>
     </div>
     <div class="content-article">
-        
+        <hr>
+<h2 id="title-Html使用style的四种方法"><a href="#title-Html使用style的四种方法" class="headerlink" title="title:Html使用style的四种方法"></a>title:Html使用style的四种方法</h2><h1 id="一、直接在html的标签里加入"><a href="#一、直接在html的标签里加入" class="headerlink" title="一、直接在html的标签里加入"></a>一、直接在html的标签里加入</h1><p><code>&lt;header style = &quot;background-color:blue;&quot;&gt;HELLO&lt;/header&gt;</code></p>
+<h1 id="二、在使用该style的html文本里添加"><a href="#二、在使用该style的html文本里添加" class="headerlink" title="二、在使用该style的html文本里添加"></a>二、在使用该style的html文本里添加</h1><figure class="highlight plaintext"><figcaption><span>5/text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	.header&#123;</span><br><span class="line">		text-align:center;</span><br><span class="line">		background-color:lightblue;</span><br><span class="line">		height:50px;</span><br><span class="line">&#125;&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;header class = &quot;header&quot;&gt;HELLO&lt;/header&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="三、新建一个style-css文档（任意名字，但文件类型一定是-css）-然后在需要使用该style的html文本里将它链接进来"><a href="#三、新建一个style-css文档（任意名字，但文件类型一定是-css）-然后在需要使用该style的html文本里将它链接进来" class="headerlink" title="三、新建一个style.css文档（任意名字，但文件类型一定是.css）,然后在需要使用该style的html文本里将它链接进来"></a>三、新建一个style.css文档（任意名字，但文件类型一定是.css）,然后在需要使用该style的html文本里将它链接进来</h1><ul>
+<li>首先新建一个css文档，名字为style.css，创建一个class名字叫header（如果是class. 开头，id以#开头。一个html文件可以有很多个class,而id只能有一个）</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>5/text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.header&#123;</span><br><span class="line">	background-color:red;</span><br><span class="line">	height:50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>然后在html文件中把style.css链接进来</p>
+<figure class="highlight plaintext"><figcaption><span>5/text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">	……</span><br><span class="line">	      &lt;link ref=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;  &lt;!-- 将style.css链接进来 --&gt;</span><br><span class="line">      &lt;title&gt;Jan&#x27;s website&lt;/title&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;header class = &quot;header&quot;&gt;HELLO&lt;/header&gt;</span><br><span class="line">&lt;body&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="四、import方法"><a href="#四、import方法" class="headerlink" title="四、import方法"></a>四、import方法</h1><ul>
+<li><p>如果有两个css文件，比如一个是header.css,一个是style.css，想要在style.css中调用header.css，可以在style.css文件中将它import进去</p>
+<p><code>@imoort &quot;header.css&quot;</code></p>
+</li>
+<li><p>在html文件中直接import：@import url(“style.css”)或@import “style.css”</p>
+<figure class="highlight plaintext"><figcaption><span>5/text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	@import url(&quot;style.css&quot;);</span><br><span class="line">&lt;style&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
     </div>
 </article>
 
@@ -252,13 +276,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
+                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/Linux_study/"></a>
+                    <a href="/2023/12/06/Html_style/"></a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
                 </span>
             </li>
             
@@ -301,12 +331,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/02/11.28/">kali的钓鱼网站制作及大灰狼使用</a>
                 </span>
             </li>
             
@@ -370,12 +394,6 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/Linux_study/"></a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
                 </span>
             </li>
@@ -383,6 +401,12 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2023/12/03/Python_study/">python_study</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
                 </span>
             </li>
             
@@ -397,17 +421,17 @@
 
                 
                 <li>
-                    <a href="/2023/12/04/Linux_study/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2023/12/06/Html_style/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2023/12/04/Linux_study/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2023/12/06/Html_style/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2023/12/04/Linux_study/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2023/12/06/Html_style/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
