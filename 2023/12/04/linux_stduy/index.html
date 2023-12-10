@@ -191,9 +191,9 @@
         </center>
     </div>
     <div class="content-article">
-        <h3 id="Linux目录结构介绍"><a href="#Linux目录结构介绍" class="headerlink" title="Linux目录结构介绍"></a>Linux目录结构介绍</h3><p>对Linux文件系统目录结构的了解是学习和掌握Linux系统的基础。Linux 文件系统是树形层次结构，具体如下图所示。</p>
+        <h2 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h2><h3 id="一、Linux目录结构介绍"><a href="#一、Linux目录结构介绍" class="headerlink" title="一、Linux目录结构介绍"></a>一、Linux目录结构介绍</h3><p>对Linux文件系统目录结构的了解是学习和掌握Linux系统的基础。Linux 文件系统是树形层次结构，具体如下图所示。</p>
 <p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312100855527.png" alt="img"></p>
-<h3 id="Linux用户介绍"><a href="#Linux用户介绍" class="headerlink" title="Linux用户介绍"></a>Linux用户介绍</h3><p>Linux用户通常分为两类:</p>
+<h3 id="二、Linux用户介绍"><a href="#二、Linux用户介绍" class="headerlink" title="二、Linux用户介绍"></a>二、Linux用户介绍</h3><p>Linux用户通常分为两类:</p>
 <ul>
 <li>管理员用户(root)；</li>
 <li>普通用户(类似Windows上的普通用户)。</li>
@@ -203,14 +203,32 @@
 <li>管理员(root)登录系统后默认目录为&#x2F;root；</li>
 <li>普通用户登录系统后默认目录为&#x2F;home&#x2F;username， username为用户名。 例如：笔者用普通用户fzm登录系统后，那么当前所在目录为。&#x2F;home&#x2F;fzm。</li>
 </ul>
-<h3 id="Linux权限说明"><a href="#Linux权限说明" class="headerlink" title="Linux权限说明"></a>Linux权限说明</h3><p>Linux系统中的每个文件都有访问许可权限，文件的访问权限分为只读，只写和可执行三种。</p>
+<h3 id="三、Linux权限说明"><a href="#三、Linux权限说明" class="headerlink" title="三、Linux权限说明"></a>三、Linux权限说明</h3><p>Linux系统中的每个文件都有访问许可权限，文件的访问权限分为只读，只写和可执行三种。</p>
 <p>只读权限表示只允许读其内容，而禁止对其做任何的更改操作。</p>
 <p>只写权限表示允许修改文件的内容。</p>
 <p>可执行权限表示允许将该文件作为一个程序执行。</p>
 <p>每一文件的访问权限都有三组，每组用三位表示，分别为文件所属主的读、写和执行权限；与属主同组的用户的读、写和执行权限；系统中其他用户的读、写和执行权限。</p>
 <p>当用ls -l或ll命令显示文件的详细信息时，最左边的一列为文件的访问权限。例如显示test文件详细信息：</p>
-<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312100855501.png" alt="img"></p>
-<h6 id="1-pwd命令"><a href="#1-pwd命令" class="headerlink" title="1.pwd命令"></a>1.pwd命令</h6><p>pwd(Print Working Directory )：显示当前所在目录。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312101026298.png" alt="img"></p>
+<h3 id="四、setuid-setgid"><a href="#四、setuid-setgid" class="headerlink" title="四、setuid,setgid"></a>四、setuid,setgid</h3><p><code>Linux</code>中文件&#x2F;目录除了有可读、可写和可执行这三种权限外，还存在比较特殊的权限，这些特殊权限就包括<code>setuid</code>和<code>setgid</code>这两种。</p>
+<p><code>setuid</code>和<code>setgid</code>位是让普通用户可以以<code>root</code>用户的角色运行只有<code>root</code>帐号才能运行的程序或命令。例如我们用普通用户运行<code>passwd</code>命令来更改自己的口令，实际上最终更改的是<code>/etc/passwd</code>文件，我们知道<code>/etc/passwd</code>文件是用户管理的 配置文件，只有<code>root</code>权限的用户才能更改，正是因为<code>passwd</code>命令被设置了<code>setuid</code>权限才能使得普通用户也可以修改其配置文件的内容。</p>
+<p><code>Linux</code>文件&#x2F;目录权限是使用常见的八进制权限掩码来表示的，通常都是用三位数表示，但确切地说，它是用四位数表示的，因为除了读、写和执行权限以外还有特殊的权限。</p>
+<ul>
+<li><code>setuid</code>的八进制表示为<code>4000</code></li>
+<li><code>setgid</code>的八进制表示为<code>2000</code></li>
+</ul>
+<p>同样<code>setuid</code>和<code>setgid</code>也可以使用字母<code>s</code>表示。</p>
+<p>如果文件&#x2F;目录的拥有者的可执行位是<code>s</code>，则表示该文件&#x2F;目录被设置了<code>setuid</code>权限。同样，如果同组用户的可执行为是<code>s</code>，则表示该文件&#x2F;目录被设置了<code>setgid</code>权限。</p>
+<h3 id="五、sticky-bit"><a href="#五、sticky-bit" class="headerlink" title="五、sticky bit"></a>五、sticky bit</h3><p><code>Linux</code>中目录除了有可读、可写和可执行这三种权限外，还存在比较特殊的权限，这些特殊权限包括上一关卡讲解的<code>setuid</code>和<code>setgid</code>这两种，还有一种就是本关讲解的**粘滞位<code>sticky bit</code>**。</p>
+<p>我们知道<code>Linux</code>的<code>/tmp</code>目录是系统的临时文件目录，所有的用户在该目录下拥有所有的权限，也就是说在该目录下可以任意创建、修改、删除文件，那如果用户<code>A</code>在该目录下创建了一个文件，用户<code>B</code>将该文件删除了，这种情况我们是不能允许的。为了达到该目的，就出现了<code>stick bit</code>（粘滞位）的概念。它是针对目录来说的，如果该目录设置了<code>stick bit</code>（粘滞位），则该目录下的文件除了该文件的创建者和<code>root</code>用户可以删除和修改，别的用户均不能删除和修改，这就是粘滞位的作用。</p>
+<p><code>Linux</code>目录权限使用常见的八进制权限掩码来表示的，通常都是用三位数表示，但确切地说，它是用四位数表示的，因为除了读、写和执行权限以外还有特殊的权限。</p>
+<ul>
+<li><code>sticky bit</code>的八进制表示为<code>1000</code></li>
+</ul>
+<p>同样<code>sticky bit</code>也可以使用字母表示，使用<code>t</code>表示。</p>
+<p>如果目录的其他用户的可执行位是<code>t</code>，则表示该目录被设置了<code>sticky bit</code>权限。</p>
+<p>接下让我们详细的学习目录的<code>sticky bit</code>的使用方法。</p>
+<h2 id="命令使用"><a href="#命令使用" class="headerlink" title="命令使用"></a>命令使用</h2><h6 id="1-pwd命令"><a href="#1-pwd命令" class="headerlink" title="1.pwd命令"></a>1.pwd命令</h6><p>pwd(Print Working Directory )：显示当前所在目录。</p>
 <h6 id="2-cd命令"><a href="#2-cd命令" class="headerlink" title="2.cd命令"></a>2.cd命令</h6><p>cd(Change Directory): 切换当前目录。</p>
 <p>常用特殊目录表示：</p>
 <ul>
@@ -787,7 +805,310 @@
 <li><p>符号链接的大小是其链接文件的路径名中的字节数；</p>
 </li>
 </ol>
+<h5 id="45-setuid"><a href="#45-setuid" class="headerlink" title="45.setuid"></a>45.setuid</h5><p><strong><code>setuid</code>的作用是让执行该命令的用户以该命令拥有者的权限去执行。</strong></p>
+<p>例如：普通用户执行<code>passwd</code>时会拥有<code>root</code>的权限，这样就可以修改<code>/etc/passwd</code>这个文件，正是因为<code>passwd</code>命令被设置了<code>setuid</code>权限，<code>passwd</code>命令的详细权限如下所示：</p>
+<p><img src="/linux_stduy.assets/185123.png" alt="img"></p>
+<p>可以看到<code>passwd</code>命令的拥有者的可执行位是<code>s</code>，则说明<code>passwd</code>命令被设置了<code>setuid</code>权限。</p>
+<p>设置<code>setuid</code>命令有两种方法，一种是数字设置，另一种是通过助记语法。（建议使用助记语法设置）</p>
+<ul>
+<li>数字设置命令：<code>chmod　4xxx　文件/目录</code></li>
+</ul>
+<p>其中<code>xxx</code>表示文件&#x2F;目录的所有者、同组用户和其他用户的权限(读写执行)。</p>
+<ul>
+<li>助记语法设置命令：<code>chmod　u [+|-] s　文件/目录</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ 添加setuid权限；- 取消setuid权限；</span><br></pre></td></tr></table></figure>
 
+<p><strong>注意：</strong><code>chmod</code>命令的其他参数都可以与<code>setuid</code>权限设置结合使用。 在设置<code>setuid</code>前必须保证文件&#x2F;目录的所有者具有可执行权限，否则设置则无效。</p>
+<p><strong>执行权限：</strong><code>chmod</code>必须以<code>root</code>权限才能执行，如果是普通用户想执行<code>chmod</code>时，需要在命令前加<code>sudo</code>命令来提升权限为<code>root</code>权限。</p>
+<p>（1）创建一个新文件<code>testFile</code>，使用数字设置方法为文件<code>testFile</code>添加<code>setuid</code>权限，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch testFile</span><br><span class="line">ls -l testFile</span><br><span class="line">sudo chmod 4764 testFile</span><br><span class="line">ls -l testFile</span><br></pre></td></tr></table></figure>
+
+<p>第一条命令是创建新文件<code>testFile</code>； </p>
+<p>第二条命令是查看<code>testFile</code>现有的权限； </p>
+<p>第三条命令是在保证<code>testFile</code>原有权限的情况下为其添加<code>setuid</code>权限； 第四条命令是查看是否添加成功</p>
+<p>（2）创建一个新目录<code>testDir</code>，使用助记语法设置方法为目录<code>testDir</code>添加<code>setuid</code>权限，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir testDir</span><br><span class="line">sudo chmod u+s testDir</span><br><span class="line">ls -l .</span><br></pre></td></tr></table></figure>
+
+<p>（3）创建一个新文件<code>testFile</code>，使用助记语法为文件<code>testFile</code>添加<code>setuid</code>权限，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touch testFile</span><br><span class="line">sudo chmod u+x,u+s testFile</span><br><span class="line">ls -l testFile</span><br></pre></td></tr></table></figure>
+
+<p>第一条命令是创建新文件<code>testFile</code>； </p>
+<p>第二条命令是在设置<code>testFile</code>为可执行权限并为其添加<code>setuid</code>权限；</p>
+<p> 第三条命令是查看是否添加成功；</p>
+<p>如果不给文件<code>testFile</code>设置可执行权限直接设置<code>setuid</code>权限后，标记为是<code>S</code>而不是<code>s</code>，详细结果如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312101034446.png" alt="img"></p>
+<h5 id="46-setgid"><a href="#46-setgid" class="headerlink" title="46.setgid"></a>46.setgid</h5><p><code>setgid</code>的作用是让执行该命令的用户以该命令所有者的同组用户的权限去执行。</p>
+<p>设置<code>setgid</code>命令有两种方法，一种是数字设置，另一种是通过助记语法。建议使用助记语法设置<code>setgid</code>权限。</p>
+<p>数字设置命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod　2xxx　文件/目录</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>xxx</code>表示文件&#x2F;目录的所有者、同组用户和其他用户的权限(读写执行)。</p>
+<p>助记语法设置命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod　g [+|-] s　文件/目录</span><br><span class="line">+ 添加setgid权限；-  取消setgid权限；</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong><code>chmod</code>命令的其他参数都可以与<code>setgid</code>权限设置结合使用。 在设置<code>setgid</code>前必须保证文件&#x2F;目录的同组用户具有可执行权限，否则设置则无效。</p>
+<p><strong>执行权限：</strong><code>chmod</code>必须以<code>root</code>权限才能执行，如果是普通用户想执行<code>chmod</code>时，需要在命令前加<code>sudo</code>命令来提升权限为<code>root</code>权限。</p>
+<h5 id="47-sticky-bit"><a href="#47-sticky-bit" class="headerlink" title="47.sticky bit"></a>47.sticky bit</h5><p><code>sticky  bit</code>的作用是让具有<code>sticky  bit</code>位的目录下的所有文件&#x2F;目录只有创建者和<code>root</code>才能对其删除和修改，其他用户一律不能删除和修改。</p>
+<p>例如：<code>Linux</code>的<code>/tmp</code>目录就具有<code>sticky  bit</code>权限，详细权限如下所示：</p>
+<p><img src="/linux_stduy.assets/185136.png" alt="img"></p>
+<p>可以看到<code>/tmp</code>目录的其他用户的可执行位是<code>t</code>，则说明<code>/tmp</code>目录被设置了<code>sticky  bit</code>权限。</p>
+<p>设置<code>sticky  bit</code>命令有两种方法，一种是数字设置，另一种是通过助记语法。建议使用助记语法设置<code>stick  bit</code>权限。</p>
+<p>数字设置命令：<code>chmod　1xxx　目录</code></p>
+<p>其中<code>xxx</code>表示目录的所有者、同组用户和其他用户的权限（读写执行）。</p>
+<p>助记语法设置命令：<code>chmod　o [+|-] t　目录</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ 添加stick  bit权限；- 取消stick  bit权限；</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod命令的其他参数都可以与stick  bit权限设置结合使用。在设置stick  bit前必须保证目录的其他用户具有可执行权限，否则设置则无效。stick  bit权限只能用于设置目录，不能用于设置文件。</span><br></pre></td></tr></table></figure>
+
+<p>执行权限：</p>
+<p><code>chmod</code>必须以<code>root</code>权限才能执行，如果是普通用户想执行<code>chmod</code>时，需要在命令前加<code>sudo</code>命令来提升权限为<code>root</code>权限。</p>
+<h5 id="48-chattr"><a href="#48-chattr" class="headerlink" title="48.chattr"></a>48.chattr</h5><p><code>chattr</code>的作用是修改文件&#x2F;目录的特殊属性。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr　[+|-|=] 属性标示符　命令参数　文件/目录</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-R：递归处理，将指令目录下的所有文件及子目录一并处理；-V：显示指令执行过程；</span><br><span class="line">+&lt;属性标示符&gt;：开启文件或目录的该项属性；-&lt;属性标示符&gt;：关闭文件或目录的该项属性；=&lt;属性标示符&gt;：指定文件或目录的该项属性。</span><br></pre></td></tr></table></figure>
+
+<p>常用属性标示符：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a：让文件或目录仅供附加用途；A：不更新文件或目录的最后存取时间；c：将文件或目录压缩后存放；d：将文件或目录排除在倾倒操作之外；i：不得任意更动文件或目录；s：保密性删除文件或目录；S：即时更新文件或目录；u：预防意外删除。</span><br></pre></td></tr></table></figure>
+
+<p>执行权限：<code>chattr</code>必须以<code>root</code>权限才能执行，如果是普通用户想执行<code>chattr</code>时，需要在命令前加<code>sudo</code>命令来提升权限为<code>root</code>权限。</p>
+<h5 id="49-lsattr"><a href="#49-lsattr" class="headerlink" title="49.lsattr"></a>49.lsattr</h5><p><code>lsattr</code>的作用查看文件&#x2F;目录的特殊属性设置情况。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsattr　命令参数　文件/目录</span><br></pre></td></tr></table></figure>
+
+<p>常用参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-R：递归的操作方式；</span><br><span class="line">-V：显示指令的版本信息；</span><br><span class="line">-a：列出目录中的所有文件，包括隐藏文件。</span><br></pre></td></tr></table></figure>
+
+<h5 id="50-tar打包"><a href="#50-tar打包" class="headerlink" title="50.tar打包"></a>50.tar打包</h5><p><code>tar</code>命令可以将多个文件&#x2F;目录进行打包，将多个文件生成一个文件，生成的文件后缀为<code>.tar</code>。</p>
+<p>具体打包命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar　-cvf　生成的tar包名　要打包的文件/目录列表</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-c 建立新的归档文件；-v 处理过程中输出相关信息；-f 对普通文件操作；</span><br></pre></td></tr></table></figure>
+
+<h5 id="51-tar解包"><a href="#51-tar解包" class="headerlink" title="51.tar解包"></a>51.tar解包</h5><p><code>tar</code>命令可以将已经打包好的文件解压出来。</p>
+<p>具体打包命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar　-xvf　解压包名 -C 解压到指定目录</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-x 或--ext\fract或--get：从备份文件中还原文件；-v 处理过程中输出相关信息；-f  对普通文件操作；-C &lt;目的目录&gt; 切换到指定的目录；</span><br></pre></td></tr></table></figure>
+
+<p>如果不使用<code>-C</code>(大写)参数，则默认解压到当前目录下。</p>
+<h5 id="52-bzip2"><a href="#52-bzip2" class="headerlink" title="52.bzip2"></a>52.bzip2</h5><p><code>bzip2</code>命令用于创建和管理（包括解压缩）<code>.bz2</code>格式的压缩包。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bzip2　命令参数　指定要压缩的文件</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-z或——compress：强制执行压缩；-d或——decompress：执行解压缩；-f或-force：bzip2在压缩或解压缩时，若输出文件与现有文件同名，预设不会覆盖现有文件。若要覆盖。请使用此参数；-v或——verbose：压缩或解压缩文件时，显示详细的信息；</span><br></pre></td></tr></table></figure>
+
+<h5 id="53-gzip"><a href="#53-gzip" class="headerlink" title="53.gzip"></a>53.gzip</h5><p><code>gzip</code>命令用于创建和管理（包括解压缩）<code>.gz</code>格式的压缩包。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip　命令参数　指定要压缩的文件</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-d或--decompress或----uncompress：解开压缩文件；-f或——force：强行压缩文件。不理会文件名称或硬连接是否存在以及该文件是否为符号连接；-l或——list：列出压缩文件的相关信息；-r或——recursive：递归处理，将指定目录下的所有文件及子目录一并处理；-v或——verbose：显示指令执行过程；</span><br></pre></td></tr></table></figure>
+
+<h5 id="54-zip"><a href="#54-zip" class="headerlink" title="54.zip"></a>54.zip</h5><p><code>zip</code>命令对文件进行打包操作。<code>zip</code>是个使用广泛的压缩程序，文件经它压缩后会另外产生具有<code>.zip</code>扩展名的压缩文件。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip　命令参数　指定生成的压缩文件名　要被压缩的文件/目录列表</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-d：从压缩文件内删除指定的文件；</span><br><span class="line">-q：不显示指令执行过程；</span><br><span class="line">-r：递归处理，将指定目录下的所有文件和子目录一并处理；</span><br><span class="line">-v：显示指令执行过程或显示版本信息；</span><br><span class="line">-u：更换较新的文件到压缩文件内；</span><br><span class="line">-x&lt;范本样式&gt;：压缩时排除符合条件的文件；</span><br></pre></td></tr></table></figure>
+
+<h5 id="55-tar命令进行压缩"><a href="#55-tar命令进行压缩" class="headerlink" title="55.tar命令进行压缩"></a>55.tar命令进行压缩</h5><p>在上一关的学习中，我们学会了使用<code>tar</code>命令对多个文件&#x2F;目录进行打包操作，如果针对多文件&#x2F;目录进行压缩操作时，首先使用<code>tar</code>将其打包生成一个文件，然后使用<code>bzip2</code>和<code>gzip</code>对其进行压缩，那么这里也可以使用<code>tar</code>命令一步就实现对多文件&#x2F;目录进行压缩操作。</p>
+<p>采用<code>bzip2</code>方式执行<code>tar</code>命令进行压缩的具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jcvf　指定生成的压缩文件名　要被压缩的文件/目录列表</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-c 建立新的归档文件；</span><br><span class="line">-v 处理过程中输出相关信息；</span><br><span class="line">-f 对普通文件操作；</span><br><span class="line">-j 以bzip2对文件/目录进行压缩；</span><br></pre></td></tr></table></figure>
+
+<p>采用<code>gzip</code>进行压缩的具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar　-zcvf　指定生成的压缩文件名　要被压缩的文件/目录列表</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-c 建立新的归档文件；</span><br><span class="line">-v 处理过程中输出相关信息；</span><br><span class="line">-f 对普通文件操作；</span><br><span class="line">-z 以gzip对文件/目录进行压缩；</span><br></pre></td></tr></table></figure>
+
+<h5 id="56-bunzip2"><a href="#56-bunzip2" class="headerlink" title="56.bunzip2"></a>56.bunzip2</h5><p><code>bunzip2</code>命令解压缩由<code>bzip2</code>指令创建的<code>.bz2</code>压缩包。使用<code>bzip2 -d</code>命令也可以将<code>.bz2</code>压缩包进行解压。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bunzip2　命令参数　指定要解压的文件</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-f或--force：解压缩时，若输出的文件与现有文件同名时，预设不会覆盖现有的文件；-k或——keep：在解压缩后，预设会删除原来的压缩文件。若要保留压缩文件，请使用此参数；-v或——verbose：解压缩文件时，显示详细的信息；</span><br></pre></td></tr></table></figure>
+
+<h5 id="57-gunzip"><a href="#57-gunzip" class="headerlink" title="57.gunzip"></a>57.gunzip</h5><p><code>gunzip</code>命令解压缩由<code>gzip</code>指令创建的<code>.gz</code>压缩包。使用<code>gzip -d</code>命令也可以将<code>.gz</code>压缩包进行解压。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip　命令参数　指定要解压的文件</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-f或-force：强行解开压缩文件，不理会文件名称或硬连接是否存在以及该文件是否为符号连接；-l或-list：列出压缩文件的相关信息；-q或-quiet：不显示警告信息；-r或-recursive：递归处理，将指定目录下的所有文件及子目录一并处理；-v或-verbose：显示指令执行过程；</span><br></pre></td></tr></table></figure>
+
+<h5 id="58-unzip"><a href="#58-unzip" class="headerlink" title="58.unzip"></a>58.unzip</h5><p><code>unzip</code>命令用于解压缩由<code>zip</code>命令压缩的<code>.zip</code>压缩包。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip　命令参数　指定要解压的文件</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-q：执行时不显示任何信息；-n：解压缩时不要覆盖原有的文件；-d&lt;目录&gt;：指定文件解压缩后所要存储的目录；</span><br></pre></td></tr></table></figure>
+
+<h5 id="59-tar命令进行解压缩"><a href="#59-tar命令进行解压缩" class="headerlink" title="59.tar命令进行解压缩"></a>59.tar命令进行解压缩</h5><p>在上一关的学习中，我们学会了使用<code>tar</code>命令对多个文件&#x2F;目录进行打包压缩操作，本关将继续讲解使用<code>tar</code>命令对文件进行解压缩操作。</p>
+<p>采用<code>bunzip2</code>进行解压缩的具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar　-jxvf　指定要解压的文件</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-x 或--ext\fract或--get：</span><br><span class="line">从备份文件中还原文件；</span><br><span class="line">-v 处理过程中输出相关信息；</span><br><span class="line">-f 对普通文件操作；</span><br><span class="line">-j 以bunzip2进行解压缩；</span><br></pre></td></tr></table></figure>
+
+<p>采用<code>gzip</code>进行压缩的具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar　-zxvf　指定要解压的文件</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-x 或--ext\fract或--get：从备份文件中还原文件；</span><br><span class="line">-v 处理过程中输出相关信息；</span><br><span class="line">-f 对普通文件操作；</span><br><span class="line">-z 以gunzip进行解压缩；</span><br></pre></td></tr></table></figure>
+
+<h5 id="60-locate"><a href="#60-locate" class="headerlink" title="60.locate"></a>60.locate</h5><p><strong><code>locate</code>命令用来查找文件或目录。</strong></p>
+<p><code>locate</code>命令要比其他查找文件命令（例如:<code>find</code>）快得多，原因在于它不搜索具体目录，而是搜索一个数据库<code>/var/lib/mlocate/mlocate.db</code>。</p>
+<p><code>/var/lib/mlocate/mlocate.db</code>这个数据库中含有本地所有文件信息。Linux 系统自动创建这个数据库，并且每天自动更新一次，因此，我们在用<code>locate</code>查找文件时，有时会找到已经被删除的数据，或者刚刚建立文件，却无法查找到，原因就是因为数据库文件没有被更新。为了避免这种情况，可以在使用<code>locate</code>之前，先使用<code>updatedb</code>命令，手动更新数据库。</p>
+<p>接下让我们详细的学习<code>locate</code>和<code>updatedb</code>的使用方法。</p>
+<p><code>locate</code>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate　命令参数　文件/目录</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-c, --count            只输出找到的数量；</span><br><span class="line">-d, --database DBPATH  使用DBPATH指定的数据库，而不是默认数据库/var/lib/mlocate/mlocate.db；</span><br><span class="line">-i, --ignore-case      忽略大小写；</span><br><span class="line">-q, --quiet          安静模式，不会显示任何错误讯息；</span><br><span class="line">-e, --existing       只显示当前存在的文件条目；</span><br></pre></td></tr></table></figure>
+
+<h5 id="61-updatedb"><a href="#61-updatedb" class="headerlink" title="61.updatedb"></a>61.updatedb</h5><p><code>updatedb</code>命令用来创建或更新<code>locate</code>命令所必需的数据库文件。</p>
+<p><code>updatedb</code>命令的执行过程较长，因为在执行时它会遍历整个系统的目录树，并将所有的文件信息写入<code>locate</code>数据库文件中。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updatedb　命令参数</span><br></pre></td></tr></table></figure>
+
+<p>常用参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-o&lt;文件&gt;：忽略默认的数据库文件，使用指定的slocate数据库文件；-U&lt;目录&gt;：更新指定目录的slocate数据库；-v：显示执行的详细过程;</span><br></pre></td></tr></table></figure>
+
+<p>执行权限：<code>updatedb</code>必须以<code>root</code>权限才能执行，如果是普通用户想执行<code>updatedb</code>时，需要在命令前加<code>sudo</code>命令来提升权限为<code>root</code>权限。</p>
+<h5 id="62-which"><a href="#62-which" class="headerlink" title="62.which"></a>62.which</h5><p><code>which</code>命令(<strong>主要是用来查找系统<code>PATH</code>目录下的可执行文件，说白了就是查找那些我们已经安装好的可以直接执行的命令</strong>)用于查找并显示给定命令的绝对路径，环境变量<code>PATH</code>中保存了查找命令时需要遍历的目录。<code>which</code>指令会在环境变量<code>$PATH</code>设置的目录里查找符合条件的文件。也就是说，使用<code>which</code>命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
+<p><code>which</code>是<code>shell</code>内建命令，内建命令要比系统论命令有比较高的执行效率。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which　命令</span><br></pre></td></tr></table></figure>
+
+<h5 id="63-whereis"><a href="#63-whereis" class="headerlink" title="63.whereis"></a>63.whereis</h5><p><code>whereis</code>命令(<strong>可以用来查找二进制（命令）、源文件、<code>man</code>文件。与<code>which</code>不同的是这条命令可以是通过文件索引数据库而非<code>PATH</code>来查找的，所以查找的面比<code>which</code>要广</strong>)用来定位指令的二进制程序、源代码文件和<code>man</code>手册页等相关文件的路径。</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis　命令参数　文件名</span><br></pre></td></tr></table></figure>
+
+<p>常用命令参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-b：只查找二进制文件；</span><br><span class="line">-B&lt;目录&gt;：只在设置的目录下查找二进制文件；</span><br><span class="line">-m：只查找说明文件；-M&lt;目录&gt;：只在设置的目录下查找说明文件；</span><br><span class="line">-s：只查找原始代码文件；</span><br><span class="line">-S&lt;目录&gt;只在设置的目录下查找原始代码文件；</span><br></pre></td></tr></table></figure>
+
+<h5 id="64-find"><a href="#64-find" class="headerlink" title="64.find"></a>64.find</h5><p><code>find</code>命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则<code>find</code>命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
+<p><code>find</code>命令与<code>locate</code>命令相比各有各的优缺点，**<code>locate</code>命令的优点就是查找速度比<code>find</code>命令快的多，但是缺点也比较明显，<code>locate</code>命令无法查找最新添加的文件&#x2F;目录以及会查找出来已经过期的文件&#x2F;目录。<strong>相反</strong><code>find</code>命令的优点就是可以按照自定义的方法查找任何文件，缺点就是查询速度比较慢，因为是通过遍历硬盘来查找而不像<code>locate</code>命令事先建立好数据库来进行查找。**</p>
+<p>具体命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find　查找目录　查找参数　查找内容</span><br></pre></td></tr></table></figure>
+
+<p>常用查找参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-amin&lt;+|-分钟&gt;：查找在指定时间曾被存取过的文件或目录，单位以分钟计算；</span><br><span class="line">-atime&lt;+|-24小时数&gt;：查找在指定时间曾被存取过的文件或目录，单位以24小时计算；</span><br><span class="line">-cmin&lt;+|-分钟&gt;：查找在指定时间之时被更改过的文件或目录；</span><br><span class="line">-ctime&lt;+|-24小时数&gt;：查找在指定时间之时被更改的文件或目录，单位以24小时计算；</span><br><span class="line">-mmin&lt;+|-分钟&gt;：查找在指定时间曾被更改过的文件或目录，单位以分钟计算；</span><br><span class="line">-mtime&lt;+|-24小时数&gt;：查找在指定时间曾被更改过的文件或目录，单位以24小时计算；</span><br><span class="line">-depth：从指定目录下最深层的子目录开始查找；</span><br><span class="line">-exec&lt;执行指令&gt;：假设find指令的回传值为True，就执行该指令；</span><br><span class="line">-follow：排除符号连接；</span><br><span class="line">-gid&lt;群组识别码&gt;：查找符合指定群组识别码的文件或目录；</span><br><span class="line">-group&lt;群组名称&gt;：查找符合指定群组名称的文件或目录；</span><br><span class="line">-uid&lt;用户识别码&gt;：查找符合指定的用户识别码的文件或目录；</span><br><span class="line">-user&lt;拥有者名称&gt;：查找符和指定的拥有者名称的文件或目录；</span><br><span class="line">-name&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</span><br><span class="line">-iname&lt;范本样式&gt;：此参数的效果和指定“-name”参数类似，但忽略字符大小写的差别；</span><br><span class="line">-inum&lt;inode编号&gt;：查找符合指定的inode编号的文件或目录；</span><br><span class="line">-newer&lt;参考文件或目录&gt;：查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</span><br><span class="line">-size&lt;+|-|=文件大小&gt;：查找符合指定的文件大小的文件；</span><br><span class="line">-type&lt;文件类型&gt;：只寻找符合指定的文件类型的文件；</span><br><span class="line">-a：是前后条件都要满足；</span><br><span class="line">-o ：是满足一个条件就好；</span><br><span class="line">+：表示大于设置值的文件；</span><br><span class="line">- ：表示小于设置值的文件；</span><br><span class="line">= ：表示等于设置值的文件；</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>通常使用<code>find</code>命令的时候使用<code>root</code>权限，这样就有权限查找任何目录下的内容。</p>
+<p>（1）查找<code>/etc</code>目录下以<code>my</code>开头以<code>.conf</code>结尾的文件或目录，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find /etc -name &quot;my*.conf&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312101122822.png" alt="img"></p>
+<p><code>*</code>表示任意字母。</p>
+<p>（2）查找<code>/etc</code>目录下在超过<code>7</code>天前被访问的文件或目录，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find /etc -atime +7</span><br></pre></td></tr></table></figure>
+
+<p>（3）查找<code>/etc</code>目录下恰好在<code>7</code>天前被访问的文件或目录，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find /etc -atime 7</span><br></pre></td></tr></table></figure>
+
+<p>（4）查找<code>/etc</code>目录下在<code>5</code>分钟内被访问的文件或目录，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find /etc -amin -5</span><br></pre></td></tr></table></figure>
+
+<h6 id="type-文件类型使用方法"><a href="#type-文件类型使用方法" class="headerlink" title="-type 文件类型使用方法"></a><code>-type 文件类型</code>使用方法</h6><p>常见文件类型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f：普通文件</span><br><span class="line">l：符号链接</span><br><span class="line">d：目录</span><br><span class="line">c：字符设备</span><br><span class="line">b：块设备</span><br><span class="line">s：套接字</span><br><span class="line">p：Fifo</span><br></pre></td></tr></table></figure>
+
+<p>（5）查找<code>/etc</code>目录下以<code>my</code>开头的目录，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find /etc -name &quot;my*&quot; -a -type d</span><br></pre></td></tr></table></figure>
+
+<h6 id="size-使用方法"><a href="#size-使用方法" class="headerlink" title="size &lt;+|-|=文件大小&gt;使用方法"></a><code>size &lt;+|-|=文件大小&gt;</code>使用方法</h6><p>常见文件大小单位：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">b —— 块（512字节）</span><br><span class="line">c —— 字节</span><br><span class="line">w —— 字（2字节）</span><br><span class="line">k —— 千字节</span><br><span class="line">M —— 兆字节</span><br><span class="line">G —— 吉字节</span><br></pre></td></tr></table></figure>
+
+<p>（6）查找<code>/etc</code>目录下大于<code>1M</code>的文件，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find /etc -size +1M</span><br></pre></td></tr></table></figure>
+
+<h6 id="exec使用方法"><a href="#exec使用方法" class="headerlink" title="-exec使用方法"></a><code>-exec</code>使用方法</h6><p>具体使用方法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find　…　-exec 要执行的命令  &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<p><code>-exec</code>选项后面跟随着所要执行的命令或脚本，然后是一个空格一对儿<code>&#123;&#125;</code>一个空格和一个<code>\;</code>。</p>
+<p><strong>注意：</strong>要执行的命令和<code>&#123;</code>之间以及<code>&#125;</code>与<code>\;</code>之间的空格是不能省略的。</p>
+<p>（7）查找<code>/etc</code>目录下大于<code>1M</code>的文件&#x2F;目录的详细信息，具体使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find /etc -size 1M -exec ls -l &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<h5 id="65-Telnet安装"><a href="#65-Telnet安装" class="headerlink" title="65.Telnet安装"></a>65.Telnet安装</h5><p>Telnet 协议是<code>TCP/IP</code>协议族中的一员，是<code>Internet</code>远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的能力。</p>
+<p>在终端使用者的电脑上使用<code>telnet</code>程序，用它连接到服务器。终端使用者可以在<code>telnet</code>程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样。可以在本地就能控制服务器。要开始一个<code>telnet</code>会话，必须输入用户名和密码来登录服务器。 <code>Telnet</code>是常用的远程控制<code>Web</code>服务器的方法。</p>
+<p>Linux 系统上提供在线安装软件的功能，前提是确保电脑可以连接上互联网，在线安装软件非常方便，用户只需要对应的软件名称，不需要考虑该软件的依赖情况，在线安装会自动的搜索该软件的所有依赖包，然后自动完成安装。</p>
+<p><strong>在线安装</strong>是指不需要用户亲自下对应软件的包，但是需要对应系统能够访问互联网，不同的<code>Linux</code>系统使用不同的工具进行在线安装软件，常见的在线安装软件的工具如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ubuntu/Debian系统使用apt-get进行在线安装软件；Redhat/CentOS系统使用yum进行在线安装软件；</span><br></pre></td></tr></table></figure>
+
+<h6 id="安装Telnet服务器"><a href="#安装Telnet服务器" class="headerlink" title="安装Telnet服务器"></a>安装Telnet服务器</h6><p>本实验环境使用的系统是<code>Ubuntu</code>，所以使用<code>apt-get</code>工具来在线安装软件，具体步骤如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">更新软件源：sudo apt-get update</span><br><span class="line">安装telnet服务器：sudo apt-get install telnetd</span><br></pre></td></tr></table></figure>
+
+<p>如果安装成功则会在<code>/etc/init.d</code>目录下生成一个<code>openbsd-inetd</code>文件：</p>
+<p><img src="/linux_stduy.assets/203056.png" alt="img"></p>
+<p><strong>注意</strong>：如果当前用户是<code>root</code>，则执行以上安装命令时不需要加<code>sudo</code>。</p>
+<h6 id="安装Telnet客户端"><a href="#安装Telnet客户端" class="headerlink" title="安装Telnet客户端"></a>安装Telnet客户端</h6><p>本实验环境使用的系统是<code>Ubuntu</code>，所以使用<code>apt-get</code>工具来在线安装软件，具体步骤如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">更新软件源：sudo apt-get update</span><br><span class="line">安装telnet客户端：sudo apt-get install telnet</span><br></pre></td></tr></table></figure>
+
+<p>如果安装成功，我们系统中就会有<code>telnet</code>命令，查看是否存在<code>telnet</code>命令：</p>
+<p><img src="/linux_stduy.assets/203058.png" alt="img"></p>
+<p><strong>注意</strong>：只需要更新一次软件源即可，不需要每次安装软件前进行源更新操作。</p>
+<h5 id="66-Linux-service-命令"><a href="#66-Linux-service-命令" class="headerlink" title="66.Linux service 命令"></a>66.Linux service 命令</h5><p><code>Linux</code>系统中使用<code>service</code>命令来控制系统服务，它可以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态。</p>
+<p><code>service</code>命令的使用格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service 服务名 控制命令</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>服务名：自动要控制的服务名，即<code>/etc/init.d</code>目录下的脚本文件名；</li>
+<li>控制命令：系统服务脚本支持的控制命令。</li>
+</ul>
+<p>常见的控制命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start：启动该服务；</span><br><span class="line">stop：关闭该服务；</span><br><span class="line">restart：重新启动该服务；</span><br><span class="line">status：查看该服务状态；</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>并不是所有的服务都支持以上<code>4</code>种控制命令，不同的服务提供不同的控制命令，大多数服务都支持以上<code>4</code>种常用的控制命令。</p>
+<h5 id="67-Telnet服务管理"><a href="#67-Telnet服务管理" class="headerlink" title="67.Telnet服务管理"></a>67.Telnet服务管理</h5><p>当我们成功安装<code>Telnet</code>服务器后，接下来，我们使用<code>service</code>命令来管理<code>Telnet</code>服务。</p>
+<p>我们将在以下案例演示中分别介绍如何启动、关闭、重新启动<code>Telnet</code>服务，以及查看<code>Telnet</code>服务状态。</p>
+<p>（1）查看<code>Telnet</code>服务状态，可以使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service openbsd-inetd status</span><br></pre></td></tr></table></figure>
+
+<p>（2）开启<code>Telnet</code>服务并且查看是否开启成功，可以使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service openbsd-inetd start</span><br><span class="line">sudo service openbsd-inetd status</span><br></pre></td></tr></table></figure>
+
+<p>（3）重启<code>Telnet</code>服务并且查看是否重启成功，可以使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service openbsd-inetd restart</span><br><span class="line">sudo service openbsd-inetd status</span><br></pre></td></tr></table></figure>
+
+<p>（4）关闭<code>Telnet</code>服务并且查看是否关闭成功，可以使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service openbsd-inetd stop</span><br><span class="line">sudo service openbsd-inetd status</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：如果当前用户是<code>root</code>，则执行以上命令时不需要加<code>sudo</code>。</p>
+<h5 id="68-远程登录服务器"><a href="#68-远程登录服务器" class="headerlink" title="68.远程登录服务器"></a>68.远程登录服务器</h5><p><code>telnet</code> 命令格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 选项 参数</span><br></pre></td></tr></table></figure>
+
+<p>常见选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-a：尝试自动登入远端系统；</span><br><span class="line">-b&lt;主机别名&gt;：使用别名指定远端主机名称；</span><br><span class="line">-K：不自动登入远端主机；</span><br><span class="line">-l&lt;用户名称&gt;：指定要登入远端主机的用户名称；</span><br><span class="line">-e&lt;脱离字符&gt;：设置脱离字符；</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">远程主机：指定要登录进行管理的远程主机；端口：指定TELNET协议使用的端口号；</span><br></pre></td></tr></table></figure>
+
+<p>（1）使用<code>telnet</code>登录本机，具体使用如下步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet localhost</span><br></pre></td></tr></table></figure>
+
+<p>此时，我们只需要输入远程主机的用户名和密码即可登录成功。</p>
+<p>（2）设置脱离符为<code>;</code>，具体使用如下步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet -e &#x27;;&#x27; localhost</span><br></pre></td></tr></table></figure>
+
+<p>可以看到我们将脱离符设置为<code>;</code>后，我们只要登录到远程主机后，当我们想退出的时候我们只需要输入<code>;</code>符号后就自动断开的连接，然后返回到<code>telnet</code>命令模式。接下来我们讲解<code>telnet</code>常见的命令。</p>
+<h5 id="69-telnet常见命令"><a href="#69-telnet常见命令" class="headerlink" title="69.telnet常见命令"></a>69.telnet常见命令</h5><p>当我们执行输入<code>telnet</code>后回车，我们就进行了<code>telnet</code>的命令模式，<code>telnet</code>常见的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logout：强制退出远程登录用户并关闭连接；</span><br><span class="line">open：新打开一个连接；</span><br><span class="line">display：显示当前操作系统参数；</span><br><span class="line">quit：退出telnet；</span><br><span class="line">z：挂起telnet；</span><br></pre></td></tr></table></figure>
+
+<p>（1）<strong>远程登录服务器</strong>中案例<code>1</code>也可以使用如下方式进行登录，具体使用如下步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet</span><br><span class="line">telnet&gt; open localhost</span><br></pre></td></tr></table></figure>
+
+<p>（2）使用<code>telnet</code>远程登录本机，并查看远程主机的内核版本号，最后退出登录，具体使用如下步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">telnet localhost</span><br><span class="line">输入用户名</span><br><span class="line">输入密码</span><br><span class="line">uname -a</span><br><span class="line">logout</span><br></pre></td></tr></table></figure>
     </div>
 </article>
 
@@ -866,7 +1187,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础</a>
+                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础和Proxifier的使用</a>
                 </span>
             </li>
             
@@ -930,6 +1251,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/02/11.27/">永恒之黑</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
                 </span>
             </li>
@@ -948,19 +1275,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/tuchuang/">图床搭建</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础</a>
+                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础和Proxifier的使用</a>
                 </span>
             </li>
             
@@ -973,6 +1288,12 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2023/12/03/Python_study/">python_study</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
                 </span>
             </li>
             
