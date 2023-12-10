@@ -191,14 +191,458 @@
         </center>
     </div>
     <div class="content-article">
-        <p>文件的组织</p>
-<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312042122925.webp" alt="img"></p>
-<h1 id="一、pwd"><a href="#一、pwd" class="headerlink" title="一、pwd"></a>一、pwd</h1><p><strong>显示当前目录的路径</strong></p>
-<h1 id="二、which"><a href="#二、which" class="headerlink" title="二、which"></a>二、which</h1><p><strong>查看命令的可执行文件所在路径</strong></p>
-<p>linux下，每一条命令其实都对应一个可执行程序，在终端中输入命令，按回车的时候就是执行了对应的那个程序，which命令本身对应的程序也存在与linux中。</p>
-<p>总的来说，一个命令就是一个可执行程序。</p>
-<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312042130971.webp" alt="img"></p>
-<h1 id="三、ls"><a href="#三、ls" class="headerlink" title="三、ls"></a>三、ls</h1><p>列出文件和目录</p>
+        <h3 id="Linux目录结构介绍"><a href="#Linux目录结构介绍" class="headerlink" title="Linux目录结构介绍"></a>Linux目录结构介绍</h3><p>对Linux文件系统目录结构的了解是学习和掌握Linux系统的基础。Linux 文件系统是树形层次结构，具体如下图所示。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312100855527.png" alt="img"></p>
+<h3 id="Linux用户介绍"><a href="#Linux用户介绍" class="headerlink" title="Linux用户介绍"></a>Linux用户介绍</h3><p>Linux用户通常分为两类:</p>
+<ul>
+<li>管理员用户(root)；</li>
+<li>普通用户(类似Windows上的普通用户)。</li>
+</ul>
+<p>Linux登录系统后，默认当前所在目录为用户主目录，类似Windows登录系统后，默认的所在目录为桌面。</p>
+<ul>
+<li>管理员(root)登录系统后默认目录为&#x2F;root；</li>
+<li>普通用户登录系统后默认目录为&#x2F;home&#x2F;username， username为用户名。 例如：笔者用普通用户fzm登录系统后，那么当前所在目录为。&#x2F;home&#x2F;fzm。</li>
+</ul>
+<h3 id="Linux权限说明"><a href="#Linux权限说明" class="headerlink" title="Linux权限说明"></a>Linux权限说明</h3><p>Linux系统中的每个文件都有访问许可权限，文件的访问权限分为只读，只写和可执行三种。</p>
+<p>只读权限表示只允许读其内容，而禁止对其做任何的更改操作。</p>
+<p>只写权限表示允许修改文件的内容。</p>
+<p>可执行权限表示允许将该文件作为一个程序执行。</p>
+<p>每一文件的访问权限都有三组，每组用三位表示，分别为文件所属主的读、写和执行权限；与属主同组的用户的读、写和执行权限；系统中其他用户的读、写和执行权限。</p>
+<p>当用ls -l或ll命令显示文件的详细信息时，最左边的一列为文件的访问权限。例如显示test文件详细信息：</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312100855501.png" alt="img"></p>
+<h6 id="1-pwd命令"><a href="#1-pwd命令" class="headerlink" title="1.pwd命令"></a>1.pwd命令</h6><p>pwd(Print Working Directory )：显示当前所在目录。</p>
+<h6 id="2-cd命令"><a href="#2-cd命令" class="headerlink" title="2.cd命令"></a>2.cd命令</h6><p>cd(Change Directory): 切换当前目录。</p>
+<p>常用特殊目录表示：</p>
+<ul>
+<li>cd 进入用户主目录；</li>
+<li>cd ~ 进入用户主目录；</li>
+<li>cd - 返回进入此目录之前所在的目录；</li>
+<li>cd .. 返回上级目录(若当前目录为”&#x2F;“，则执行完后还在”&#x2F;“；”..”为上级目录的意思)；</li>
+<li>cd ..&#x2F;.. 返回上两级目录；</li>
+<li>cd !$ 把上个命令的参数作为cd参数使用。</li>
+</ul>
+<h6 id="3-ls命令"><a href="#3-ls命令" class="headerlink" title="3.ls命令"></a>3.ls命令</h6><p>ls(list): 列出指定目录列表信息，如果没有参数默认列出当前目录下的所有文件和文件夹(隐藏文件和文件夹除外)。</p>
+<p>常见ls命令选项:</p>
+<ul>
+<li>-l：以长格式显示目录下的内容列表。输出的信息从左到右依次包括文件名，文件类型、权限模式、硬连接数、所有者、组、文件大小和文件的最后修改时间等；</li>
+<li>-a：显示所有文件和文件夹(包括隐藏文件&#x2F;文件夹)。</li>
+</ul>
+<h6 id="4-创建文件"><a href="#4-创建文件" class="headerlink" title="4.创建文件"></a>4.创建文件</h6><p>linux中创建文件的常用命令是touch，命令格式如下:</p>
+<p>touch filename</p>
+<p>如果想同时创建多个文件也可以使用touch命令完成，具体格式如下：</p>
+<p>touch file1 file2 …</p>
+<h6 id="5-删除文件"><a href="#5-删除文件" class="headerlink" title="5.删除文件"></a>5.删除文件</h6><p>Linux中常用的删除文件的命令是rm，使用格式如下：</p>
+<p>rm [命令选项] filename</p>
+<p>常用命令选项：</p>
+<ol>
+<li>-f：强制删除文件或目录；</li>
+<li>-r或-R：递归处理，将指定目录下的所有文件与子目录一并处理；</li>
+<li>-i：删除已有文件或目录之前先询问用户。</li>
+</ol>
+<h6 id="6-创建文件夹"><a href="#6-创建文件夹" class="headerlink" title="6.创建文件夹"></a>6.创建文件夹</h6><p>Linux中创建文件夹命令是mkdir，命令格式如下：</p>
+<p>mkdir [命令选项] dirname</p>
+<p>常用命令选项： -p或–parents 若所要建立目录的上层目录目前尚未建立，则会一并建立上层目录；</p>
+<h6 id="7-删除文件夹"><a href="#7-删除文件夹" class="headerlink" title="7.删除文件夹"></a>7.删除文件夹</h6><p>Linux中删除文件夹的命令是rmdir或者rm -r，命令格式如下：</p>
+<p>rmdir [命令选项] dirname</p>
+<p>常用命令选项：-p或–parents：删除指定目录后，若该目录的上层目录已变成空目录，则将其一并删除；</p>
+<h6 id="8-Linux文件和文件夹拷贝"><a href="#8-Linux文件和文件夹拷贝" class="headerlink" title="8.Linux文件和文件夹拷贝"></a>8.Linux文件和文件夹拷贝</h6><p>Linux使用cp命令用来将一个或多个源文件或者目录复制到指定的目录中，命令格式如下：</p>
+<p>cp [命令选项] 源文件 目的文件</p>
+<p>常用命令选项：</p>
+<ol>
+<li>-f：强行复制文件或目录，不论目标文件或目录是否已存在；</li>
+<li>-i：覆盖既有文件之前先询问用户；</li>
+<li>-p：保留源文件或目录的属性；</li>
+<li>-R&#x2F;r：递归处理，将指定目录下的所有文件与子目录一并处理。</li>
+</ol>
+<h6 id="9-Linux文件和文件夹移动-重命名"><a href="#9-Linux文件和文件夹移动-重命名" class="headerlink" title="9.Linux文件和文件夹移动&#x2F;重命名"></a>9.Linux文件和文件夹移动&#x2F;重命名</h6><p>Linux使用mv命令用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中，命令格式如下：</p>
+<p>mv [命令选项] 源文件 目标文件</p>
+<p>常用命令选项：</p>
+<ol>
+<li>-f：强行复制文件或目录，不论目标文件或目录是否已存在；</li>
+<li>-i：覆盖既有文件之前先询问用户；</li>
+<li>-p：保留源文件或目录的属性；</li>
+<li>-R&#x2F;r：递归处理，将指定目录下的所有文件与子目录一并处理’。</li>
+</ol>
+<h5 id="10-Linux-man命令"><a href="#10-Linux-man命令" class="headerlink" title="10.Linux man命令"></a>10.Linux man命令</h5><p>linux中使用man命令来查询命令的帮助文件,命令格式如下:</p>
+<p>man [章节] command</p>
+<p>常用命令如下：</p>
+<ol>
+<li>d,Ctrl+D:向文件尾部翻半屏；</li>
+<li>u,Ctrl+U:向文件首部翻半屏；</li>
+<li>q:退出；</li>
+<li>#：跳转至第#行； </li>
+<li>home:回到文件首部；</li>
+<li>end：翻至文件尾部。</li>
+</ol>
+<p>命令的帮助文件通常存放在&#x2F;usr&#x2F;share&#x2F;man目录下。</p>
+<p>man包含9个章节，章节用数字表示，分别是：</p>
+<ol>
+<li>用户命令</li>
+<li>系统调用</li>
+<li>C库调用</li>
+<li>设备文件及特殊文件</li>
+<li>配置文件格式</li>
+<li>游戏</li>
+<li>杂项</li>
+<li>管理类的命令</li>
+<li>Linux内核API</li>
+</ol>
+<p>如果查询命令的时候不追加章节，则默认从第一个章节开始查询，以此类推，直到找到对应要查询的命令为止。</p>
+<h5 id="11-Linux-info命令"><a href="#11-Linux-info命令" class="headerlink" title="11.Linux info命令"></a>11.Linux info命令</h5><p>linux中使用info命令来查询命令的帮助文件。info页面比man page编写得要更好、更容易理解，也更友好，但man page使用起来确实要更容易得多。一个man page只有一页，而info页面几乎总是将它们的内容组织成多个区段（称为节点），每个区段也可能包含子区段（称为子节点）。</p>
+<p>命令格式如下：info [命令参数] command</p>
+<p>常用命令参数选项：</p>
+<ol>
+<li>-d：添加包含info格式帮助文档的目录；</li>
+<li>-f：指定要读取的info格式的帮助文档；</li>
+<li>-n：指定首先访问的info帮助文件的节点；</li>
+<li>-o：输出被选择的节点内容到指定文件。</li>
+</ol>
+<p>常见命令如下：</p>
+<ol>
+<li>?键：它就会显示info的常用快捷键；</li>
+<li>N键：显示（相对于本节点的）下一节点的文档内容；</li>
+<li>P键：显示（相对于本节点的）前一节点的文档内容；</li>
+<li>U键：进入当前命令所在的主题；</li>
+<li>M键：敲M键后输入命令的名称就可以查看该命令的帮助文档了；</li>
+<li>G键：敲G键后输入主题名称，进入该主题；</li>
+<li>L键：回到上一个访问的页面；</li>
+<li>SPACE键：向前滚动一页；</li>
+<li>BACKUP或DEL键：向后滚动一页；</li>
+<li>Q：退出info。</li>
+</ol>
+<h5 id="12-Linux-whatis命令"><a href="#12-Linux-whatis命令" class="headerlink" title="12.Linux whatis命令"></a>12.Linux whatis命令</h5><p>whatis用来显示命令的简短描述。</p>
+<p>命令格式如下：whatis command</p>
+<h5 id="13-Linux创建用户命令"><a href="#13-Linux创建用户命令" class="headerlink" title="13.Linux创建用户命令"></a>13.Linux创建用户命令</h5><p>Linux中使用useradd命令来创建一个新用户。</p>
+<p>命令格式格式：useradd [命令参数] 参数</p>
+<p>常见命令参数：</p>
+<ul>
+<li>-d&lt;登入目录&gt;：指定用户登入时的启始目录；</li>
+<li>-D：查看或变更预设值；</li>
+<li>-g&lt;群组&gt;：指定用户所属的群组；</li>
+<li>-m：自动建立用户的登入目录；</li>
+<li>-M：不要自动建立用户的登入目录；</li>
+<li>-s：指定用户登入后所使用的shell。</li>
+</ul>
+<p>useradd必须以root权限才能执行，如果是普通用户想创建一个新用户时，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h5 id="14-Linux删除用户命令"><a href="#14-Linux删除用户命令" class="headerlink" title="14.Linux删除用户命令"></a>14.Linux删除用户命令</h5><p>Linux中使用userdel命令来删除一个已经存在的用户。</p>
+<p>命令格式：userdel [命令参数] 参数</p>
+<p>常见命令参数：</p>
+<ul>
+<li>-f：强制删除用户，即使用户当前已登录；</li>
+<li>-r：删除用户的同时，删除与用户相关的所有文件。</li>
+</ul>
+<p>userdel必须以root权限才能执行，如果是普通用户想使用该命令时，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h5 id="15-使用passwd命令修改用户密码"><a href="#15-使用passwd命令修改用户密码" class="headerlink" title="15.使用passwd命令修改用户密码"></a>15.使用passwd命令修改用户密码</h5><p>命令格式：passwd [命令参数] 参数</p>
+<p>常见命令参数：</p>
+<ul>
+<li>-d 删除密码；</li>
+<li>-l 停止账号使用；</li>
+<li>-S 显示密码信息。</li>
+</ul>
+<p>passwd必须以root权限才能执行，如果是普通用户想执行passwd时，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h5 id="16-使用chpasswd命令修改用户密码"><a href="#16-使用chpasswd命令修改用户密码" class="headerlink" title="16.使用chpasswd命令修改用户密码"></a>16.使用chpasswd命令修改用户密码</h5><p>chpasswd命令通常是用于批量修改用户密码，从标准输入批量读取成对的用户名和密码，其中输入的用户名和密码的格式为 <strong>用户名:密码</strong> </p>
+<p>例如要批量更新用户密码，将用户名和密码写入到一个文件中，格式如下所示：</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312100855093.png" alt="img"></p>
+<p>然后执行执行如下命令来更新密码：</p>
+<p>sudo chpasswd &lt; batch.txt</p>
+<p>&lt;符号表示输入重定向，接下来的实训中我们会详细的介绍。</p>
+<p>命令格式：chpasswd [命令参数] 参数</p>
+<p>常见命令参数</p>
+<ul>
+<li>-e：输入的密码是加密后的密文；</li>
+<li>-h：显示帮助信息并退出。</li>
+</ul>
+<p>chpasswd必须以root权限才能执行，如果是普通用户执行时，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h5 id="17-使用login命令登录"><a href="#17-使用login命令登录" class="headerlink" title="17.使用login命令登录"></a>17.使用login命令登录</h5><p>login命令是让用户登录系统，可通过它的功能随时更换登入身份。当&#x2F;etc目录里含名称为nologin的文件时，系统只允许root帐号登入系统，其他用户一律不准登入。</p>
+<p>当使用login命令登录系统后，可以使用logout命令或者exit命令来退出当前用户登录，返回到登录前的用户状态。</p>
+<p>命令格式：login [命令参数] 参数</p>
+<p>参数为登录的用户名，可以不输入登录的用户名，直接输入login命令后回车，然后根据提示再输入用户名和密码。</p>
+<p><strong>常见命令参数</strong></p>
+<ul>
+<li>-p：告诉login指令不销毁环境变量；</li>
+<li>-h：指定远程服务器的主机名。</li>
+</ul>
+<p>login必须以root权限才能执行，如果是普通用户执行时，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h5 id="18-使用su命令切换用户身份"><a href="#18-使用su命令切换用户身份" class="headerlink" title="18.使用su命令切换用户身份"></a>18.使用su命令切换用户身份</h5><p>su命令用于切换当前用户身份到其他用户身份，变更时须输入所要变更的用户帐号的密码。 </p>
+<p>当使用su命令切换用户后，使用exit命令退出当前身份，返回原有登录用户身份。</p>
+<p><strong>注：如果当前用户身份是<strong><strong>root</strong></strong>，则使用<strong><strong>su</strong></strong>命令切换到其他用户的时候不需要相应用户的密码</strong></p>
+<p>命令格式：su [命令参数] 参数</p>
+<p>参数为登录的用户名，如果没有参数，则默认切换为root用户。</p>
+<p><strong>常见命令参数</strong></p>
+<ul>
+<li>-c&lt;指令&gt;或–command&#x3D;&lt;指令&gt;：执行完指定的指令后，即恢复原来的身份；</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312100855178.png" alt="img"></p>
+<ul>
+<li>-l或–login：改变身份时，也同时变更工作目录，以及HOME,SHELL,USER,logname。此外，也会变更PATH变量；</li>
+<li>-m,-p或–preserve-environment：变更身份时，不要变更环境变量；</li>
+<li>-s<shell>或–shell&#x3D;<shell>：指定要执行的shell。</li>
+</ul>
+<p>su命令所有使用者都可以执行。</p>
+<h5 id="19-Linux创建用户组命令"><a href="#19-Linux创建用户组命令" class="headerlink" title="19.Linux创建用户组命令"></a>19.Linux创建用户组命令</h5><p>Linux 中使用groupadd命令来创建一个新用户组。</p>
+<p>命令格式：groupadd [命令参数] 参数</p>
+<p>常见命令参数：</p>
+<ul>
+<li>-g：指定新建工作组的id；</li>
+<li>-r：创建系统工作组，系统工作组的组ID小于500；</li>
+</ul>
+<p>groupadd必须以root权限才能执行，如果是普通用户想使用该命令，需要在命令前加sudo命令来提升权限为root权限。</p>
+<p>在背景介绍中，我们了解到，Linux中用户组信息是保存在&#x2F;etc&#x2F;group文件中，我们可以使用命令tail &#x2F;etc&#x2F;group命令查看&#x2F;etc&#x2F;group文件最后10行中是否存在刚刚新创建的testGroup用户信息。</p>
+<p><strong>注意</strong>：我们可以看到有时执行sudo命令就不需要输入密码，这是因为每次都输入密码比较麻烦，所以Linux会设置一个sudo的会话时间，就是说我们在第一次执行sudo的时候是要输入密码，那么在接下来的一段时间内在执行sudo的时候就不需要输入密码，这个会话时间默认是5分钟，用户也可以通过编辑&#x2F;etc&#x2F;sudoers来修改这个会话时间的大小。</p>
+<h5 id="20-Linux删除用户组命令"><a href="#20-Linux删除用户组命令" class="headerlink" title="20.Linux删除用户组命令"></a>20.Linux删除用户组命令</h5><p>Linux 中使用groupdel命令来删除一个已经存在的用户组。</p>
+<p>命令格式：groupdel 参数</p>
+<p>参数为要删除的用户组名</p>
+<p>groupdel必须以root权限才能执行，如果是普通用户想使用该命令，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h5 id="22-Linux查看用户所属组"><a href="#22-Linux查看用户所属组" class="headerlink" title="22.Linux查看用户所属组"></a>22.Linux查看用户所属组</h5><p>Linux中查看一个用户所属的组两种方法。</p>
+<h6 id="使用id命令查看。"><a href="#使用id命令查看。" class="headerlink" title="使用id命令查看。"></a>使用id命令查看。</h6><p>命令格式：id [命令参数] 参数</p>
+<p>参数为要查询的用户名，默认是当前登录用户。</p>
+<p>常见命令参数：</p>
+<ul>
+<li>-g或–group：显示用户所属群组的ID；</li>
+<li>-G或–groups：显示用户所属附加群组的ID；</li>
+<li>-n或–name：显示用户，所属群组或附加群组的名称。</li>
+</ul>
+<h6 id="使用group命令查看。"><a href="#使用group命令查看。" class="headerlink" title="使用group命令查看。"></a>使用group命令查看。</h6><p>命令格式：groups 参数</p>
+<p>参数为要查询的用户名，默认是当前登录用户。</p>
+<h5 id="23-Linux修改用户所属组"><a href="#23-Linux修改用户所属组" class="headerlink" title="23.Linux修改用户所属组"></a>23.Linux修改用户所属组</h5><h6 id="使用usermod命令修改用户组"><a href="#使用usermod命令修改用户组" class="headerlink" title="使用usermod命令修改用户组"></a>使用usermod命令修改用户组</h6><p>如果要一个用户仅仅属于某一个组，而不是同时属于多个组，则使用如下命令：</p>
+<p>命令格式：usermod -g 组名 用户名</p>
+<p>如果要给一个用户添加一个新的组，同时保留原来有所的组，则使用如下命令：</p>
+<p>命令格式：usermod -a -G 组名 用户名</p>
+<p>usermod必须以root权限才能执行，如果是普通用户想执行usermod时，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h6 id="使用useradd命令创建用户的时候指定用户组"><a href="#使用useradd命令创建用户的时候指定用户组" class="headerlink" title="使用useradd命令创建用户的时候指定用户组"></a>使用useradd命令创建用户的时候指定用户组</h6><p>在创建新用户的同时可以修改默认用户所属组，如果想在创建的时候直接将用户所属组修改成系统中已经存在的一个组，而不是使用默认私有组，则使用如下命令：</p>
+<p>命令格式：useradd -g 组名 用户名</p>
+<p>在创建新用户的同时可以为用户添加其它组，如果想在创建新用户的时候为用户添加一个已经存在的组，而不仅只属于默认创建的私有组，则使用如下命令：</p>
+<p>命令格式：useradd -G 组名 用户名</p>
+<p>useradd必须以root权限才能执行，如果是普通用户执行时，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h5 id="24-Linux查看用户属性命令"><a href="#24-Linux查看用户属性命令" class="headerlink" title="24.Linux查看用户属性命令"></a>24.Linux查看用户属性命令</h5><p>Linux中使用id命令可以查看用户的大多数信息。具体使用方法请参看上一关的实训。</p>
+<p>Linux中还可以通过查看&#x2F;etc&#x2F;passwd文件来获取用户的信息。具体方法可以参考背景知识。</p>
+<p>Linux中还可以使用finger命令来查询用户的信息。</p>
+<p><strong>注意</strong>：Ubuntu系统中默认没有安装finger命令，用户可以通过以下命令来安装finger，然后就可以使用finger。</p>
+<p>sudo apt-get install finger</p>
+<p>具体使用方法如下：</p>
+<p>命令格式：finger [命令参数] 参数</p>
+<p>常见命令参数</p>
+<ul>
+<li>-l：多行显示；</li>
+<li>-s：单行显示。这个选项只显示登入名称、真实姓名、终端机名称、闲置时间、登入时间、办公室号码及电话号码。如果所查询的使用者是远端服务器的使用者，这个选项无效。</li>
+</ul>
+<h5 id="25-Linux用户信息修改命令"><a href="#25-Linux用户信息修改命令" class="headerlink" title="25.Linux用户信息修改命令"></a>25.Linux用户信息修改命令</h5><p>Linux 中usermod命令是最强大的用户账户修改实用工具。</p>
+<p>usermod命令我们在上一关只是简单的用到其-g、-G参数对用户的所属组进行修改，本关我们将进一步使用usermod命令的其它属性进行修改更多的属性。</p>
+<p>命令格式：usermod [命令参数] 参数</p>
+<p>常见命令参数：</p>
+<ul>
+<li>-c&lt;备注&gt;：修改用户帐号的备注文字；</li>
+<li>-d&lt;登入目录&gt;：修改用户登入时的目录；</li>
+<li>-e&lt;有效期限&gt;：修改帐号的有效期限；</li>
+<li>-f&lt;缓冲天数&gt;：修改在密码过期后多少天即关闭该帐号；</li>
+<li>-g&lt;群组&gt;：修改用户所属的群组；</li>
+<li>-G&lt;群组&gt;；修改用户所属的附加群组；</li>
+<li>-l&lt;帐号名称&gt;：修改用户帐号名称；</li>
+<li>-L：锁定用户密码，使密码无效；</li>
+<li>-s：修改用户登入后所使用的shell；</li>
+<li>-u：修改用户ID；</li>
+<li>-U:解除密码锁定。</li>
+</ul>
+<p>usermod必须以root权限才能执行，如果是普通用户想使用该命令时，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h5 id="26-Linux用户组信息修改命令"><a href="#26-Linux用户组信息修改命令" class="headerlink" title="26.Linux用户组信息修改命令"></a>26.Linux用户组信息修改命令</h5><p>Linux 中使用groupmod命令来修改用户组信息。</p>
+<p>命令格式：groupmod [命令参数] 参数</p>
+<p>常见命令参数：</p>
+<ul>
+<li>-g&lt;群组识别码&gt;：设置欲使用的群组识别码；</li>
+<li>-n&lt;新群组名称&gt;：设置欲使用的群组名称。</li>
+</ul>
+<p>groupmod必须以root权限才能执行，如果是普通用户想使用该命令时，需要在命令前加sudo命令来提升权限为root权限。</p>
+<h5 id="27-Linux创建文件"><a href="#27-Linux创建文件" class="headerlink" title="27.Linux创建文件"></a>27.Linux创建文件</h5><p>Linux中使用touch命令来创建一个空文件。</p>
+<p>具体命令如下：touch 文件名</p>
+<p>具体说明：</p>
+<ul>
+<li>如果一次想创建多个文件，则每个文件名用空格隔开。</li>
+<li>touch命令创建一个指定的新文件，并将当前登录用户作为文件所有者。</li>
+<li>由于touch命令创建的文件为空，所以文件的大小为0。</li>
+<li>touch命令还可以用于更改文件的访问时间和修改时间，而不改变文件的内容。</li>
+</ul>
+<h5 id="28-Linux删除文件"><a href="#28-Linux删除文件" class="headerlink" title="28.Linux删除文件"></a>28.Linux删除文件</h5><p>Linux中使用rm命令来删除一个已经存在的文件。</p>
+<p>具体命令如下：rm 参数 文件名</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-f：强制删除文件或目录；</li>
+<li>-i：删除已有文件或目录之前先询问用户；</li>
+<li>-r或-R：递归处理，将指定目录下的所有文件与子目录一并处理；-i：删除已有文件或目录之前先询问用户。</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>如果一次想删除多个文件，则每个文件名用空格隔开。</li>
+<li>rm命令可以使用通配符来删除文件。</li>
+</ul>
+<h5 id="29-Linux创建目录"><a href="#29-Linux创建目录" class="headerlink" title="29.Linux创建目录"></a>29.Linux创建目录</h5><p>Linux中使用mkdir命令来创建一个空目录。</p>
+<p>具体命令如下：mkdir 参数 目录名</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-p或–parents：若所要建立目录的上层目录目前尚未建立，则会一并建立上层目录。</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>如果一次想创建多个目录，则每个目录名用空格隔开。</li>
+<li>mkdir命令创建一个指定的目录，并将当前登录用户作为目录所有者。</li>
+<li>mkdir命令创建一个空目录后，该目录下只存在两个特殊的目录，分别是.和..。</li>
+</ul>
+<h5 id="30-Linux删除目录"><a href="#30-Linux删除目录" class="headerlink" title="30.Linux删除目录"></a>30.Linux删除目录</h5><p>Linux中使用rmdir命令来删除一个已经存在的空目录。</p>
+<p>具体命令如下：rmdir 参数 目录名</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-p或–parents：删除指定目录后，若该目录的上层目录已变成空目录，则将其一并删除；</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>如果一次想删除多个空目录，则每个目录名用空格隔开。</li>
+<li>rmdir命令可以使用通配符来删除目录。</li>
+</ul>
+<p>如果想删除的目录不为空，则先使用rm命令将目录下的所有文件都清空，然后再使用rmdir将目录删除，或者直接使用rm -r命令直接递归的删除整个目录。</p>
+<h5 id="31-Linux拷贝文件"><a href="#31-Linux拷贝文件" class="headerlink" title="31.Linux拷贝文件"></a>31.Linux拷贝文件</h5><p>Linux中使用cp命令将一个或多个源文件复制到指定的目的目录下。它可以将单个源文件复制成一个指定文件名的具体的文件或一个已经存在的目录下。</p>
+<p>具体命令如下：cp 参数 源文件 目的目录</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-f：强行复制文件或目录，不论目标文件或目录是否已存在；</li>
+<li>-i：覆盖既有文件之前先询问用户；</li>
+<li>-p：保留源文件或目录的属性。</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>cp命令支持同时复制多个文件，当一次复制多个文件时，目的目录参数必须是一个已经存在的目录，否则将出现错误；</li>
+<li>cp命令支持同时复制多个文件，当一次复制多个文件时，多个文件用空格分隔。</li>
+</ul>
+<p>(1)将当前目录下的一个文件拷贝到一个指定的目录下，文件名为：newFile，目录名为：newDir，则可以使用如下命令：</p>
+<p>cp newFile newDir</p>
+<p>(2)将当前目录下的一个文件拷贝到一个指定的目录下并重命名为newFileCpy，文件名为：newFile，目录名为：newDir，则可以使用如下命令：</p>
+<p>cp newFile newDir&#x2F;newFileCpy</p>
+<p>(3)将当前目录下的一个文件拷贝到一个指定的目录下并重命名为newFileCpy，文件名为：newFile，目录名为：newDir，则可以使用如下命令：</p>
+<p>cp newFile newDir&#x2F;newFileCpy</p>
+<h5 id="32-Linux重命名文件"><a href="#32-Linux重命名文件" class="headerlink" title="32.Linux重命名文件"></a>32.Linux重命名文件</h5><p>Linux中使用mv命令来重命名一个文件名。</p>
+<p>mv命令还可以用来移动文件，类似于Windows上的剪切功能。</p>
+<p>具体命令如下：mv 参数 目录名</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-f：若目标文件与现有的文件重复，则直接覆盖现有的文件；</li>
+<li>-i：交互式操作，覆盖前先行询问用户，如果源文件与目标文件或目标目录中的文件同名，则询问用户是否覆盖目标文件。用户输入”y”，表示将覆盖目标文件；输入”n”，表示取消对源文件的移动。这样可以避免误将文件覆盖。</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>如果一次想移动多个文件，则每个文件名用空格隔开；</li>
+<li>mv命令可以使用通配符来移动目录。</li>
+</ul>
+<p>（1）将当前目录下的文件newFile重命名为newFileRename，则可以使用如下命令:</p>
+<p>mv newFile newFileRename</p>
+<p>（2）将当前目录下的文件newFileRename移动到一个指定的目录下，目录名为：Dir，则可以使用如下命令：</p>
+<p>mv newFileRename Dir</p>
+<p>（3）将当前目录下的文件newFileRename移动到一个指定的目录下并重命名为newFile，目录名为：Dir，则可以使用如下命令：</p>
+<p>mv newFileRename Dir&#x2F;newFile</p>
+<h5 id="32-Linux拷贝目录"><a href="#32-Linux拷贝目录" class="headerlink" title="32.Linux拷贝目录"></a>32.Linux拷贝目录</h5><p>Linux中使用cp -r命令将一个或多个源目录复制到指定的目录下。它可以将单个源目录复制成一个指定目录名的具体的目录或一个已经存在的目录下。</p>
+<p>具体命令如下：cp 参数 源目录 目的目录</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-r 是递归把源目录下的目录递归进行移动；</li>
+<li>-f：强行复制文件或目录，不论目标文件或目录是否已存在；</li>
+<li>-i：覆盖既有文件之前先询问用户；</li>
+<li>-p：保留源文件或目录的属性；</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>cp命令支持同时复制多个目录，当一次复制多个目录时，目的目录参数必须是一个已经存在的目录，否则将出现错误；</li>
+<li>cp命令支持同时复制多个目录，当一次复制多个目录时，多个目录名用空格分隔；</li>
+<li>cp命令拷贝目录和拷贝文件大致用法相似，最大差别就是拷贝目录的时候必须加上-r参数，而拷贝文件的时候不需要加-r参数。</li>
+</ul>
+<h5 id="33-Linux重命名目录"><a href="#33-Linux重命名目录" class="headerlink" title="33.Linux重命名目录"></a>33.Linux重命名目录</h5><p>Linux中使用mv命令来重命名一个目录名。</p>
+<p>mv命令还可以用来移动目录，类似于Windows上的剪切功能。</p>
+<p>具体命令如下：mv 参数 源目录 目的目录</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-f：若目标目录与现有的目录重复，则直接合并现有的目录；</li>
+<li>-i：交互式操作，覆盖前先行询问用户，如果源目录与目标目录同名，则询问用户是否合并目标目录。用户输入”y”，表示将合并目标目录；输入”n”，表示取消对源目录的移动。这样可以避免误将目录覆盖。</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>如果一次想移动多个目录，则每个目录名用空格隔开。</li>
+<li>mv命令可以使用通配符来移动目录。</li>
+<li>mv命令移动目录和移动文件的使用大致一样，唯一不同的是如果出现源目录和目标目录重名，则采用合并的方式，而对于文件则是直接覆盖。</li>
+</ul>
+<h5 id="34-Linux查看文件内容"><a href="#34-Linux查看文件内容" class="headerlink" title="34.Linux查看文件内容"></a>34.Linux查看文件内容</h5><p>Linux中查看文件内容的命令有很多，接下来我们介绍常用的几个命令。</p>
+<h6 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h6><p>具体命令如下：cat 参数 文件名</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-n 或 –number：由1开始对所有输出的行数编号；</li>
+<li>-b 或 –number-nonblank：和-n相似，只不过对于空白行不编号。</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>cat命令支持同时查看多个文件，当一次查看多个文件时，每个文件的内容都会被打印到屏幕上；</li>
+<li>cat命令不能对文件进行编辑操作，只能查看文件内容。</li>
+</ul>
+<h6 id="head命令"><a href="#head命令" class="headerlink" title="head命令"></a>head命令</h6><p>具体命令如下：head 参数 文件名</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-n number：显示文件的前number行内容；</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>head命令是从文件的开头显示内容，默认情况下只显示前10行的内容；</li>
+<li>head命令不能对文件进行编辑操作，只能查看文件内容。</li>
+</ul>
+<h6 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a>tail命令</h6><p>具体命令如下：tail 参数 文件名</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-n number：显示文件的最后number行内容；</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>tail命令是从文件的结尾显示内容，默认情况下只显示最后10行的内容；</li>
+<li>tail命令不能对文件进行编辑操作，只能查看文件内容。</li>
+</ul>
+<h5 id="35-Linux查看目录内容"><a href="#35-Linux查看目录内容" class="headerlink" title="35.Linux查看目录内容"></a>35.Linux查看目录内容</h5><p>Linux中使用ls命令来查看一个目录下的内容。</p>
+<p>具体命令如下：ls 参数 目录</p>
+<p>常用参数如下：</p>
+<ul>
+<li>-a：显示所有档案及目录（ls内定将档案名或目录名称为“.”的视为影藏，不会列出）；</li>
+<li>-A：显示除隐藏文件“.”和“..”以外的所有文件列表；</li>
+<li>-l：列出内容的详细信息；</li>
+<li>-r：以文件名反序排列并输出目录内容列表；</li>
+<li>-s：显示文件和目录的大小，以区块为单位；</li>
+<li>-i：显示文件索引节点号（inode）。一个索引节点代表一个文件；</li>
+<li>-R：递归处理，将指定目录下的所有文件及子目录一并处理。</li>
+</ul>
+<p>具体说明：</p>
+<ul>
+<li>如果一次查看多个目录，则每个目录名用空格隔开。</li>
+</ul>
+<h5 id="36-Linux修改文件权限命令"><a href="#36-Linux修改文件权限命令" class="headerlink" title="36.Linux修改文件权限命令"></a>36.Linux修改文件权限命令</h5><p>Linux中使用chmod命令来修改文件权限。</p>
+<p>文字设定法具体命令如下：</p>
+<p>chmod ［who］ ［+ | - | &#x3D;］ ［mode] 文件名</p>
+<p>who参数如下：</p>
+<ul>
+<li>u 表示“用户（user）”，即文件或目录的所有者；</li>
+<li>g 表示“同组（group）用户”，即与文件属主有相同组ID的所有用户；</li>
+<li>o 表示“其他（others）用户”；</li>
+<li>a 表示“所有（all）用户”，它是系统默认值。</li>
+</ul>
+<p>操作符如下：</p>
+<ul>
+<li>+：添加某个权限；</li>
+<li>-：取消某个权限；</li>
+<li>&#x3D;：赋予给定权限并取消其他所有权限。</li>
+</ul>
+<p>mode参数如下：</p>
+<ul>
+<li>r 可读；</li>
+<li>w 可写；</li>
+<li>x 可执行。</li>
+</ul>
+<p>数字设定法具体命令如下：</p>
+<p>chmod ［mode］ 文件名</p>
+<p>mode为具体的数字。</p>
+<p>首先了解用数字表示的属性的含义：0表示没有权限，1表示可执行权限，2表示可写权限，4表示可读权限，然后将其相加。所以数字属性的格式应为3个从0到7的八进制数，其顺序是u、g和o。</p>
+<p>（1）将目录testDir的同组其他用户权限添加可执行权限，同时递归的将该目录下的所有文件或目录都添加可执行权限，可以使用如下命令：</p>
+<p>chmod -R g+x testDir</p>
+<p>（2）将目录testDir的权限设置为所有者可读可写可执行，同组用户设置为可读可执行，其他用户设置为可读可执行，可以使用如下命令：</p>
+<p>chmod 755 testDir</p>
 
     </div>
 </article>
@@ -336,6 +780,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/02/11.28/">kali的钓鱼网站制作及大灰狼使用</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/02/11.27/">永恒之黑</a>
                 </span>
             </li>
@@ -343,12 +793,6 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/03/daboke/">利用github搭博客</a>
                 </span>
             </li>
             
@@ -366,13 +810,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
+                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础</a>
+                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
                 </span>
             </li>
             

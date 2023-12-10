@@ -427,15 +427,52 @@
 </li>
 </ul>
 <h1 id="三、列表"><a href="#三、列表" class="headerlink" title="三、列表"></a>三、列表</h1><h2 id="（一）、列表的概念"><a href="#（一）、列表的概念" class="headerlink" title="（一）、列表的概念"></a>（一）、列表的概念</h2><ul>
-<li><p>定义：能装东西的东西</p>
+<li><p>定义：能装东西的东西(什么都能装，字符串、列表、字典、元组等)</p>
 </li>
 <li><p>在python中用[]来表示一个列表</p>
 </li>
 <li><p>特性：</p>
 <ol>
 <li><p>也像字符串一样有索引和切片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [&#x27;123&#x27;,&#x27;zzz&#x27;,123]</span><br><span class="line">print(lst[])</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [&#x27;123&#x27;,&#x27;zzz&#x27;,123]</span><br><span class="line">	print(lst[])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>索引如果超过范围会报错</p>
+</li>
+<li><p>可以用for循环进行遍历</p>
+</li>
 </ol>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for item in lst:</span><br><span class="line">	print(item)</span><br></pre></td></tr></table></figure>
+
+<h2 id="（二）、列表的增删改查"><a href="#（二）、列表的增删改查" class="headerlink" title="（二）、列表的增删改查"></a>（二）、列表的增删改查</h2><ul>
+<li><strong>增</strong></li>
+</ul>
+<ol>
+<li><p>append() 追加（在末尾添加，只能添加一个元素）</p>
+</li>
+<li><p>insert() 插入</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312062133919.png" alt="image-20231206213302012"></p>
+</li>
+<li><p>extend() 可以合并两个列表</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312062153154.png" alt="image-20231206214542653"></p>
+</li>
+</ol>
+<ul>
+<li><p><strong>删除</strong></p>
+<ol>
+<li><p>pop() 给出被删除的索引，返回被删除的元素</p>
+</li>
+<li><p><strong>remove()</strong> 删除某个元素</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312062153163.png" alt="image-20231206215238758"></p>
+</li>
+</ol>
+</li>
+<li><p>修改</p>
+<p>直接用索引进行修改 <code>lst[x] = &quot;xx&quot;</code></p>
+</li>
+<li><p>查询</p>
+<p>直接用索引进行查询操作 <code>print(lst[x])</code></p>
 </li>
 </ul>
 
@@ -623,7 +660,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/06/Html_style/"></a>
+                    <a href="/2023/12/03/Python_study/">python_study</a>
                 </span>
             </li>
             
