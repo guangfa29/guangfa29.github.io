@@ -1084,7 +1084,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service openbsd-inetd stop</span><br><span class="line">sudo service openbsd-inetd status</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意</strong>：如果当前用户是<code>root</code>，则执行以上命令时不需要加<code>sudo</code>。</p>
-<h5 id="68-远程登录服务器"><a href="#68-远程登录服务器" class="headerlink" title="68.远程登录服务器"></a>68.远程登录服务器</h5><p><code>telnet</code> 命令格式：</p>
+<h5 id="68-telnet远程登录服务器"><a href="#68-telnet远程登录服务器" class="headerlink" title="68.telnet远程登录服务器"></a>68.telnet远程登录服务器</h5><p><code>telnet</code> 命令格式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 选项 参数</span><br></pre></td></tr></table></figure>
 
 <p>常见选项：</p>
@@ -1109,6 +1109,67 @@
 
 <p>（2）使用<code>telnet</code>远程登录本机，并查看远程主机的内核版本号，最后退出登录，具体使用如下步骤：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">telnet localhost</span><br><span class="line">输入用户名</span><br><span class="line">输入密码</span><br><span class="line">uname -a</span><br><span class="line">logout</span><br></pre></td></tr></table></figure>
+
+<h5 id="70-rsh命令"><a href="#70-rsh命令" class="headerlink" title="70.rsh命令"></a>70.rsh命令</h5><p><code>rsh</code>命令是<code>&quot;remote shell&quot;</code>（远程 <code>shell</code>）的缩写。该命令在指定的远程主机上启动一个<code>shell</code>并执行用户在<code>rsh</code>命令行中指定的命令。如果用户没有给出要执行的命令，<code>rsh</code>就用<code>rlogin</code>命令使用户登录到远程机上。</p>
+<p>目前<code>rsh</code>很少被应用到一般的服务器上，尤其是对<code>Internet</code>开放的主机，这是因为<code>rsh</code>的危险性很高。它不但是明文传输，而且一旦设置不当，可能会让所有人都能够使用<code>rsh</code>来登录远程主机。不过，<code>rsh</code>却是操作群集计算机（<code>Cluster</code>）里最常见的服务之一。</p>
+<p>所谓的群集计算机，简单地说就是将很多台主机通过网络连接在一起，以其中一台主机作为主控计算机，称为<code>Master</code>，其他主机负责来自<code>Master</code>的请求，称为 <code>Slave</code>，所有的计算机工作都是由<code>Master</code>掌控的，<code>Slave</code>负责运行部分。在这种情况下，<code>Slave</code>接受<code>Master</code>命令的最主要途径就是通过<code>rsh</code>。</p>
+<p><code>Linux</code>系统上提供在线安装软件的功能，前提是确保电脑可以连接上互联网，在线安装软件非常方便，用户只需要对应的软件名称，不需要考虑该软件的依赖情况，在线安装会自动的搜索该软件的所有依赖包，然后自动完成安装。</p>
+<p><strong>在线安装</strong>是指不需要用户亲自下对应软件的包，但是需要对应系统能够访问互联网，不同的<code>Linux</code>系统使用不同的工具进行在线安装软件，常见的在线安装软件的工具如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ubuntu/Debian系统使用apt-get进行在线安装软件；Redhat/CentOS系统使用yum进行在线安装软件；</span><br></pre></td></tr></table></figure>
+
+<h5 id="安装Rsh服务器"><a href="#安装Rsh服务器" class="headerlink" title="安装Rsh服务器"></a>安装Rsh服务器</h5><p>本实验环境使用的系统是<code>Ubuntu</code>，所以使用<code>apt-get</code>工具来在线安装软件，具体步骤如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">更新软件源：sudo apt-get update安装Rsh服务器：sudo apt-get install rsh-server</span><br></pre></td></tr></table></figure>
+
+<p>如果安装成功则会在<code>/etc/init.d</code>目录下生成一个<code>openbsd-inetd</code>文件：</p>
+<p><img src="/linux_stduy.assets/203056.png" alt="img"></p>
+<p><strong>注意</strong>：如果当前用户是<code>root</code>，则执行以上安装命令时不需要加<code>sudo</code>。</p>
+<h5 id="安装Rsh客户端"><a href="#安装Rsh客户端" class="headerlink" title="安装Rsh客户端"></a>安装Rsh客户端</h5><p>本实验环境使用的系统是<code>Ubuntu</code>，所以使用<code>apt-get</code>工具来在线安装软件，具体步骤如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">更新软件源：sudo apt-get update安装Rsh客户端：sudo apt-get install rsh-client</span><br></pre></td></tr></table></figure>
+
+<p>如果安装成功，我们系统中就会有<code>rsh</code>命令，查看是否存在<code>rsh</code>命令：</p>
+<p><img src="/linux_stduy.assets/204333.png" alt="img"></p>
+<p><strong>注意</strong>：只需要更新一次软件源即可，不需要每次安装软件前进行源更新操作。</p>
+<h5 id="71-Linux-service-命令"><a href="#71-Linux-service-命令" class="headerlink" title="71.Linux service 命令"></a>71.Linux service 命令</h5><p><code>Linux</code>系统中使用<code>service</code>命令来控制系统服务，它可以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service`命令的使用格式：`service 服务名 控制命令</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>服务名：自动要控制的服务名，即<code>/etc/init.d</code>目录下的脚本文件名；</li>
+<li>控制命令：系统服务脚本支持的控制命令；</li>
+</ul>
+<p>常见的控制命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start：启动该服务；stop：关闭该服务；restart：重新启动该服务；status：查看该服务状态；</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>并不是所有的服务都支持以上<code>4</code>种控制命令，不同的服务提供不同的控制命令，大多数服务都支持以上<code>4</code>种常用的控制命令。</p>
+<h5 id="72-Rsh服务管理"><a href="#72-Rsh服务管理" class="headerlink" title="72.Rsh服务管理"></a>72.Rsh服务管理</h5><p>当我们成功安装<code>Rsh</code>服务器后，接下来，我们使用<code>service</code>命令来管理<code>Rsh</code> 服务。</p>
+<p>我们将在以下案例演示中分别介绍如何启动、关闭、重新启动<code>Rsh</code>服务，以及查看 Rsh 服务状态。</p>
+<p>（1）查看<code>Rsh</code>服务状态，可以使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service openbsd-inetd status</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312101453207.png" alt="img"></p>
+<p>可以看到当前没有发现<code>inetd</code>进程，也就是<code>Rsh</code>服务是没有启动的。</p>
+<p>（2）开启<code>Rsh</code>服务并且查看是否开启成功，可以使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service openbsd-inetd start</span><br><span class="line">sudo service openbsd-inetd status</span><br></pre></td></tr></table></figure>
+
+<p>（3）重启<code>Rsh</code>服务并且查看是否重启成功，可以使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service openbsd-inetd restart</span><br><span class="line">sudo service openbsd-inetd status</span><br></pre></td></tr></table></figure>
+
+<p>（4）关闭<code>Rsh</code>服务并且查看是否关闭成功，可以使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service openbsd-inetd stop</span><br><span class="line">sudo service openbsd-inetd status</span><br></pre></td></tr></table></figure>
+
+<h5 id="73-rsh远程登录服务器"><a href="#73-rsh远程登录服务器" class="headerlink" title="73.rsh远程登录服务器"></a>73.rsh远程登录服务器</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsh` 命令格式：`rsh 选项 参数</span><br></pre></td></tr></table></figure>
+
+<p>常见选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-d：使用Socket层级的排错功能。-n：把输入的指令号向代号为/dev/null的特殊外围设备。-l&lt;用户名称&gt;：指定要登入远端主机的用户名称；</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">远程主机：指定要登录进行管理的远程主机；命令：指定执行的命令；</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>rsh</code>登录本机，登录用户为<code>testUser</code>，具体使用如下步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsh -l testUser localhost</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312101456946.png" alt="img"></p>
+<p>此时，我们只需要输入远程主机的用户名密码即可登录成功，此时用户即可进行一系列操作。</p>
+
     </div>
 </article>
 
@@ -1251,19 +1312,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/02/11.27/">永恒之黑</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/03/daboke/">利用github搭博客</a>
                 </span>
             </li>
             
@@ -1293,7 +1342,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/03/Python_study/">python_study</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
                 </span>
             </li>
             
