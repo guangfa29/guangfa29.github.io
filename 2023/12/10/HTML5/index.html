@@ -209,39 +209,23 @@
 <p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312101021893.png" alt="image-20231210101017936"></p>
 <ol start="5">
 <li><p>Html使用style的四种方法</p>
-<ul>
-<li><p>直接在html的标签里加入</p>
+<p>(1) 直接在html的标签里加入</p>
 <p><code>&lt;header style = &quot;background-color:blue;&quot;&gt;HELLO&lt;/header&gt;</code></p>
-</li>
-<li><p>在使用该style的html文本里添加</p>
-<style>
-    .header{
-        text-align:center;
-        background-color:lightblue;
-        height:50px;
-}<style>
-    <header class = "header">HELLO</header>
-</li>
-<li><p>新建一个style.css文档（任意名字，但文件类型一定是.css）,然后在需要使用该style的html文本里将它链接进来</p>
+<p>(2) 在使用该style的html文本里添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	.header&#123;</span><br><span class="line">		text-align:center;</span><br><span class="line">		background-color:lightblue;</span><br><span class="line">		height:50px;</span><br><span class="line">	&#125;&lt;/style&gt;</span><br><span class="line">	&lt;header class=&quot;header&quot;&gt;HELLO&lt;/header&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(3) 新建一个style.css文档（任意名字，但文件类型一定是.css）,然后在需要使用该style的html文本里将它链接进来</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.header&#123;</span><br><span class="line">	background-color:red;</span><br><span class="line">	height:50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后在html文件中把style.css链接进来</p>
-<head>
-    ……
-          <link ref="stylesheet" href="style.css">  <!-- 将style.css链接进来 -->
-      <title>Jan's website</title>
-<head>
-<body>
-    <header class = "header">HELLO</header>
-<body>
-</li>
-<li><p>import方法</p>
-<p>(1)如果有两个css文件，比如一个是header.css,一个是style.css，想要在style.css中调用header.css，可以在style.css文件中将它import进去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">……</span><br><span class="line">		&lt;link=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt; &lt;!--将style.css链接进来--&gt;</span><br><span class="line">	&lt;title&gt;Jan&#x27;s website&lt;/title&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;header class=&quot;header&quot;&gt;HELLO&lt;/header&gt;</span><br><span class="line">&lt;body&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>(4) import方法</p>
+<p>a. 如果有两个css文件，比如一个是header.css,一个是style.css，想要在style.css中调用header.css，可以在style.css文件中将它import进去</p>
 <p><code>@imoort &quot;header.css&quot;</code></p>
-<p>(2)在html文件中直接import：@import url(“style.css”)或@import “style.css”</p>
+<p>b. 在html文件中直接import：@import url(“style.css”)或@import “style.css”</p>
 <figure class="highlight plaintext"><figcaption><span>5/text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	@import url(&quot;style.css&quot;);</span><br><span class="line">&lt;style&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
 </ol>
 
     </div>
@@ -398,7 +382,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/03/daboke/">利用github搭博客</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/03/python/">python安装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/03/tuchuang/">图床搭建</a>
                 </span>
             </li>
             
@@ -422,19 +418,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/10/python_study1/">python_study</a>
                 </span>
             </li>
             
