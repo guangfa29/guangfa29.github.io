@@ -10,7 +10,7 @@
     
     
     
-    <title>php的一些基础知识 | hexo</title>
+    <title>vue导入 | hexo</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -156,13 +156,13 @@
         <i class="fa fa-home"></i>
         <a href="http://example.com">hexo</a>
         >
-        <span>php的一些基础知识</span>
+        <span>vue导入</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2023/12/17/php_study/">php的一些基础知识</a>
+                <a href="/2023/12/17/vue/">vue导入</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -178,7 +178,7 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2023/12/17/php_study/">php的一些基础知识</a>
+                    <a href="/2023/12/17/vue/">vue导入</a>
                 </h4>
             </div>
             <p>
@@ -191,49 +191,57 @@
         </center>
     </div>
     <div class="content-article">
-        <ol>
-<li><p>打开php，在网站设置的高级配置中国打开目录索引。</p>
-<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170906983.png" alt="image-20231217090554310"></p>
+        <h1 id="一、vue2-0"><a href="#一、vue2-0" class="headerlink" title="一、vue2.0"></a>一、vue2.0</h1><ol>
+<li><p>Windows安装node.js，官网下载</p>
 </li>
-<li><p>GET方式获取用户输入信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在index.php下输入：</span><br><span class="line">$a = $_GET[&#x27;a&#x27;];</span><br><span class="line">echo = $a;</span><br></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231217090814280.png" alt="image-20231217090814280"></p>
+<li><p>获取nodejs模块安装目录访问权限</p>
+<p><code>sudo chmod -R 777 /usr/local/lib/node_modules/</code></p>
 </li>
-<li><p>经典问题（1）鸡兔同笼：假设在笼子里有头数为8的动物，总共有22只脚。（2）n张5毛，y张1块，z张10块，t张50，x张100，问我手上一共有156钱，一共有多少种组合，满足我手上的钱。</p>
-<p>使用if循环和嵌套。</p>
-<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170910749.png" alt="image-20231217091051703"></p>
+<li><p>安装镜像</p>
+<p>npm官方原始镜像网址是： <a target="_blank" rel="noopener" href="https://registry.npmjs.org/">https://registry.npmjs.org/</a></p>
+<p><code>npm config set registry  https://registry.npmjs.org/</code></p>
 </li>
-<li><p>mysqli_query()函数</p>
-<p>定义：mysqli_query()函数执行一条Mysql查询</p>
-<p>语法：<code>mysqli_query(query,connection)</code></p>
-<p>参数：query:必需，规定要发送的SQL查询。</p>
-<p>   ​		connection:可选，规定SQL连接标识符。</p>
-<p>说明：如果没有打开的连接，本函数会尝试无参数调用mysqli_query()函数来建立一个连接并使用之。</p>
-<p>返回值：mysql_query()仅对SELECT，SHOW，EXPLAIN或DESCRIBE语句返回一个资源标识符，如果查询执行不正确则返回FALSE。</p>
-<p> 对于其它类型的SQL语句，mysql_query()在执行成功时返回TRUE，出错时返回FALSE。</p>
-<p>非FALSE的返回值意味着查询是合法的并能够被服务器执行。这并不说明任何有关影响到的或返回的行数。很有可能一条查          询执行成功了但并未影响到或并未返回任何行。</p>
-<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170929664.png" alt="image-20231217092950667"></p>
+<li><p>使用 cnpm 命令来安装模块</p>
+<p><code>cnpm install [name]</code></p>
 </li>
-<li><p>mysqli_fetch_assoc()函数</p>
-<p>定义：mysqli_fetch_assoc()函数从结果集中取得一行作为关联数组。该函数返回的字段区分大小写。</p>
-<p>语法：<code>mysqli_fetch_assoc(result)</code>;</p>
-<p>参数：result:必需，规定由mysqli_query()、mysqli_store_result()或mysqli_use_result()返回的结果集标识符。</p>
-<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170934935.png" alt="image-20231217093456061"></p>
+<li><p>安装webpack</p>
+<p><code>cnpm install webpack -g</code></p>
 </li>
-<li><p>Insert Into</p>
-<p>定义：INSERT INTO语句用于向数据库表中添加新纪录。</p>
-<p>语法：<code>INSERT INTO table_name(column1,column2,……) VALUES (value1,value2，……)</code></p>
-<p>注释：SQL语句对大小写不敏感。INSERT INTO 与insert into相同。</p>
-<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170938537.png" alt="image-20231217093836753"></p>
+<li><p>安装vue脚手架</p>
+<p><code>npm install vue-cli -g</code></p>
 </li>
-<li><p>while循环中使用mysqli_fetch_assoc()?</p>
-<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170939199.png" alt="image-20231217093922601"></p>
+<li><p>找一个文件夹放工程，在终端中进入该目录</p>
+<p><code>cd 目录路径</code></p>
 </li>
-<li><p><code>&lt;form&gt;enctype</code>属性</p>
-<p>定义：enctype属性规定在将表单数据发送到服务器之前如何对其进行编码。<strong>注意：只有<code>method=&quot;post</code>时才能使用enctype属性。</strong></p>
-<p>语法：<code>&lt;form enctype=&quot;value&quot;</code></p>
-<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170942826.png" alt="image-20231217094258843"></p>
+<li><p>根据模板创建目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack-simple 工程名字&lt;工程名字不能用中文&gt;</span><br><span class="line">或者创建 vue1.0 的项目</span><br><span class="line">vue init webpack-simple#1.0 工程名字&lt;工程名字不能用中文&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>会有一些初始化的设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Target directory exists. Continue? (Y/n)</span><br><span class="line">Project name (vue-test)</span><br><span class="line">Project description (A Vue.js project) </span><br><span class="line">#以上建议直接回车默认</span><br><span class="line">Author #写自己的名字</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>cd命令进入创建的工程</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312171113130.jpeg" alt="img"></p>
+</li>
+<li><p>安装项目依赖，建议从官方仓库安装，因为npm服务器在国外这一步会比较慢</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">cnpm install #不建议从国内镜像cnpm安装</span><br><span class="line">cnpm install vue-router vue-resource --save #安装vue路由模块和网络请求模块</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动项目</p>
+<p><code>npm run dev</code></p>
+</li>
+</ol>
+<h1 id="二、vue3"><a href="#二、vue3" class="headerlink" title="二、vue3"></a>二、vue3</h1><p>npm安装</p>
+<ol>
+<li><p>npm版本需要大于3.0，如果版本低于此版本需要升级它。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 查看版本</span><br><span class="line">$ npm -v</span><br><span class="line">2.3.0</span><br><span class="line"></span><br><span class="line">#升级 npm</span><br><span class="line">cnpm install npm -g</span><br><span class="line"></span><br><span class="line"># 升级或安装 cnpm</span><br><span class="line">npm install cnpm -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最新稳定版，这一指令将会安装并执行 create-vue，它是 Vue 官方的项目脚手架工具。如果不确定是否要开启某个功能，你可以直接按下回车键选择 No。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ npm init vue@latest</span><br><span class="line">Need to install the following packages:</span><br><span class="line">  create-vue@3.6.1</span><br><span class="line">Ok to proceed? (y) y</span><br><span class="line"></span><br><span class="line">Vue.js - The Progressive JavaScript Framework</span><br><span class="line"># 这里需要进行一些配置，项目名输入 runoob-vue3-test，其他默认回车即可</span><br><span class="line">&amp;#x2714; Project name: … runoob-vue3-test</span><br><span class="line">&amp;#x2714; Add TypeScript? … No / Yes</span><br><span class="line">&amp;#x2714; Add JSX Support? … No / Yes</span><br><span class="line">&amp;#x2714; Add Vue Router for Single Page Application development? … No / Yes</span><br><span class="line">&amp;#x2714; Add Pinia for state management? … No / Yes</span><br><span class="line">&amp;#x2714; Add Vitest for Unit Testing? … No / Yes</span><br><span class="line">&amp;#x2714; Add an End-to-End Testing Solution? › No</span><br><span class="line">&amp;#x2714; Add ESLint for code quality? … No / Yes</span><br><span class="line"></span><br><span class="line">Scaffolding project in /Users/tianqixin/runoob-test/runoob-vue3/runoob-vue3-test...</span><br><span class="line"></span><br><span class="line">Done. Now run:</span><br><span class="line"></span><br><span class="line">  cd runoob-vue3-test</span><br><span class="line">  npm install</span><br><span class="line">  npm run dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在项目被创建后，通过以下步骤安装依赖并启动开发服务器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cd runoob-vue3-test</span><br><span class="line">$ npm install</span><br><span class="line">$ npm run dev</span><br><span class="line">  VITE v4.3.4  ready in 543 ms</span><br><span class="line"></span><br><span class="line">  ➜  Local:   http://localhost:5173/</span><br><span class="line">  ➜  Network: use --host to expose</span><br><span class="line">  ➜  press h to show help</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>成功执行以上命令后访问 <strong><a target="_blank" rel="noopener" href="http://localhost:5173/">http://localhost:5173/</a></strong></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312171102164.png" alt="image-20231217110244125"></p>
 </li>
 </ol>
 
@@ -373,6 +381,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/02/11.28/">kali的钓鱼网站制作及大灰狼使用</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/02/11.27/">永恒之黑</a>
                 </span>
             </li>
@@ -391,19 +405,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/python/">python安装</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/03/tuchuang/">图床搭建</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
+                    <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础和Proxifier的使用</a>
                 </span>
             </li>
             
@@ -425,12 +439,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/17/vue/">vue导入</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -442,17 +450,17 @@
 
                 
                 <li>
-                    <a href="/2023/12/17/php_study/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2023/12/17/vue/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2023/12/17/php_study/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2023/12/17/vue/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2023/12/17/php_study/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2023/12/17/vue/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
