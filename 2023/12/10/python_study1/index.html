@@ -425,7 +425,7 @@
 </code></pre>
 </li>
 </ul>
-<h1 id="三、列表"><a href="#三、列表" class="headerlink" title="三、列表"></a>三、列表</h1><h2 id="（一）、列表的概念"><a href="#（一）、列表的概念" class="headerlink" title="（一）、列表的概念"></a>（一）、列表的概念</h2><ul>
+<h2 id="三、列表"><a href="#三、列表" class="headerlink" title="三、列表"></a>三、列表</h2><h3 id="（一）、列表的概念"><a href="#（一）、列表的概念" class="headerlink" title="（一）、列表的概念"></a>（一）、列表的概念</h3><ul>
 <li><p>定义：能装东西的东西(什么都能装，字符串、列表、字典、元组等)</p>
 </li>
 <li><p>在python中用[]来表示一个列表</p>
@@ -444,7 +444,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for item in lst:</span><br><span class="line">	print(item)</span><br></pre></td></tr></table></figure>
 
-<h2 id="（二）、列表的增删改查"><a href="#（二）、列表的增删改查" class="headerlink" title="（二）、列表的增删改查"></a>（二）、列表的增删改查</h2><ul>
+<h3 id="（二）、列表的增删改查"><a href="#（二）、列表的增删改查" class="headerlink" title="（二）、列表的增删改查"></a>（二）、列表的增删改查</h3><ul>
 <li><strong>增</strong></li>
 </ul>
 <ol>
@@ -474,7 +474,152 @@
 <p>直接用索引进行查询操作 <code>print(lst[x])</code></p>
 </li>
 </ul>
-<h2 id="（三）、列表的其他操作（补充）"><a href="#（三）、列表的其他操作（补充）" class="headerlink" title="（三）、列表的其他操作（补充）"></a>（三）、列表的其他操作（补充）</h2>
+<h3 id="（三）、列表的其他操作（补充）"><a href="#（三）、列表的其他操作（补充）" class="headerlink" title="（三）、列表的其他操作（补充）"></a>（三）、列表的其他操作（补充）</h3><h4 id="1-排序"><a href="#1-排序" class="headerlink" title="1. 排序"></a>1. 排序</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst = [1,2,3,&quot;麻花騰&quot;，“武大郎]  #列表会按照存放的顺序来保存</span><br><span class="line">lst.sort() #对列表进行升序排序</span><br><span class="line">lst.sort(reverse=True)  #reserve:翻转</span><br><span class="line">print(lst)  #会输出：[&quot;武大郎&quot;，&quot;麻花腾&quot;，3，2，1]</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-列表的嵌套"><a href="#2-列表的嵌套" class="headerlink" title="2. 列表的嵌套"></a>2. 列表的嵌套</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [&quot;123&quot;,&quot;abc&quot;,[&quot;coke&quot;,[&quot;呼吸&quot;]],&quot;zzz&quot;]</span><br><span class="line">print(lst[2][1][0])  #会输出 &quot;呼吸&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-列表的循环删除（-）"><a href="#3-列表的循环删除（-）" class="headerlink" title="3.列表的循环删除（*）"></a>3.列表的循环删除（*）</h4><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312102055501.png" alt="img"></p>
+<h2 id="四、元组"><a href="#四、元组" class="headerlink" title="四、元组"></a>四、元组</h2><ul>
+<li><p>元组：<code>t = (&quot;张无忌&quot;,&quot;赵敏&quot;,&quot;123&quot;)</code></p>
+</li>
+<li><p>特点：元组是不可变的列表（内存地址不能变）  ‘tuple’ object dose not support item asssignment</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312102111542.png" alt="image-20231210211101985"></p>
+</li>
+<li><p>元组如果只有一个元素，由于括号的优先级，会被认为字符串，需要在元素的末尾添加一个逗号</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312102105260.png" alt="image-20231210210519150"></p>
+<h2 id="五、set集合"><a href="#五、set集合" class="headerlink" title="五、set集合"></a>五、set集合</h2><ul>
+<li><p>s &#x3D; {} 里面不放东西时，会被认为是字典类型</p>
+</li>
+<li><p>set集合没有顺序，所以没有索引和切片</p>
+</li>
+<li><p>set集合要求存储的数据必须是可以进行哈希计算的</p>
+<p>python中的set集合进行数据存储的时候，需要对数据进行哈希巨酸，根据计算出来的哈希值进行存储数据</p>
+<p><strong>不可哈希：可变的数据类型，list,dict,set</strong></p>
+<p><strong>可哈希：不可变的类型，int,str,tuple,bool</strong></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312102119931.png" alt="image-20231210211937760"></p>
+</li>
+<li><p>创建空集合（列表、元组、字符串）</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312102127623.png" alt="image-20231210212740510"></p>
+<ul>
+<li>集合的添加<code>s.add()</code></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312102129102.png" alt="image-20231210212948049"></p>
+<ul>
+<li><p>集合的删除<code>s.pop()</code>默认删除最后一个， 由于集合的无序，从结果上来说任意一个都可能会被删除，很少用</p>
+<p><code>s.remove(&quot;xxx&quot;)</code>指定删除某一个内容</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312102133324.png" alt="image-20231210213349207"></p>
+<ul>
+<li><p>集合的修改，由于没有顺序，所以要先删除再新增</p>
+<p><code>s.remove(&quot;xxx&quot;)</code>  <code>s.add(&quot;xxxx&quot;)</code></p>
+</li>
+<li><p>集合的查找  利用for循环</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312102137455.png" alt="image-20231210213745527"></p>
+<ul>
+<li><p>交集(&amp;)、并集(|)、差集(-)，集合的元素不允许重复</p>
+<p>作用：可以去重复</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s1 = &#123;&quot;x&quot;,&quot;xx&quot;,&quot;zzz&quot;&#125;</span><br><span class="line">s2 = &#123;&quot;y&quot;,&quot;yy&quot;,&quot;zzz&quot;&#125;</span><br><span class="line">print(s1 &amp; s2) or print(s1.intersection(s2)) #交集 &#123;&quot;zzz&quot;&#125;</span><br><span class="line">print(s1 | s2) or print(s1.union(s2)) #并集 &#123;&quot;x&quot;,&quot;xx&quot;,&quot;y&quot;,&quot;yy&quot;,&quot;zzz&quot;&#125;</span><br><span class="line">print(s1-s2) or print(s1.difference(s2))#  差集 &#123;&quot;x&quot;,&quot;xx&quot;&#125;</span><br><span class="line"></span><br><span class="line">lst = [&quot;x&quot;,&quot;x&quot;,&quot;x&quot;,&quot;xx&quot;,&quot;xx&quot;,&quot;zzz&quot;&quot;zzz&quot;&quot;zzz&quot;&quot;zzz&quot;]</span><br><span class="line">print(list(set(lst))) #会输出[&quot;x&quot;,&quot;zzz&quot;&quot;xx&quot;],  </span><br><span class="line"># 通过这个方法输出的列表顺序和原来的不一样，因为集合是无序输出的</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="六、字典"><a href="#六、字典" class="headerlink" title="六、字典"></a>六、字典</h2><h3 id="一-、字典的概念"><a href="#一-、字典的概念" class="headerlink" title="(一)、字典的概念"></a>(一)、字典的概念</h3><ul>
+<li><p>存储方式是以键值对的形式进行存储的，取值时根据键来取值</p>
+</li>
+<li><p>表示方式<code>dic = &#123;key:value,key2:value,key3;valuse&#125;</code></p>
+</li>
+<li><p>用起来只是把索引改成了key</p>
+<p><code>val = dic[key]</code></p>
+</li>
+<li><p>字典的键key必须是可哈希的，value值可以是任意类型数据</p>
+<p><img src="/python_study1.assets/image-20231212204018672.png" alt="image-20231212204018672"></p>
+</li>
+</ul>
+<h3 id="二-、字典的增删改查"><a href="#二-、字典的增删改查" class="headerlink" title="(二)、字典的增删改查"></a>(二)、字典的增删改查</h3><ol>
+<li><p>字典的添加和修改</p>
+<p><code>dic[key] = value </code></p>
+<p><code>dic.setdefault (键，值)  #键和值为字符串的话需要用双引号括起来</code></p>
+<ul>
+<li><p>添加的键值对会在字典的末尾加入。</p>
+</li>
+<li><p>setdefault执行的操作是设置默认值，如果字典里已经有了要设置的键，setdefault就不起作用了。</p>
+</li>
+<li><p>字典的每个key都是唯一的，如果要添加的键值对的键包含在字典里面，则执行覆盖操作。</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312122106231.png" alt="image-20231212210631301"></p>
+</li>
+<li><p>字典的删除</p>
+<p><code>dic.pop(键key)</code></p>
+<p>根据key去删除键值对</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312122115290.png" alt="image-20231212211545462"></p>
+</li>
+<li><p>字典的查询</p>
+<p><code>dic[键key] #如果key不存在，程序会报错。当确定key是没问题的，可以用</code></p>
+<p><code>dic.get(键key) #如果key不存在，程序会返回None。当不确定key的时候，可以用</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312122116087.png" alt="image-20231212211618115"></p>
+</li>
+</ol>
+<h1 id=""><a href="#" class="headerlink" title=""></a><!--None关键字--></h1><!--![image-20231212212320881](https://raw.githubusercontent.com/guangfa29/123/main/img/202312122123808.png)-->
+
+<h1 id="-1"><a href="#-1" class="headerlink" title=""></a><!--元组或列表的解构操作--></h1><p><img src="/python_study1.assets/image-20231213205807773.png" alt="image-20231213205807773"></p>
+<h3 id="（三）、字典的循环和嵌套"><a href="#（三）、字典的循环和嵌套" class="headerlink" title="（三）、字典的循环和嵌套"></a>（三）、字典的循环和嵌套</h3><h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><ol>
+<li><p>可以用for循环，直接拿到key</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">	key1 : value1,</span><br><span class="line">	key2 : value2,</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br><span class="line">for key in dic:</span><br><span class="line">	print(key,dic[key])</span><br><span class="line">#会输出 key1 value1</span><br><span class="line">	   key2 value2</span><br><span class="line">	   ……</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将所有拿到的key全都保存在一个列表当中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for key in dic:</span><br><span class="line">	print(list(dic.keys()))</span><br><span class="line">#会输出 [key1,key2,……]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将所有拿到的value全都保存在一个列表当中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for key in dic:</span><br><span class="line">	print(list(dic.values()))</span><br><span class="line">#会输出 [value1,value2,……]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接拿到字典里的key和value</p>
+<ul>
+<li><pre><code class="js/python/text">
+</code></pre>
+</li>
+</ul>
+<p>for key in dic:<br>        print(dic.items())<br>#会输出 dict_items([(‘赵四’, ‘特别能歪嘴’), (‘刘能’, ‘老，老四啊。。’), (‘大脚’, ‘跟这个搞对象’), (‘大脑袋’, ‘瞎折腾….’)])</p>
+<ul>
+<li><pre><code>for item in dic.items():
+    print(item)
+#会输出：
+(&#39;赵四&#39;, &#39;特别能歪嘴&#39;)
+(&#39;刘能&#39;, &#39;老，老四啊。。&#39;)
+(&#39;大脚&#39;, &#39;跟这个搞对象&#39;)
+(&#39;大脑袋&#39;, &#39;瞎折腾....&#39;)
+</code></pre>
+</li>
+<li><pre><code class="js/python/text">for item in dic.items():
+    key = item[0]
+    value = item[1]
+    print(key,value)
+#会输出：
+赵四 特别能歪嘴
+刘能 老，老四啊。。
+大脚 跟这个搞对象
+大脑袋 瞎折腾....
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ```js/python/text</span><br><span class="line">  for item in dic.items():</span><br><span class="line">  	key,value = item</span><br><span class="line">  	print(key,value)</span><br><span class="line">  #会输出：</span><br><span class="line">  赵四 特别能歪嘴</span><br><span class="line">  刘能 老，老四啊。。</span><br><span class="line">  大脚 跟这个搞对象</span><br><span class="line">  大脑袋 瞎折腾....</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code class="js/python/text">for key,value in dic.items()   （***）
+    print(key,value)
+#会输出：
+赵四 特别能歪嘴
+刘能 老，老四啊。。
+大脚 跟这个搞对象
+大脑袋 瞎折腾....
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">#### 嵌套</span><br><span class="line"></span><br><span class="line">```js/python/text</span><br><span class="line">dic = &#123;</span><br><span class="line">	key1 : value1</span><br><span class="line">	key2 : value2</span><br><span class="line">	key3 : &#123;</span><br><span class="line">		key4 : value3</span><br><span class="line">		key5 : value4</span><br><span class="line">		key6 : &#123;</span><br><span class="line">			key7 : value5</span><br><span class="line">			key8 : value6</span><br><span class="line">			key9 :	&#123;……&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		key10 : [</span><br><span class="line">			&#123;key11 : value7,key12 : value8,key13 : value9&#125;,</span><br><span class="line">			&#123;key14 : value10,key15 : value11,key16 : value12&#125;</span><br><span class="line">			……</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">zzz = dic[key3][key6][key8]</span><br><span class="line">print(zzz) #会输出 value6</span><br><span class="line">dic[key10][1][key15] = dic[key10][1][key15] + 1 #value为int类型</span><br><span class="line">print(dic) #会输出 整个dic，且value11的值+1</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+
     </div>
 </article>
 
@@ -535,6 +680,18 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/17/php_study/">php的一些基础知识</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/10/python_study1/">python_study</a>
                 </span>
             </li>
@@ -581,18 +738,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/03/daboke/">利用github搭博客</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -608,6 +753,12 @@
         </div>
         <ul class="list-group list-group-flush">
             
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/02/11.28/">kali的钓鱼网站制作及大灰狼使用</a>
+                </span>
+            </li>
             
             <li class="list-group-item">
                 <span class="post-title">
@@ -629,18 +780,6 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/python/">python安装</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/03/tuchuang/">图床搭建</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
                 </span>
             </li>
@@ -653,19 +792,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
+                    <a href="/2023/12/10/python_study1/">python_study</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/17/php_study/">php的一些基础知识</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
                 </span>
             </li>
             

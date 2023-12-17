@@ -10,7 +10,7 @@
     
     
     
-    <title>#新建页面 | hexo</title>
+    <title>phpstudy的mysql服务开启 | hexo</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -150,21 +150,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
-
-
+                    
 <article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="http://example.com">hexo</a>
+        >
+        <span>phpstudy的mysql服务开启</span>
+    </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html">#新建页面</a>
+                <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
             </h1>
         </div>
         <div class="tag-article">
+            
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2023-12-03
+                <i class="fa fa-calendar"></i> 2023-12-17
             </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -172,19 +178,46 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html">#新建页面</a>
+                    <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2023-12-03
+                <i class="fa fa-calendar"></i> 2023-12-17
+            </p>
+            <p>
+                
+                
             </p>
         </center>
     </div>
     <div class="content-article">
-        
+        <ol>
+<li>需下载phpstudy和Navicat软件</li>
+</ol>
+<p>进入192.168.2.6:5244下载</p>
+<ol start="2">
+<li>开启apache和mysql服务</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170920807.png" alt="image.png"><br>3.打开navicat软件，连接本地</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170920984.png" alt="image.png"></p>
+<ol start="4">
+<li>在phpstudy中找到根目录打开，找到mysql文件下的bin目录，cmd进入</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170920360.png" alt="image.png"></p>
+<ol start="5">
+<li>开启mysql</li>
+</ol>
+<ul>
+<li>输入mysql.exe -u root -p  （Windows可不输入.exe,默认自带）</li>
+<li>输入密码 root</li>
+<li>输入use mysql</li>
+<li>输入update user set Host&#x3D;’%’ where User&#x3D;’root’</li>
+<li>输入flush privileges</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170920213.png" alt="image.png"></p>
+
     </div>
 </article>
-
 
 
                 </div>
@@ -319,12 +352,6 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/02/11.28/">kali的钓鱼网站制作及大灰狼使用</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/02/11.27/">永恒之黑</a>
                 </span>
             </li>
@@ -343,12 +370,6 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/python/">python安装</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/03/tuchuang/">图床搭建</a>
                 </span>
             </li>
@@ -361,7 +382,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/10/python_study1/">python_study</a>
                 </span>
             </li>
             
@@ -388,17 +421,17 @@
 
                 
                 <li>
-                    <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2023/12/17/phpstudy_mysql/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2023/12/17/phpstudy_mysql/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2023/12/17/phpstudy_mysql/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>

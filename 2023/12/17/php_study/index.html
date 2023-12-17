@@ -10,7 +10,7 @@
     
     
     
-    <title>#新建页面 | hexo</title>
+    <title>php的一些基础知识 | hexo</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -150,21 +150,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
-
-
+                    
 <article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="http://example.com">hexo</a>
+        >
+        <span>php的一些基础知识</span>
+    </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html">#新建页面</a>
+                <a href="/2023/12/17/php_study/">php的一些基础知识</a>
             </h1>
         </div>
         <div class="tag-article">
+            
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2023-12-03
+                <i class="fa fa-calendar"></i> 2023-12-17
             </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -172,19 +178,67 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html">#新建页面</a>
+                    <a href="/2023/12/17/php_study/">php的一些基础知识</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2023-12-03
+                <i class="fa fa-calendar"></i> 2023-12-17
+            </p>
+            <p>
+                
+                
             </p>
         </center>
     </div>
     <div class="content-article">
-        
+        <ol>
+<li><p>打开php，在网站设置的高级配置中国打开目录索引。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170906983.png" alt="image-20231217090554310"></p>
+</li>
+<li><p>GET方式获取用户输入信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在index.php下输入：</span><br><span class="line">$a = $_GET[&#x27;a&#x27;];</span><br><span class="line">echo = $a;</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231217090814280.png" alt="image-20231217090814280"></p>
+</li>
+<li><p>经典问题（1）鸡兔同笼：假设在笼子里有头数为8的动物，总共有22只脚。（2）n张5毛，y张1块，z张10块，t张50，x张100，问我手上一共有156钱，一共有多少种组合，满足我手上的钱。</p>
+<p>使用if循环和嵌套。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170910749.png" alt="image-20231217091051703"></p>
+</li>
+<li><p>mysqli_query()函数</p>
+<p>定义：mysqli_query()函数执行一条Mysql查询</p>
+<p>语法：<code>mysqli_query(query,connection)</code></p>
+<p>参数：query:必需，规定要发送的SQL查询。</p>
+<p>   ​		connection:可选，规定SQL连接标识符。</p>
+<p>说明：如果没有打开的连接，本函数会尝试无参数调用mysqli_query()函数来建立一个连接并使用之。</p>
+<p>返回值：mysql_query()仅对SELECT，SHOW，EXPLAIN或DESCRIBE语句返回一个资源标识符，如果查询执行不正确则返回FALSE。</p>
+<p> 对于其它类型的SQL语句，mysql_query()在执行成功时返回TRUE，出错时返回FALSE。</p>
+<p>非FALSE的返回值意味着查询是合法的并能够被服务器执行。这并不说明任何有关影响到的或返回的行数。很有可能一条查          询执行成功了但并未影响到或并未返回任何行。</p>
+<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170929664.png" alt="image-20231217092950667"></p>
+</li>
+<li><p>mysqli_fetch_assoc()函数</p>
+<p>定义：mysqli_fetch_assoc()函数从结果集中取得一行作为关联数组。该函数返回的字段区分大小写。</p>
+<p>语法：<code>mysqli_fetch_assoc(result)</code>;</p>
+<p>参数：result:必需，规定由mysqli_query()、mysqli_store_result()或mysqli_use_result()返回的结果集标识符。</p>
+<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170934935.png" alt="image-20231217093456061"></p>
+</li>
+<li><p>Insert Into</p>
+<p>定义：INSERT INTO语句用于向数据库表中添加新纪录。</p>
+<p>语法：<code>INSERT INTO table_name(column1,column2,……) VALUES (value1,value2，……)</code></p>
+<p>注释：SQL语句对大小写不敏感。INSERT INTO 与insert into相同。</p>
+<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170938537.png" alt="image-20231217093836753"></p>
+</li>
+<li><p>while循环中使用mysqli_fetch_assoc()?</p>
+<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170939199.png" alt="image-20231217093922601"></p>
+</li>
+<li><p><code>&lt;form&gt;enctype</code>属性</p>
+<p>定义：enctype属性规定在将表单数据发送到服务器之前如何对其进行编码。<strong>注意：只有<code>method=&quot;post</code>时才能使用enctype属性。</strong></p>
+<p>语法：<code>&lt;form enctype=&quot;value&quot;</code></p>
+<p>   <img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312170942826.png" alt="image-20231217094258843"></p>
+</li>
+</ol>
+
     </div>
 </article>
-
 
 
                 </div>
@@ -355,25 +409,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础和Proxifier的使用</a>
+                    <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
+                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/10/python_study1/">python_study</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2023/12/17/php_study/">php的一些基础知识</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
                 </span>
             </li>
             
@@ -388,17 +442,17 @@
 
                 
                 <li>
-                    <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2023/12/17/php_study/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2023/12/17/php_study/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/%E6%96%B0%E5%BB%BA%E9%A1%B5%E9%9D%A2/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2023/12/17/php_study/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
