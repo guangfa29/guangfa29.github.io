@@ -535,7 +535,7 @@
 <li><p>用起来只是把索引改成了key</p>
 <p><code>val = dic[key]</code></p>
 </li>
-<li><p>字典的键key必须是可哈希的，value值可以是任意类型数据</p>
+<li><p>字典的键key必须是可哈希的（不可变），value值可以是任意类型数据</p>
 <p><img src="/python_study1.assets/image-20231212204018672.png" alt="image-20231212204018672"></p>
 </li>
 </ul>
@@ -619,6 +619,38 @@
 </ul>
 </li>
 </ol>
+<h4 id="循环删除"><a href="#循环删除" class="headerlink" title="循环删除"></a>循环删除</h4><p>字典在循环中不能直接进行删除操作，会改变字典的大小长度，需要一个新列表存放要删除的数据，再循环列表，删除字典的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line"> &quot;赵四&quot;:&quot;特别能歪嘴&quot;,</span><br><span class="line">  &quot;刘能&quot;:&quot;老，老四啊。。&quot;,</span><br><span class="line">  &quot;大脚&quot;:&quot;跟这个搞对象&quot;,</span><br><span class="line">  &quot;大脑袋&quot;:&quot;瞎折腾....&quot;,</span><br><span class="line">&#125;</span><br><span class="line">temp = [] #存放即将要删除的key</span><br><span class="line">for key in dic:</span><br><span class="line">  if key.startswith(&quot;大&quot;):</span><br><span class="line">    temp.append(key)</span><br><span class="line">    #dic.pop(key) #dictionary changed size during iteration</span><br><span class="line">for t in temp: #循环列表，删除字典中的内容</span><br><span class="line">  dic.pop(t)</span><br><span class="line">print(dic)</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、字符集和编码"><a href="#七、字符集和编码" class="headerlink" title="七、字符集和编码"></a>七、字符集和编码</h2><h3 id="（一）字符集和编码"><a href="#（一）字符集和编码" class="headerlink" title="（一）字符集和编码"></a>（一）字符集和编码</h3><ol>
+<li><p>ascii:8bit,1byte</p>
+</li>
+<li><p>gbk:16bit,2byte  windows默认</p>
+</li>
+<li><p>unicode:32bit,4byte(没法用,只是一个标准)</p>
+</li>
+<li><p>utf-8:  mac默认</p>
+<pre><code>是可变长的unicode,可以进行数据的传输和储存,最短的字节长度是8
+
+英文:8bit,1byte
+
+欧洲文字:16bit,2byte
+
+中文:24bit,3byte
+
+gbk和utf-8 不能直接进行转化
+</code></pre>
+</li>
+<li><p>utf-16: 最长的字节长度为16</p>
+</li>
+</ol>
+<h3 id="二-bytes"><a href="#二-bytes" class="headerlink" title="(二)bytes"></a>(二)bytes</h3><ul>
+<li><p>程序员平时遇见的所有数据最终单位都是字节byte</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> s = <span class="string">&quot;周杰伦&quot;</span></span><br><span class="line"> bs1 = s.encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"> bs2 = s.encode(<span class="string">&quot;gbk&quot;</span>)  <span class="comment"># b&#x27;xxxx&#x27; byte类型</span></span><br><span class="line"> <span class="built_in">print</span>(bs1)</span><br><span class="line"> <span class="built_in">print</span>(bs2)</span><br><span class="line">    </span><br><span class="line"><span class="comment">#怎么把一个gbk的字节转化为utf-8的字节</span></span><br><span class="line">bs = <span class="string">b&#x27;\xd6\xdc\xbd\xdc\xc2\xd7&#x27;</span></span><br><span class="line"><span class="comment">#先变成文字符号（字符串）</span></span><br><span class="line">s = bs.decode(<span class="string">&quot;gbk&quot;</span>)  <span class="comment">#解码</span></span><br><span class="line">bs2 = s.encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="comment"># print(bs2)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. str.encode(&quot;编码&quot;)  进行编码</span></span><br><span class="line"><span class="comment"># 2. bytes.encode(&quot;编码&quot;)  进行解码</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/python_study1.assets/image-20231221211846766.png" alt="image-20231221211846766"></p>
+</li>
+</ul>
 
     </div>
 </article>
@@ -680,6 +712,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/17/vue/">vue导入</a>
                 </span>
             </li>
@@ -732,12 +770,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/03/tuchuang/">图床搭建</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -756,7 +788,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/02/11.28/">kali的钓鱼网站制作及大灰狼使用</a>
+                    <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
                 </span>
             </li>
             
@@ -774,13 +806,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
+                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础和Proxifier的使用</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
+                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
                 </span>
             </li>
             
@@ -810,7 +842,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/17/vue/">vue导入</a>
+                    <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
                 </span>
             </li>
             

