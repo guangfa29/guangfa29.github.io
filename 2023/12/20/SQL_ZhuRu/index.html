@@ -368,13 +368,21 @@
 <li>堆叠注入。<code> mysqli_multi_query($con1, $sql) //支持多条sql语句同时执行，由；分隔，成堆的执行sql语句</code>。</li>
 <li>在<code>$sql=&quot;SELECT * FROM users WHERE id=&#39;$id&#39; LIMIT 0,1&quot;;</code>闭合处进行对数据库的增删改查操作。(前提是有权限)</li>
 </ul>
-<h1 id="十、文件上传指令"><a href="#十、文件上传指令" class="headerlink" title="十、文件上传指令"></a>十、文件上传指令</h1><ul>
-<li><p><code>&lt;?php @eva($_post[&#39;password&#39;]);?&gt;</code>为一句话木马</p>
+<h1 id="十、文件上传指令"><a href="#十、文件上传指令" class="headerlink" title="十、文件上传指令"></a>十、文件上传指令</h1><ol>
+<li><p><code>show variable like &#39;%secure%&#39;;</code>用来查看mysql是否有读写文件权限</p>
+<p><img src="https://raw.githubusercontent.com/guangfa29/123/main/img/202401051424249.png" alt="image.png"></p>
 </li>
+<li><p>数据库的<code>file</code>权限规定了数据库用户是否有权限，向操作系统内写入和读取已存在的权限</p>
+</li>
+<li><p><code>into outfile</code>命令使用的环境：必须知道一个，服务器上可以写入文件的文件夹的完整路径</p>
+</li>
+</ol>
+<ul>
 <li><pre><code>?id=-1&#39;)) union select 1,&quot;&lt;?php @eva($_post[&#39;password&#39;]);?&gt;&quot;,3 into outfile &quot;D:\\phpstudy_pro\\WWW\\123.php&quot; -- -
 </code></pre>
 </li>
 <li><p>其中</p>
+<p><code>&lt;?php @eva($_post[&#39;password&#39;]);?&gt;</code>为一句话木马</p>
 <p><code>password</code>为预留密码</p>
 <p><code>D:\\phpstudy_pro\\WWW\\123.php</code>为文件路径</p>
 <p><code>123.php</code>为新插入的文件名</p>
@@ -441,6 +449,24 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2024/01/07/XinXiShouJi/">信息收集</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2024/01/06/YuMing/">域名信息</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2024/01/05/Nmap/">Nmap</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2024/01/02/web_sentou/">web渗透</a>
                 </span>
             </li>
@@ -481,24 +507,6 @@
                 </span>
             </li>
             
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
-                </span>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -523,7 +531,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2023/12/03/daboke/">利用github搭博客</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2023/12/03/tuchuang/">图床搭建</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2023/12/04/AhMyth_use/">Ahmyth的使用</a>
                 </span>
             </li>
             
@@ -535,43 +555,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/04/linux_stduy/">Linux的学习</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2023/12/06/ssh_denglu_Linux/">ssh远程登陆Linux</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2023/12/10/HTML5/">HTML5的基本知识</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/10/python_study1/">python_study</a>
+                    <a href="/2023/12/17/phpstudy_mysql/">phpstudy的mysql服务开启</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/20/SQL_ZhuRu/">SQL注入</a>
+                    <a href="/2024/01/05/Nmap/">Nmap</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2023/12/25/sqli_labs/">sqli_labs</a>
+                    <a href="/2024/01/06/YuMing/">域名信息</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2024/01/02/web_sentou/">web渗透</a>
+                    <a href="/2024/01/07/XinXiShouJi/">信息收集</a>
                 </span>
             </li>
             
